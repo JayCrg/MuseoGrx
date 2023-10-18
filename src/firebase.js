@@ -20,6 +20,7 @@ export const firebaseApp = initializeApp({
   messagingSenderId: "344514431510",
   appId: "1:344514431510:web:e813571372fb9aab73c337",
   measurementId: "G-YLGV3CPBGH"
+
 });
 
 // used for the firestore refs
@@ -27,7 +28,6 @@ const analytics = getAnalytics(firebaseApp);
 export const auth = getAuth(firebaseApp)
 export const storage = getStorage()
 export const db = getFirestore(firebaseApp)
-export const database = getDatabase(firebaseApp)
 
 
 // here we can export reusable database references

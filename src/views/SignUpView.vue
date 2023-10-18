@@ -3,9 +3,7 @@ import { ref } from 'vue';
 import { auth, storage, db } from '../firebase.js'
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import router from '../router/index.js';
-
-import { ref as ref2, getStorage, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { addDoc, collection, getFirestore, doc, getDoc, getDocs, query, where, orderBy, deleteDoc, updateDoc } from 'firebase/firestore'
+import { collection, addDoc } from "firebase/firestore"; 
 
 
 var registrado = ref(0)
@@ -16,38 +14,36 @@ const patternEmailAlt = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-z
 const patternPassword = "/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/"
 
 const submitHandler = async () => {
-  
   await new Promise((r) => setTimeout(r, 1500))
   registrado.value = 0;
-  // router.push({ name: 'home' });
+  router.push({ name: 'home' });
 }
+
+const guardarEnFirestore = async (name, email, uid) => {
+  try {
+    const docRef = await addDoc(collection(db, "usuarios"), {
+      name: name,
+      email: email,
+      uid: uid
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
+
 
 async function login(credentials) {
   createUserWithEmailAndPassword(auth, credentials.email, credentials.Contraseña)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      // console.log(user)
       registrado.value = 1
+      //guardar en firestore database
+      // por estilo
+      guardarEnFirestore(credentials.name, credentials.email, user.uid)
       submitHandler()
-      //guardar en firestore
-      const docRef = doc(db, "usuarios", user.uid);
-      const payload = {
-        name: credentials.name,
-        email: credentials.email,
-        uid: user.uid,
-        emailVerified: user.emailVerified,
-
-      }
-      addDoc(collection(db, "usuarios"), payload)
-        .then((docRef) => {
-          console.log("Document written with ID: ", docRef.id);
-          // router.push({ name: 'home' });
-        })
-        .catch((error) => {
-          console.error("Error adding document: ", error);
-        });
-      // ...
 
     })
     .catch((error) => {

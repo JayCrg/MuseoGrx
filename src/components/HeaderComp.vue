@@ -3,10 +3,11 @@ import { RouterLink, RouterView } from 'vue-router'
 import Porcentaje from './Porcentaje.vue';
 import router from '../router/index.js';
 import { onMounted } from 'vue';
+import { collection, getDocs } from "firebase/firestore"; 
+import { db } from '../firebase.js'
 
 import {
   MDBNavbar,
-  MDBNavbarToggler,
   MDBNavbarBrand,
   MDBNavbarNav,
   MDBCollapse,
@@ -24,6 +25,7 @@ var userEmail = ref('');
 var disabled = ref(false)
 const patternEmailAlt = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})?/"
 const patternPassword = "/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/"
+var NombreUsuario = ref('')
 
 
 
@@ -35,6 +37,7 @@ function login() {
       // Signed in
       const user = userCredential.user;
       router.push({ name: 'home' });
+      obtenerNombreUsuarioDeLogin()
       // ...
     })
     .catch((error) => {
@@ -56,6 +59,8 @@ function google() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      router.push({ name: 'home' });
+
       // ...
     }).catch((error) => {
       // Handle Errors here.
@@ -78,6 +83,7 @@ function github() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      router.push({ name: 'home' });
       // ...
     }).catch((error) => {
       // Handle Errors here.
@@ -93,6 +99,7 @@ function github() {
 
 function salir() {
   signOut(auth).then(() => {
+    NombreUsuario.value = ''
     // Sign-out successful.
   }).catch((error) => {
     // An error happened.
@@ -108,6 +115,12 @@ onAuthStateChanged(auth, (user) => {
     password.value = ''
     uid.value = user.uid
     console.log(user)
+    if(user.displayName !== null){
+      NombreUsuario.value = formatearNombre(user.displayName)
+    }
+    else{
+      obtenerNombreUsuarioDeLogin()
+    }
     estaAutentificado.value = true
   } else {
     estaAutentificado.value = false
@@ -132,8 +145,24 @@ function focusNextInput(){
       secondInput.focus();
 
 }
-  
 
+const obtenerNombreUsuarioDeLogin = async () => {
+  const querySnapshot = await getDocs(collection(db, "usuarios"));
+  querySnapshot.forEach((doc) => {
+    console.log(doc.data().name)
+    if (doc.data().uid == uid.value) {
+      NombreUsuario.value = formatearNombre(doc.data().name)
+    }
+  });
+}
+
+function formatearNombre(nombre){
+  var nombreFormateado = nombre.split(' ')
+  if (nombreFormateado.length >= 2) {
+    return nombreFormateado[0] + ' ' + nombreFormateado[1]
+  }
+  return nombreFormateado[0]
+}
 
 
 
@@ -153,38 +182,38 @@ function focusNextInput(){
       <!-- Collapsible wrapper -->
       <MDBCollapse v-model="collapse5" id="navbarRightAlignExample">
         <MDBNavbarNav right class="mb-2 mb-lg-0 centrar">
-          <!-- Ticket -->
-          <RouterLink :to="{ name: 'entradas' }" class="routerLink">
-            <button active title="Comprar Entradas" class="btn customBtn">
-              Entradas &nbsp; <font-awesome-icon icon="fa-solid fa-ticket" />
-            </button>
-          </RouterLink>
           <!-- Modal Login/SignUp -->
           <button v-if=!estaAutentificado class="btn customBtn-destacado" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-            Log In &nbsp;
+          data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          Log In &nbsp;
             <font-awesome-icon :icon="['far', 'user']" size="lg" /></button>
-          <li class="nav-item dropdown" v-if=estaAutentificado>
+          <li class="nav-item dropdown customList" v-if=estaAutentificado>
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{ uid }}
+              {{ (NombreUsuario) }}
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Administraci&oacute;n</a></li>
+              <li><a class="dropdown-item" href="#">Mis rutas</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
               <li><button @click="salir" class="dropdown-item customBtn-destacado" type="button">
-            Log Out &nbsp;
-            <font-awesome-icon :icon="['far', 'user']" size="lg" /></button></li>
-            </ul>
-          </li>
-          
-
-        </MDBNavbarNav>
-        <!-- Search -->
-        <form class="d-flex input-group w-auto">
-          <input type="search" class="form-control" placeholder="Ej: Las Meninas" aria-label="Search" />
+                Log Out &nbsp;
+                <font-awesome-icon :icon="['far', 'user']" size="lg" /></button></li>
+              </ul>
+            </li>
+            <!-- Ticket -->
+            <RouterLink :to="{ name: 'entradas' }" class="routerLink desplazado">
+              <button active title="Comprar Entradas" class="btn customBtn">
+                Entradas &nbsp; <font-awesome-icon icon="fa-solid fa-ticket" />
+              </button>
+            </RouterLink>
+            
+            
+          </MDBNavbarNav>
+          <!-- Search -->
+          <form class="d-flex input-group w-auto">
+            <input type="search" class="form-control" placeholder="Ej: Las Meninas" aria-label="Search" />
           <button class="btn btn-outline-primary customBtn-slide"> <font-awesome-icon :icon="['fas', 'magnifying-glass']"
               size="lg" /></button>
         </form>

@@ -18,6 +18,28 @@ header {
           margin-top:.5em;
       }
     }
+    .customList{
+      &>a{
+        @include responsive(large){
+          max-width: 20vw;
+        }
+        @include responsive(tablet){
+          max-width: 100vw;
+        }
+      }
+    }
+    .desplazado{
+      @include responsive(large){
+        align-self: center;
+      }
+      @include responsive(desktop){
+        align-self: center;
+      }
+      @include responsive(small){
+        align-self: flex-end;
+        width: 100%;
+      }
+    }
   }
   aside{
     .crearCuenta{
