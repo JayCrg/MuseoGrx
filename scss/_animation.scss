@@ -1,0 +1,42 @@
+/* Definir la animación de cambio de color */
+@keyframes colorChange {
+    0% {
+      color: #DB4437; /* Color rojo */
+    }
+    25% {
+      color: #F4B400; /* Color amarillo */
+    }
+    50% {
+      color: #0F9D58; /* Color verde */
+    }
+    75% {
+      color: #4285F4; /* Color azul */
+    }
+    100% {
+      color: #DB4437; /* Vuelve al color azul al final */
+    }
+  }
+
+/* Animacion para agitar un elemento */
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+  
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }

@@ -1,0 +1,28 @@
+/// Hero de inicio
+#hero {
+    background-image: url('/mirador.webp');
+    background-size: cover;
+    background-position: center center;
+    height: 200px;
+
+    .mask {
+        background-color: rgba(0, 0, 0, 0);
+        transition: background-color 0.3s ease;
+        
+        .texto-hero{
+            color: rgba(0, 0, 0, 0);
+            transition: color 0.3s ease, display 0.3s ease; /* Agrega transiciones para color y display */
+
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+
+            .texto-hero{
+                display: block;
+                color: white;
+            }
+        }
+
+    }
+}

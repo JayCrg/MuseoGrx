@@ -1,0 +1,74 @@
+////Proyecto: MuseoGRX
+/// @author: Juan Carlos Ramírez
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Karla:wght@500&display=swap');
+
+/*paleta de colores*/
+///mapa de colores
+///@group colores
+
+$color: (
+    resaltado: #c85c59,
+    resaltado-aux: #AD4240,
+    resaltado-claro: #eb8484,
+    fondo-oscuro: #2d2c2c,
+    fondo-claro: #f9f9f8,
+    fondo-claro-aux: #f3f2f2,
+    texto-claro: #c5ccca,
+    texto-claro-aux: #5d5c5d,
+    texto-oscuro: #030303,
+
+);
+///Funcion para obtener el color
+///@group colores
+///@param {string} $colorName - nombre del color
+///@return {color} - color
+@function color($colorName){
+    @return map-get($color, $colorName);
+}
+
+///mapa de tamaños
+///@group tamaños
+$font-sizes:(
+    xxl:7rem,
+    xl: 5rem,
+    lg: 3rem,
+    mdd: 1.5rem,
+    md: 1rem,
+    sm: 0.7rem,
+    xs: 0.5rem,
+    );
+///@group tamaños
+///@param {map} $font-sizes - mapa de tamaños
+///tamaños disponibles xxl, xl, lg, md, sm, xs
+///@return {size} - tamaño
+@function size($fontSizeName){
+    @return map-get($font-sizes, $fontSizeName);
+}
+///mapa de pesos
+///@group pesos
+$font-weights:(
+    light: 200,
+    regular: 300,
+    medium: 400,
+    bold: 600,
+    black: 900
+);
+///@group pesos
+///@param {map} $font-weights - mapa de tamaños
+///tamaños disponibles light, regular, medium, bold, black
+///@return {weight} - peso
+@function weight($fontWeightName){
+    @return map-get($font-weights, $fontWeightName);
+}
+///
+$font-title: 'Karla', sans-serif;
+///
+$font-body: 'Bitter', serif;
+/// 
+$defaul-margin: 0;
+$default-padding: 0;
+///
+$separador-margin: 0.5rem 0 0 0;
+///
+$default-foreground: rgb(30,30,30);

@@ -1,0 +1,24 @@
+// @import "../node_modules/bootstrap/scss/bootstrap";
+// @import "../../node_modules/bootstrap/scss/forms/_form-control.scss";
+@import "./variables";
+@import "./animation";
+@import "./mixin";
+@import "./base";
+
+// @import './layout/menu.scss';
+// @import './layout/genero.scss';
+// @import './layout/detalle.scss';
+@import './layout/signup.scss';
+// 
+@import './components/formulario.scss';
+@import './components/header.scss';
+// @import './components/carrusel.scss';
+// @import './components/footer.scss';
+@import './components/hero.scss';
+// @import './components/filtro.scss';
+// @import './components/card.scss';
+// @import './components/modal.scss';
+// @import './components/scrollspy.scss';
+@import './components/boton.scss';
+@import "animate.css";
+

@@ -1,0 +1,27 @@
+// Componente: Formularios
+
+form{
+    .form-control{
+      border-radius: 0.5rem!important;
+      &-formkit{
+        border-radius: 0.5rem!important;
+        border-color: color(resaltado)!important;
+        &:focus{
+          border-color: color(resaltado-aux)!important;
+          box-shadow: 0 0 0 0.2rem rgba(200, 92, 89, 0.25)!important;
+        }
+      }
+      &:focus {
+        color: color(texto-oscuro)!important;
+        background-color: color(fondo-claro)!important;
+        border-color: color(resaltado)!important;
+        outline: 0!important;
+        box-shadow: 0 0 0 0rem rgba(200, 92, 89, 0.25)!important;
+      }
+    }
+    input[type="checkbox"]:checked {
+      background-color: color(resaltado)!important;
+      border-color: color(resaltado-aux)!important;
+    }
+    
+}

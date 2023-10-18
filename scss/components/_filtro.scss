@@ -1,0 +1,37 @@
+///Componente de filtro
+.filtros{
+    @include flexposition(row, flex-start, center);
+    flex-wrap: wrap;
+    margin: 2rem auto;
+    gap: 1rem;
+    select{
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        border: 1px solid color(terciary);
+        background-color: lighten(color(quaternary), 10%);
+        color: color(terciary);
+        font-size: size(xxs);
+        font-weight: border;
+        cursor: pointer;
+        &:hover{
+            background-color: lighten(color(quater-lighter), 20%);
+        }
+    }
+    button{
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        border: 1px solid color(terciary);
+        background-color: lighten(color(quaternary), 10%);
+        color: color(terciary);
+        font-size: size(xxs);
+        font-weight: border;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        &:hover{
+            background-color: lighten(color(quater-lighter), 20%);
+        }
+        &:active{
+            scale: 0.9;
+        }
+    }
+}

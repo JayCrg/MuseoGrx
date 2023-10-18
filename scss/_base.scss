@@ -1,0 +1,32 @@
+///Inicialización de todo el documento
+/// 
+:root{ 
+    --fk-color-border-focus: #c85c59!important; //si se usa el mixim color() no funciona
+}
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --fk-color-border-focus: color(resaltado)!important;
+}
+
+///Inicialización de HTML
+body {
+    background-color: #ffffff;
+    font-size: size(md) !important;
+}
+
+main {
+    @include gridposition(repeat(3, min-content, 1fr), 1fr, 0rem);
+}
+
+.routerLink {
+    text-decoration: none;
+    text-align: center;
+    color: color(texto-claro-aux);
+}
+
+
+///Container principal

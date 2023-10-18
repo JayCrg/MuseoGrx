@@ -1,0 +1,67 @@
+///Alteracion de Component: Scrollspy
+    .row{
+        &-scrollspy{
+            height: 98vh;
+            overflow: auto;
+            background-color: color(quinquary);
+        }
+        &-frame{
+            @extend %sombra;
+            background-color: color(quinquary);
+            @include responsive($breakpoint: desktop){
+                grid-column: 2/4;
+                grid-row: 1/2;
+            }
+            @include responsive($breakpoint: tablet){
+                grid-column: 1/-1;
+                grid-row: 2/3;
+            }
+    
+        }
+        &-navHeader{
+            @include responsive($breakpoint: tablet){
+                height: 50vh;
+                grid-column: 1/-1;
+                grid-row: 1/2;
+
+            }
+            @include responsive($breakpoint: desktop){
+                height: 100vh;
+                grid-column: 1/2;
+                grid-row: 1/2;
+
+            }
+            overflow: auto;
+            nav{
+                .nav{
+                    &-link{
+                        font-size: size(xs);
+                        color: color(quaternary);
+                        &:active{
+                            color: color(primary);
+                        }
+                        &:hover{
+                            color: color(quater-darker);
+                            background-color: color(primary);
+                        }
+    
+                    }
+                    &-titulo{
+                        @include responsive($breakpoint: mobile){
+                            font-size: size(sm)
+                        }
+                        @include responsive($breakpoint: tablet){
+                            font-size: size(sm);
+                        }
+                        @include responsive($breakpoint: desktop){
+                            font-size: size(md);
+                        }
+                        &:active{
+                            color: color(primary);
+                        }
+                    }
+                }
+            }
+        }  
+    
+    }

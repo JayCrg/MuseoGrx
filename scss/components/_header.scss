@@ -1,0 +1,46 @@
+///Componente Header
+header {
+  .cabecera {
+    background-color: color(fondo-claro);
+    
+    &-logo {
+      @include logo()
+
+    }
+    .centrar{
+    @include responsive(small){
+        .customBtn{
+          width: 100%;
+          margin : 0.5em 0;
+        }
+      }
+      @include responsive(tablet){
+          margin-top:.5em;
+      }
+    }
+  }
+  aside{
+    .crearCuenta{
+      color: color(resaltado-aux);
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .icono{
+      &-google{
+        &:hover{
+          animation: colorChange 2s infinite!important;
+          *{scale: 1.07;}
+        }
+      }
+      &-github{
+        &:hover{
+          color: color(resaltado-aux);
+          *{scale: 1.07;}
+        }
+      }
+    }
+  }
+  .shake{
+    @extend %shake;
+  }
+}
