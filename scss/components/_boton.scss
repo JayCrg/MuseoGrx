@@ -3,7 +3,7 @@
   border: 2px solid color(resaltado) !important;
   height: 3em !important;
   align-self:center !important;
-  padding: 0 1.5em!important;
+  padding: 0 1em!important;
   align-content: center !important;
   justify-content: center !important;
   font-weight: weight(bold) !important;
@@ -19,10 +19,10 @@
     color: #fff !important;
     &:hover {
       box-shadow: 0 0 0 color(fondo-claro) !important;
+      background-color: darken(color(resaltado), 5%) !important;
     }
     &:active {
       box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, .2) !important;
-      color: color(texto-oscuro) !important;
     }
   }
   &-slide {
@@ -41,11 +41,12 @@
     }
   }
   
-  &-signup {
+  &-signup{
     width: 100% !important;
     background-color: white !important;
     border: 2px solid color(resaltado) !important;
-    color: color(texto-claro-aux) !important;
+    color: color(texto-oscuro) !important;
+    font-weight: weight(bold) !important;
     &:hover {
       color: color(resaltado) !important;
     }
@@ -61,7 +62,15 @@
     display:none;
     background-color: transparent !important;
   }
+  
+  &-acordeon{
+    width: 100% !important;
+    &:hover {
+      color: color(resaltado-aux) !important;
+    }
+    &:not(.collapsed){
+      color:color(resaltado-aux) !important;
 
-    
+    }
+  }
 }
-

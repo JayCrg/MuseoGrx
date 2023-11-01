@@ -1,0 +1,63 @@
+// Layoud de la seccion de adminitracion
+
+#administration{
+    .resaltado{
+        @include logo(lg);
+    }
+    .accordion-body{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center!important;
+        align-items: center!important;
+        gap: 1rem;
+    }
+    .cuerpo{
+        .vacio{
+            display: flex;
+            flex-direction: column;
+            justify-content: center!important;
+            align-items: center!important;
+            width: 100%;
+            height: 65vh;
+            .texto{
+                font-size: size(lg);
+                font-weight: weight(bold);
+                color: color(texto-claro-aux);
+            }
+        }
+        .formulario{   
+            margin-top: 1rem;
+            @include responsive(large){  
+                max-width: 100%;
+                margin-left: 10vw;
+                width: 80vw;
+            }  
+            @include responsive(desktop){  
+                max-width: 100%;
+                margin-left: 10vw;
+                width: 80vw; 
+            }
+            @include responsive(tablet){  
+                max-width: 100%;
+                margin-left: 10vw;
+
+                width: 80vw;
+            }
+            @include responsive(small){
+                margin-left: 15vw;
+                width: 70vw;
+            }
+            @include responsive(mobile){   
+                max-width: 100%;
+                margin-left: 5vw;
+
+                width: 90vw;
+            }
+            .formkit-wrapper{
+                max-width: 100%;
+            }
+        }   
+    }
+
+
+}

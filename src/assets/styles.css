@@ -49,7 +49,10 @@
   transform: translate3d(0, 0, 0); }
 
 :root {
-  --fk-color-border-focus: #c85c59!important; }
+  --fk-color-border-focus: #c85c59!important;
+  --fk-bg-button: #c5ccca!important;
+  --fk-color-button: #030303!important;
+  --mdb-accordion-active-color: #c85c59!important; }
 
 *,
 *::before,
@@ -67,12 +70,67 @@ main {
   display: grid;
   grid-template-rows: repeat(3, min-content, 1fr);
   grid-template-columns: 1fr;
-  grid-gap: 0rem; }
+  grid-gap: 0rem;
+  margin-bottom: 1rem; }
 
 .routerLink {
   text-decoration: none;
   text-align: center;
   color: #5d5c5d; }
+
+#administration .resaltado span {
+  text-transform: uppercase;
+  font-size: lg;
+  font-weight: 600;
+  color: #c85c59; }
+
+#administration .accordion-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem; }
+
+#administration .cuerpo .vacio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100%;
+  height: 65vh; }
+  #administration .cuerpo .vacio .texto {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #5d5c5d; }
+
+#administration .cuerpo .formulario {
+  margin-top: 1rem; }
+  @media (min-width: 1201px) {
+    #administration .cuerpo .formulario {
+      max-width: 100%;
+      margin-left: 10vw;
+      width: 80vw; } }
+  @media (max-width: 1200px) {
+    #administration .cuerpo .formulario {
+      max-width: 100%;
+      margin-left: 10vw;
+      width: 80vw; } }
+  @media (max-width: 992px) {
+    #administration .cuerpo .formulario {
+      max-width: 100%;
+      margin-left: 10vw;
+      width: 80vw; } }
+  @media (max-width: 767px) {
+    #administration .cuerpo .formulario {
+      margin-left: 15vw;
+      width: 70vw; } }
+  @media (max-width: 426px) {
+    #administration .cuerpo .formulario {
+      max-width: 100%;
+      margin-left: 5vw;
+      width: 90vw; } }
+  #administration .cuerpo .formulario .formkit-wrapper {
+    max-width: 100%; }
 
 #signup {
   display: flex;
@@ -169,6 +227,7 @@ form input[type="checkbox"]:checked {
 header .cabecera {
   background-color: #f9f9f8; }
   header .cabecera-logo span {
+    text-transform: uppercase;
     font-size: 1.5rem;
     font-weight: 600;
     color: #c85c59; }
@@ -215,7 +274,7 @@ header aside .icono-github:hover {
   background-image: url("/mirador.webp");
   background-size: cover;
   background-position: center center;
-  height: 200px; }
+  height: 300px; }
   #hero .mask {
     background-color: rgba(0, 0, 0, 0);
     transition: background-color 0.3s ease; }
@@ -233,7 +292,7 @@ header aside .icono-github:hover {
   border: 2px solid #c85c59 !important;
   height: 3em !important;
   align-self: center !important;
-  padding: 0 1.5em !important;
+  padding: 0 1em !important;
   align-content: center !important;
   justify-content: center !important;
   font-weight: 600 !important; }
@@ -245,10 +304,10 @@ header aside .icono-github:hover {
     background-color: #c85c59 !important;
     color: #fff !important; }
     .customBtn-destacado:hover {
-      box-shadow: 0 0 0 #f9f9f8 !important; }
+      box-shadow: 0 0 0 #f9f9f8 !important;
+      background-color: #c24946 !important; }
     .customBtn-destacado:active {
-      box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2) !important;
-      color: #030303 !important; }
+      box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2) !important; }
   .customBtn-slide {
     border-color: #c85c59 !important;
     color: #5d5c5d !important; }
@@ -263,7 +322,8 @@ header aside .icono-github:hover {
     width: 100% !important;
     background-color: white !important;
     border: 2px solid #c85c59 !important;
-    color: #5d5c5d !important; }
+    color: #030303 !important;
+    font-weight: 600 !important; }
     .customBtn-signup:hover {
       color: #c85c59 !important; }
     .customBtn-signup:active {
@@ -275,3 +335,9 @@ header aside .icono-github:hover {
     @media (max-width: 767px) {
       .customBtn-collapse {
         display: block; } }
+  .customBtn-acordeon {
+    width: 100% !important; }
+    .customBtn-acordeon:hover {
+      color: #AD4240 !important; }
+    .customBtn-acordeon:not(.collapsed) {
+      color: #AD4240 !important; }

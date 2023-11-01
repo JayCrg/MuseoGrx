@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import Porcentaje from './Porcentaje.vue';
 import router from '../router/index.js';
 import { onMounted } from 'vue';
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from '../firebase.js'
 
 import {
@@ -23,9 +23,10 @@ const collapse5 = ref(false);
 var password = ref('');
 var userEmail = ref('');
 var disabled = ref(false)
+var NombreUsuario = ref('')
+var isAdmin = ref(false)
 const patternEmailAlt = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})?/"
 const patternPassword = "/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/"
-var NombreUsuario = ref('')
 
 
 
@@ -37,7 +38,7 @@ function login() {
       // Signed in
       const user = userCredential.user;
       router.push({ name: 'home' });
-      obtenerNombreUsuarioDeLogin()
+      obtenerDatosUsuarioDeLogin()
       // ...
     })
     .catch((error) => {
@@ -114,16 +115,17 @@ onAuthStateChanged(auth, (user) => {
     userEmail.value = ''
     password.value = ''
     uid.value = user.uid
-    console.log(user)
-    if(user.displayName !== null){
+    if (user.displayName !== null) {
       NombreUsuario.value = formatearNombre(user.displayName)
     }
-    else{
-      obtenerNombreUsuarioDeLogin()
+    else {
+      obtenerDatosUsuarioDeLogin()
     }
+    console.log(user)
     estaAutentificado.value = true
   } else {
     estaAutentificado.value = false
+    isAdmin.value = false
   }
 })
 
@@ -138,25 +140,28 @@ function rotateCollapse() {
 }
 
 
-function focusNextInput(){
-      // Obtén la referencia al segundo campo de entrada
-      const secondInput = document.getElementById('exampleInputPassword1');
-      // Aplica el foco al segundo campo
-      secondInput.focus();
+function focusNextInput() {
+  // Obtén la referencia al segundo campo de entrada
+  const secondInput = document.getElementById('currentPassword');
+  // Aplica el foco al segundo campo
+  secondInput.focus();
 
 }
 
-const obtenerNombreUsuarioDeLogin = async () => {
-  const querySnapshot = await getDocs(collection(db, "usuarios"));
-  querySnapshot.forEach((doc) => {
-    console.log(doc.data().name)
-    if (doc.data().uid == uid.value) {
-      NombreUsuario.value = formatearNombre(doc.data().name)
+const obtenerDatosUsuarioDeLogin = async () => {
+  const q = query(collection(db, 'usuarios'), where('uid', '==', uid.value));
+  const querySnapshot = await getDocs(q);
+  // Comprueba si se encontraron documentos que coincidan con el 'uid'
+  if (!querySnapshot.empty) {
+    const doc = querySnapshot.docs[0];
+    NombreUsuario.value = formatearNombre(doc.data().name);
+    if (doc.data().admin) {
+      isAdmin.value = true
     }
-  });
+  }
 }
 
-function formatearNombre(nombre){
+function formatearNombre(nombre) {
   var nombreFormateado = nombre.split(' ')
   if (nombreFormateado.length >= 2) {
     return nombreFormateado[0] + ' ' + nombreFormateado[1]
@@ -184,36 +189,36 @@ function formatearNombre(nombre){
         <MDBNavbarNav right class="mb-2 mb-lg-0 centrar">
           <!-- Modal Login/SignUp -->
           <button v-if=!estaAutentificado class="btn customBtn-destacado" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-          Log In &nbsp;
+            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            Log In &nbsp;
             <font-awesome-icon :icon="['far', 'user']" size="lg" /></button>
           <li class="nav-item dropdown customList" v-if=estaAutentificado>
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ (NombreUsuario) }}
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Administraci&oacute;n</a></li>
+              <RouterLink :to="{ name: 'admin' }" v-if="isAdmin"><a class="dropdown-item" href="#">Administraci&oacute;n</a></RouterLink>
               <li><a class="dropdown-item" href="#">Mis rutas</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
               <li><button @click="salir" class="dropdown-item customBtn-destacado" type="button">
-                Log Out &nbsp;
-                <font-awesome-icon :icon="['far', 'user']" size="lg" /></button></li>
-              </ul>
-            </li>
-            <!-- Ticket -->
-            <RouterLink :to="{ name: 'entradas' }" class="routerLink desplazado">
-              <button active title="Comprar Entradas" class="btn customBtn">
-                Entradas &nbsp; <font-awesome-icon icon="fa-solid fa-ticket" />
-              </button>
-            </RouterLink>
-            
-            
-          </MDBNavbarNav>
-          <!-- Search -->
-          <form class="d-flex input-group w-auto">
-            <input type="search" class="form-control" placeholder="Ej: Las Meninas" aria-label="Search" />
+                  Log Out &nbsp;
+                  <font-awesome-icon :icon="['far', 'user']" size="lg" /></button></li>
+            </ul>
+          </li>
+          <!-- Ticket -->
+          <RouterLink :to="{ name: 'entradas' }" class="routerLink desplazado">
+            <button active title="Comprar Entradas" class="btn customBtn">
+              Entradas &nbsp; <font-awesome-icon icon="fa-solid fa-ticket" />
+            </button>
+          </RouterLink>
+
+
+        </MDBNavbarNav>
+        <!-- Search -->
+        <form class="d-flex input-group w-auto">
+          <input type="search" class="form-control" id="SearchBar" placeholder="Ej: Las Meninas" aria-label="Search" />
           <button class="btn btn-outline-primary customBtn-slide"> <font-awesome-icon :icon="['fas', 'magnifying-glass']"
               size="lg" /></button>
         </form>
@@ -238,14 +243,14 @@ function formatearNombre(nombre){
           <form class="needs-validation">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Direcci&oacute;n Email</label>
-              <input v-model="userEmail" type="email" class="form-control" id="exampleInputEmail1" @keyup.enter=focusNextInput
-                aria-describedby="emailHelp" title="Insert your email" required
-                pattern="[a-zA-Z0-9!#$%&'*\/=?^_`{|}~+-]([\.]?[a-zA-Z0-9!#$%&'*\/=?^_`{|}~+-])+@[a-zA-Z0-9]([^@&%$/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2,3})?">
+              <input v-model="userEmail" type="email" class="form-control" id="exampleInputEmail1"
+                @keyup.enter=focusNextInput aria-describedby="emailHelp" title="Insert your email" required
+                pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})?/">
               <div id="emailHelp" class="form-text">¡Hola de nuevo!</div>
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Contrase&ntilde;a</label>
-              <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" @keyup.enter="login"
+              <label for="currentPassword" class="form-label">Contrase&ntilde;a</label>
+              <input v-model="password" type="password" class="form-control" id="currentPassword" @keyup.enter="login"
                 title="Insert your password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})"
                 required>
               <!-- The password must have at least 6 characters, an uppercase, a lowercase, a number and a special character (! @ # $ % ^ & *)' -->
@@ -268,4 +273,5 @@ function formatearNombre(nombre){
 
 
 
-</header></template>
+  </header>
+</template>

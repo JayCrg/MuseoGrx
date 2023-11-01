@@ -1,6 +1,7 @@
 // formkit.config.js
 import { defaultConfig } from '@formkit/vue'
 import { createFloatingLabelsPlugin } from '@formkit/addons'
+import { createMultiStepPlugin } from '@formkit/addons'
 import { es } from '@formkit/i18n'
 
 import '@formkit/addons/css/floatingLabels'
@@ -10,8 +11,9 @@ const config = defaultConfig({
     locale: 'es',
     plugins: [
         createFloatingLabelsPlugin({
-            useAsDefault: true, // defaults to false
+            useAsDefault: false, // defaults to false
         }),
+        createMultiStepPlugin(),
     ],
 })
 

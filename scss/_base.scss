@@ -2,6 +2,10 @@
 /// 
 :root{ 
     --fk-color-border-focus: #c85c59!important; //si se usa el mixim color() no funciona
+    --fk-bg-button: #c5ccca!important;
+    --fk-color-button: #030303!important;
+    --mdb-accordion-active-color: #c85c59!important;
+       
 }
 *,
 *::before,
@@ -20,6 +24,7 @@ body {
 
 main {
     @include gridposition(repeat(3, min-content, 1fr), 1fr, 0rem);
+    margin-bottom: 1rem;
 }
 
 .routerLink {

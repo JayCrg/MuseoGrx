@@ -7,6 +7,9 @@ import {
   MDBCol,
   MDBIcon
 } from 'mdb-vue-ui-kit';
+
+
+
 </script>
 <template>
   <!-- Footer -->
@@ -14,7 +17,7 @@ import {
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3178.9802565118234!2d-3.5925527243580144!3d37.17694017214213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fcb7a5419363%3A0xc16fafd9a41efead!2sMuseo%20de%20Bellas%20Artes%20de%20Granada!5e0!3m2!1ses!2ses!4v1685098311683!5m2!1ses!2ses"
       height="200" style="border:1;width:100%;" allowfullscreen=""  loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
+      referrerpolicy="no-referrer-when-downgrade" ></iframe>
     <!-- Section: Social media -->
     <section class="
           d-flex
@@ -92,16 +95,16 @@ import {
             <!-- Links -->
             <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
             <p>
-              <a href="#!" class="text-reset">Pricing</a>
+              <RouterLink :to="{name: 'home'}" class="text-reset">Pricing</RouterLink>
             </p>
             <p>
-              <a href="#!" class="text-reset">Settings</a>
+              <RouterLink :to="{name: 'home'}" class="text-reset">Settings</RouterLink>
             </p>
             <p>
-              <a href="#!" class="text-reset">Orders</a>
+              <RouterLink :to="{name: 'home'}" class="text-reset">Orders</RouterLink>
             </p>
             <p>
-              <a href="#!" class="text-reset">Help</a>
+              <RouterLink :to="{name: 'home'}" class="text-reset">Help</RouterLink>
             </p>
           </MDBCol>
           <!-- Grid column -->
