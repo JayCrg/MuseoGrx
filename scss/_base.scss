@@ -4,8 +4,8 @@
     --fk-color-border-focus: #c85c59!important; //si se usa el mixim color() no funciona
     --fk-bg-button: #c5ccca!important;
     --fk-color-button: #030303!important;
-    --mdb-accordion-active-color: #c85c59!important;
-       
+    --mdb-accordion-active-color: #c85c59!important;      
+    --vc-gray-500: #5d5c5d!important; 
 }
 *,
 *::before,
@@ -25,6 +25,9 @@ body {
 main {
     @include gridposition(repeat(3, min-content, 1fr), 1fr, 0rem);
     margin-bottom: 1rem;
+    &:not(#home) {
+        margin-top: 1rem;
+    }
 }
 
 .routerLink {
@@ -33,5 +36,6 @@ main {
     color: color(texto-claro-aux);
 }
 
-
-///Container principal
+.resaltado{
+    @include logo(lg);
+}

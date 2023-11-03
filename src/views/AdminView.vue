@@ -10,10 +10,14 @@ import EditarAutor from '../components/component_admin/EditarAutor.vue'
 import CrearAdmin from '../components/component_admin/CrearAdmin.vue'
 import EditarAdmin from '../components/component_admin/EditarAdmin.vue'
 
+import {onAuthStateChanged, getAuth} from 'firebase/auth'
+import { auth } from '../firebase.js'
+import router from '../router/index.js';
 import { ref as ref2, getStorage, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { addDoc, collection, getFirestore, doc, getDoc, getDocs, query, where, orderBy, deleteDoc, updateDoc, setDoc } from 'firebase/firestore'
 import { useCollection, useFirestore } from 'vuefire'
 import { db, storage } from '../firebase.js'
+import { onBeforeMount } from 'vue'
 
 
 
@@ -27,16 +31,19 @@ var dicUsuarios = ref({'admin':[], 'usuario':[]})
 
 
 
-// onAuthStateChanged(getAuth(), (user) => {
-//   if (user && props.adminConfirmado == true) {
-//   }
-//   else if (user && props.adminConfirmado == false) {
-//     router.push({ name: 'home' });
-//   }
-//   else {
-//     router.push({ name: 'home' });
-//   }
-// });
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+
+    } else {
+      router.push({ name: 'home' });
+
+  }
+})
+onBeforeMount(() => {
+  if(props.adminConfirmado == false){
+    router.push({ name: 'home' });
+  }
+})
 
 const obtenerAutores = async () => {
   const q = query(collection(db, "autores"), orderBy("nombre"));
@@ -131,8 +138,7 @@ onMounted(() => {
 <section class="cuerpo">
 
  <article class="vacio" v-if="apartado==''">
-  <h3 class="texto">No hay nada <font-awesome-icon :icon="['fas', 'file']" />
-</h3>
+  <h2 class="texto"> Bienvenido a la sección de administraci&oacute;n <font-awesome-icon :icon="['fas', 'file']" /></h2>
 <p>Seleccione qu&eacute; quiere hacer</p>
 </article>
 

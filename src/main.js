@@ -2,10 +2,13 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { plugin, defaultConfig } from '@formkit/vue'
 import config from './formkit.config'
+import VCalendar from 'v-calendar';
+
 
 import App from './App.vue'
 import router from './router'
 
+import 'v-calendar/style.css';
 import '@formkit/themes/genesis'
 import '@formkit/addons/css/multistep';
 import 'mdb-vue-ui-kit/css/mdb.min.css';
@@ -41,5 +44,7 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(createPinia())
 app.use(plugin, config)
 app.use(router)
+app.use(VCalendar, {})
+
 
 app.mount('#app')
