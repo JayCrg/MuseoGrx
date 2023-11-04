@@ -88,11 +88,11 @@ onMounted(() => {
   <main id="administration">
     <section class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
-    <h2 class="accordion-header">
+    <p class="accordion-header">
       <button class="accordion-button collapsed customBtn-acordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
         Autores
       </button>
-    </h2>
+    </p>
     <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body">
         <button class="btn customBtn" @click="apartado='crearAutor'">Crear Nueva Autor</button >
@@ -102,11 +102,11 @@ onMounted(() => {
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header">
+    <p class="accordion-header">
       <button class="accordion-button collapsed customBtn-acordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
         Obras
       </button>
-    </h2>
+    </p>
     <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body ">
         <button class="btn customBtn" @click="apartado='crearObra'">Crear Nueva Obra</button>
@@ -116,11 +116,11 @@ onMounted(() => {
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header">
+    <p class="accordion-header">
       <button class="accordion-button collapsed customBtn-acordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
         Miscel&aacute;neos
       </button>
-    </h2>
+    </p>
     <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body">
         <button class="btn customBtn" @click="apartado='crearAdmin'">Crear Admin</button>
@@ -177,12 +177,10 @@ onMounted(() => {
   <CrearAdmin @actualizarLista="obtenerUsuarios"/>
 </article>
 
-
 <article class="formulario" v-if="apartado=='cambiarAdmin'">
   <h2 id="editarAutor" class="resaltado">Editar <span>Admin</span></h2>
   <EditarAdmin :usuarios="dicUsuarios" @actualizarLista="obtenerUsuarios"/>
 </article>
-
 
 <article class="formulario" v-if="apartado=='infoEntradas'">
   <h2 id="editarAutor" class="resaltado">Consultar <span>Entradas</span></h2>

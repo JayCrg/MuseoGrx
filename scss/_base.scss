@@ -20,13 +20,16 @@
 body {
     background-color: #ffffff;
     font-size: size(md) !important;
+    h1, h2, h3, h4{
+        font-family: font-title;
+    }
 }
 
 main {
     @include gridposition(repeat(3, min-content, 1fr), 1fr, 0rem);
-    margin-bottom: 1rem;
     &:not(#home) {
         margin-top: 1rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -36,6 +39,8 @@ main {
     color: color(texto-claro-aux);
 }
 
+
 .resaltado{
+    font-weight: weight(bold);
     @include logo(lg);
 }

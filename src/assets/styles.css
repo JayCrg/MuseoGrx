@@ -66,26 +66,30 @@
 body {
   background-color: #ffffff;
   font-size: 1rem !important; }
+  body h1, body h2, body h3, body h4 {
+    font-family: font-title; }
 
 main {
   display: grid;
   grid-template-rows: repeat(3, min-content, 1fr);
   grid-template-columns: 1fr;
-  grid-gap: 0rem;
-  margin-bottom: 1rem; }
+  grid-gap: 0rem; }
   main:not(#home) {
-    margin-top: 1rem; }
+    margin-top: 1rem;
+    margin-bottom: 2rem; }
 
 .routerLink {
   text-decoration: none;
   text-align: center;
   color: #5d5c5d; }
 
-.resaltado span {
-  text-transform: uppercase;
-  font-size: lg;
-  font-weight: 600;
-  color: #c85c59; }
+.resaltado {
+  font-weight: 600; }
+  .resaltado span {
+    text-transform: uppercase;
+    font-size: lg;
+    font-weight: 600;
+    color: #c85c59; }
 
 #administration .accordion-body {
   display: flex;
@@ -208,7 +212,7 @@ main {
       #signup #imgSingUp {
         display: none; } }
     #signup #imgSingUp p {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       color: #5d5c5d;
       text-align: center;
       margin-top: 1rem; }
@@ -218,13 +222,108 @@ main {
   margin: 0 auto; }
   #tickets .calendario {
     width: 40vw;
-    margin: 0 auto; }
+    max-width: 40rem;
+    margin: 0 auto;
+    margin-bottom: 2rem; }
+    #tickets .calendario p {
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 1rem; }
     @media (max-width: 767px) {
       #tickets .calendario {
         width: 100%; } }
-    #tickets .calendario h4 {
-      text-align: center;
-      margin-bottom: 1rem; }
+  #tickets .horario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    #tickets .horario div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: baseline; }
+      @media (max-width: 767px) {
+        #tickets .horario div {
+          justify-content: start;
+          max-width: 20rem;
+          margin-left: 5rem; } }
+      @media (max-width: 767px) {
+        #tickets .horario div {
+          margin-left: 1.5rem; } }
+      #tickets .horario div article p {
+        font-size: 0.8rem; }
+        #tickets .horario div article p:first-child {
+          font-weight: 600; }
+  #tickets .entradas {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 2rem; }
+    #tickets .entradas .entrada {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 50vw;
+      max-width: 50rem;
+      height: 5rem;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      justify-content: center;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; }
+      @media (max-width: 767px) {
+        #tickets .entradas .entrada {
+          width: 100%; } }
+      #tickets .entradas .entrada div {
+        width: 50%;
+        height: inherit;
+        margin: 0 auto; }
+        #tickets .entradas .entrada div:first-child {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          align-items: start;
+          margin: .5rem .5rem; }
+          #tickets .entradas .entrada div:first-child .seleccionado {
+            color: #AD4240; }
+        #tickets .entradas .entrada div:last-child {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: calc(.5rem + .5vw);
+          justify-content: end; }
+          #tickets .entradas .entrada div:last-child p {
+            font-size: 1.5rem;
+            margin-bottom: 0; }
+        #tickets .entradas .entrada div h5 {
+          color: #5d5c5d;
+          font-weight: 600; }
+        #tickets .entradas .entrada div p {
+          color: #5d5c5d;
+          font-size: 1rem;
+          margin-bottom: 0rem; }
+    #tickets .entradas .confirmar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 0 auto;
+      margin-bottom: 2rem; }
+      #tickets .entradas .confirmar button {
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+        height: 4rem; }
+        @media (max-width: 767px) {
+          #tickets .entradas .confirmar button {
+            width: 100%; } }
+  #tickets h4 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 900; }
 
 form .form-control {
   border-radius: 0.5rem !important; }
@@ -305,19 +404,6 @@ header aside .icono-github:hover {
     height: inherit;
     background-image: linear-gradient(90deg, #2d2c2c, #AD4240); }
 
-.vc-blue {
-  --vc-accent-500: #c85c59;
-  --vc-accent-600: #AD4240; }
-
-.vc-light {
-  --vc-focus-ring: 0 0 0 2px #f7cece;
-  --vc-hover-bg: hsl(0, 72%, 89%);
-  --vc-nav-hover-bg: hsl(0, 72%, 89%);
-  --vc-header-arrow-hover-bg: hsl(0, 72%, 89%); }
-  @media (max-width: 767px) {
-    .vc-light {
-      --vc-hover-bg: transparent; } }
-
 #hero {
   background-image: url("/mirador.webp");
   background-size: cover;
@@ -389,3 +475,23 @@ header aside .icono-github:hover {
       color: #AD4240 !important; }
     .customBtn-acordeon:not(.collapsed) {
       color: #AD4240 !important; }
+  .customBtn-entradas {
+    border: none;
+    font-size: 1.5rem;
+    height: 100%;
+    width: 100%; }
+    .customBtn-entradas:hover {
+      color: #c85c59; }
+
+.vc-blue {
+  --vc-accent-500: #c85c59;
+  --vc-accent-600: #AD4240; }
+
+.vc-light {
+  --vc-focus-ring: 0 0 0 2px #f7cece;
+  --vc-hover-bg: hsl(0, 72%, 89%);
+  --vc-nav-hover-bg: hsl(0, 72%, 89%);
+  --vc-header-arrow-hover-bg: hsl(0, 72%, 89%); }
+  @media (max-width: 767px) {
+    .vc-light {
+      --vc-hover-bg: transparent; } }

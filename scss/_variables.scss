@@ -35,8 +35,8 @@ $font-sizes:(
     lg: 3rem,
     mdd: 1.5rem,
     md: 1rem,
-    sm: 0.7rem,
-    xs: 0.5rem,
+    sm: 0.8rem,
+    xs: 0.6rem,
     );
 ///@group tamaños
 ///@param {map} $font-sizes - mapa de tamaños
@@ -64,8 +64,6 @@ $font-weights:(
 ///
 $font-title: 'Karla', sans-serif;
 ///
-$font-body: 'Bitter', serif;
-/// 
 $defaul-margin: 0;
 $default-padding: 0;
 ///

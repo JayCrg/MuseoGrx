@@ -2,7 +2,6 @@
 import { RouterLink, RouterView } from 'vue-router'
 import FooterComp from './components/FooterComp.vue';
 import CarruselFamiliares from './components/CarruselFamiliares.vue';
-import Calendar from './components/Calendar.vue';
 import pruebamdb from './components/pruebamdb.vue';
 
 

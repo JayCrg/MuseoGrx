@@ -32,9 +32,11 @@ import { faEye } from '@fortawesome/free-regular-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { faFile } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
 
 /* add icons to the library */
-library.add(faUser,faMagnifyingGlass, faTicket, faGoogle, faGithub, faEye, faEyeSlash, faCaretDown, faFile)
+library.add(faUser,faMagnifyingGlass, faTicket, faGoogle, faGithub, faEye, faEyeSlash, faCaretDown, faFile, faPlus, faMinus)
 
 
 
