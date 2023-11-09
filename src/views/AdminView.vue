@@ -19,7 +19,9 @@ import { useCollection, useFirestore } from 'vuefire'
 import { db, storage } from '../firebase.js'
 import { onBeforeMount } from 'vue'
 
-
+onMounted(() => {
+  document.title = 'Admin | MuseoGRX';
+});
 
 const props = defineProps(['adminConfirmado', 'registrado'])
 

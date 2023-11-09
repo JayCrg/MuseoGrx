@@ -177,7 +177,7 @@ function formatearNombre(nombre) {
 <template>
   <Porcentaje />
   <header>
-    <MDBNavbar expand="md" container class="cabecera">
+    <MDBNavbar expand="md" container class="cabecera" id="cabecera">
       <RouterLink :to="{ name: 'home' }">
         <MDBNavbarBrand class="cabecera-logo" title="Inicio">Museo<span>GRX</span></MDBNavbarBrand>
       </RouterLink>

@@ -220,23 +220,28 @@ main {
 #tickets {
   width: 95vw;
   margin: 0 auto; }
-  #tickets .calendario {
+  #tickets h4 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 900; }
+  #tickets #calendario {
     width: 40vw;
     max-width: 40rem;
     margin: 0 auto;
     margin-bottom: 2rem; }
-    #tickets .calendario p {
+    #tickets #calendario p {
       font-size: 0.8rem;
       text-align: center;
       margin-top: 1rem; }
     @media (max-width: 767px) {
-      #tickets .calendario {
+      #tickets #calendario {
         width: 100%; } }
   #tickets .horario {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    margin-top: 1rem; }
     #tickets .horario div {
       display: flex;
       flex-wrap: wrap;
@@ -254,11 +259,11 @@ main {
         font-size: 0.8rem; }
         #tickets .horario div article p:first-child {
           font-weight: 600; }
-  #tickets .entradas {
+  #tickets #entradas {
     width: 100%;
     margin: 0 auto;
     margin-bottom: 2rem; }
-    #tickets .entradas .entrada {
+    #tickets #entradas .entrada {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -271,13 +276,13 @@ main {
       justify-content: center;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; }
       @media (max-width: 767px) {
-        #tickets .entradas .entrada {
+        #tickets #entradas .entrada {
           width: 100%; } }
-      #tickets .entradas .entrada div {
+      #tickets #entradas .entrada div {
         width: 50%;
         height: inherit;
         margin: 0 auto; }
-        #tickets .entradas .entrada div:first-child {
+        #tickets #entradas .entrada div:first-child {
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -285,26 +290,26 @@ main {
           height: 100%;
           align-items: start;
           margin: .5rem .5rem; }
-          #tickets .entradas .entrada div:first-child .seleccionado {
+          #tickets #entradas .entrada div:first-child .seleccionado {
             color: #AD4240; }
-        #tickets .entradas .entrada div:last-child {
+        #tickets #entradas .entrada div:last-child {
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-items: center;
           gap: calc(.5rem + .5vw);
           justify-content: end; }
-          #tickets .entradas .entrada div:last-child p {
+          #tickets #entradas .entrada div:last-child p {
             font-size: 1.5rem;
             margin-bottom: 0; }
-        #tickets .entradas .entrada div h5 {
+        #tickets #entradas .entrada div h5 {
           color: #5d5c5d;
           font-weight: 600; }
-        #tickets .entradas .entrada div p {
+        #tickets #entradas .entrada div p {
           color: #5d5c5d;
           font-size: 1rem;
           margin-bottom: 0rem; }
-    #tickets .entradas .confirmar {
+    #tickets #entradas .confirmar {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -312,18 +317,65 @@ main {
       width: 100%;
       margin: 0 auto;
       margin-bottom: 2rem; }
-      #tickets .entradas .confirmar button {
+      #tickets #entradas .confirmar button {
         width: 50%;
         margin: 0 auto;
         margin-bottom: 1rem;
-        height: 4rem; }
+        height: 4rem;
+        max-width: 50rem; }
         @media (max-width: 767px) {
-          #tickets .entradas .confirmar button {
+          #tickets #entradas .confirmar button {
             width: 100%; } }
-  #tickets h4 {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-weight: 900; }
+  #tickets .tarjetaCredito {
+    margin: 0 auto;
+    width: 50vw;
+    max-width: 30rem;
+    margin-bottom: 1rem; }
+    @media (max-width: 767px) {
+      #tickets .tarjetaCredito {
+        width: 100%; } }
+    #tickets .tarjetaCredito .cuerpoTarjeta {
+      display: grid;
+      gap: .5rem;
+      width: inherit;
+      max-width: inherit;
+      height: 12rem;
+      margin: 0 auto;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem; }
+      #tickets .tarjetaCredito .cuerpoTarjeta label {
+        color: #030303; }
+      #tickets .tarjetaCredito .cuerpoTarjeta.delantera {
+        margin-top: 1rem;
+        background-color: #eb8484;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr 1fr; }
+        #tickets .tarjetaCredito .cuerpoTarjeta.delantera div {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: start; }
+          #tickets .tarjetaCredito .cuerpoTarjeta.delantera div:first-child {
+            grid-column: 1/2;
+            grid-row: 1/2; }
+          #tickets .tarjetaCredito .cuerpoTarjeta.delantera div:nth-child(2) {
+            grid-column: 2/3;
+            grid-row: 2/3; }
+          #tickets .tarjetaCredito .cuerpoTarjeta.delantera div:last-child {
+            grid-column: 1/2;
+            grid-row: 2/3; }
+      #tickets .tarjetaCredito .cuerpoTarjeta.trasera {
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 2fr 1fr;
+        background: #eb8484;
+        background: linear-gradient(0deg, #eb8484 67%, black 69%, black 83%, #eb8484 85%); }
+        #tickets .tarjetaCredito .cuerpoTarjeta.trasera div {
+          grid-row: 2/3;
+          grid-column: 2/3; }
 
 form .form-control {
   border-radius: 0.5rem !important; }

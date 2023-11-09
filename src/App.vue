@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import FooterComp from './components/FooterComp.vue';
 import CarruselFamiliares from './components/CarruselFamiliares.vue';
 import pruebamdb from './components/pruebamdb.vue';
+import { onMounted } from 'vue';
 
 
 import Porcentaje from './components/Porcentaje.vue';
@@ -33,6 +34,13 @@ const patternEmailAlt = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-z
 const patternPassword = "/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/"
 
 
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 5){
+      collapse5.value = false
+    }
+  })
+})
 
 
 
@@ -248,14 +256,14 @@ function formatearNombre(nombre) {
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Direcci&oacute;n Email</label>
               <input v-model="userEmail" type="email" class="form-control" id="exampleInputEmail1"
-                @keyup.enter=focusNextInput aria-describedby="emailHelp" title="Insert your email" required
+                @keyup.enter=focusNextInput aria-describedby="emailHelp" title="Inserta tu email" required
                 pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})?/">
               <div id="emailHelp" class="form-text">¡Hola de nuevo!</div>
             </div>
             <div class="mb-3">
               <label for="currentPassword" class="form-label">Contrase&ntilde;a</label>
               <input v-model="password" type="password" class="form-control" id="currentPassword" @keyup.enter="login"
-                title="Insert your password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})"
+                title="Inserta tu contraseña" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})"
                 required>
               <!-- The password must have at least 6 characters, an uppercase, a lowercase, a number and a special character (! @ # $ % ^ & *)' -->
             </div>
@@ -272,7 +280,7 @@ function formatearNombre(nombre) {
     </aside>
   </header>
 
-  <RouterView :adminConfirmado="isAdmin" :registrado="estaAutentificado"/>
+  <RouterView :adminConfirmado="isAdmin" :registrado="estaAutentificado" />
 
   <pruebamdb/>
 </template>

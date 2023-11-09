@@ -85,7 +85,7 @@ async function login(credentials) {
             #default="{ value }">
             <FormKit  type="text" name="name" label="Nombre" validation="required" />
 
-            <FormKit  type="text" name="email" label="Email" placeholder="Ej: user3@email.com"
+            <FormKit  type="email" name="email" label="Email" placeholder="Ej: user3@email.com"
                 :validation="[['required'], ['matches', patternEmailAlt], ['email']]" validation-visible="live" />
 
             <FormKit  type="password" name="Contraseña" label="Contraseña" validation-visible="live" :validation-messages="{

@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 import { plugin, defaultConfig } from '@formkit/vue'
 import config from './formkit.config'
 import VCalendar from 'v-calendar';
+import VueCreditCardValidation from 'vue-credit-card-validation';
 
 
 import App from './App.vue'
@@ -34,19 +35,23 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { faFile } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faCcVisa } from '@fortawesome/free-brands-svg-icons';
+import {faCcMastercard } from '@fortawesome/free-brands-svg-icons';
 
 /* add icons to the library */
-library.add(faUser,faMagnifyingGlass, faTicket, faGoogle, faGithub, faEye, faEyeSlash, faCaretDown, faFile, faPlus, faMinus)
+library.add(faUser,faMagnifyingGlass, faTicket, faGoogle, faGithub,
+     faEye, faEyeSlash, faCaretDown, faFile, faPlus, faMinus, faCcVisa, faCcMastercard)
 
 
 
 const app = createApp(App)
-
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(createPinia())
 app.use(plugin, config)
 app.use(router)
 app.use(VCalendar, {})
+app.use(VueCreditCardValidation)
+
 
 
 app.mount('#app')

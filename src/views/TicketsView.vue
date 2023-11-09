@@ -2,11 +2,16 @@
 import { ref, onMounted } from 'vue';
 import { addDays, format} from 'date-fns';
 import { es } from 'date-fns/locale';
+import TarjetaCredito from '../components/TarjetaCredito.vue';
 
+onMounted(() => {
+  document.title = 'Tickets | MuseoGRX';
+});
 
 var date = ref(null);
 const maniana = addDays(new Date(), 1);
 const dosMeses = addDays(maniana,60);
+var procederPago = ref(false);
 
 const entradas = [
   { tipo: 'General', precio: 10.00 },
@@ -17,22 +22,39 @@ const entradas = [
 var general = ref(0);
 var reducida = ref(0);
 var menor = ref(0);
-var dictEntradas = ref({'General': general, 'Reducida': reducida, '10 años o menos': menor});
+var dictEntradas = ref({'General': general.value, 'Reducida': reducida.value, '10 años o menos': menor.value});
 
+function pasarAPago(){
+  procederPago.value = true;
+  if((general.value>0||reducida.value>0||menor.value>0)&&date.value!=null&&procederPago.value){
+    document.getElementById("pagar").scrollIntoView();
+  }
+}
+
+function pasarAEntradas(){
+  procederPago.value = false;
+  general.value = 0;
+  reducida.value = 0;
+  menor.value = 0;
+  // dictEntradas.value = {'General': general.value, 'Reducida': reducida.value, '10 años o menos': menor.value};
+  if(date.value!=null){
+    document.getElementById("entradas").scrollIntoView();
+  }
+}
 
 </script>
 <template>
   <main id="tickets">
     <h2 class="resaltado">Comprar <span>Entradas</span></h2>
-    <section class="calendario">
+    <section id="calendario">
       <h4>Elija un d&iacute;a</h4>
-      <VDatePicker v-model="date" mode="date" 
+      <VDatePicker v-model="date" mode="date" @click="pasarAEntradas"
         :min-date="maniana"
         :max-date="dosMeses" expanded />
         <p v-if="date==null">Por favor, elija el día de su entrada</p>
         <p v-else >{{ format(date, 'eeee, dd ' + ' MMMM ' + 'yyyy', { locale: es }) }}</p>
     </section>
-    <section class="entradas" v-if="date!=null">
+    <section id="entradas" v-if="date!=null">
       <h4>Elija entradas</h4>
       <div>
         <template v-for="entrada in entradas" :key="entrada.tipo">
@@ -50,12 +72,15 @@ var dictEntradas = ref({'General': general, 'Reducida': reducida, '10 años o me
         </template>
         <article class="confirmar" v-if="general>0||reducida>0||menor>0">
             <h5 class="resaltado"><span>Total</span>: {{ (general * entradas[0].precio + reducida * entradas[1].precio + menor * entradas[2].precio).toFixed(2) }}€</h5>
-            <button class="btn customBtn">Confirmar</button>
+            <button @click="pasarAPago" class="btn customBtn">Confirmar</button>
         </article>
       </div>
     </section>
-    <section class="pago">
-
+    <div id="pagar"></div>
+    <section id="pago" v-if="(general>0||reducida>0||menor>0)&&date!=null&&procederPago">
+      <h4>Introduzca sus datos</h4>
+        <TarjetaCredito :general="{cantidad: general, precio: entradas[0].precio}" 
+        :reducida="{cantidad: reducida, precio: entradas[1].precio}" :menor="{cantidad: menor, precio: entradas[2].precio}" :fechaVisita="format(date, 'eeee, dd ' + ' MMMM ' + 'yyyy', { locale: es })"/>
     </section>
     <section class="horario">
       <h4>Horario</h4>

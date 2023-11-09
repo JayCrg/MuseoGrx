@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { auth, storage, db } from '../firebase.js'
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import router from '../router/index.js';
@@ -13,6 +13,9 @@ const patternEmail = "[a-zA-Z0-9!#$%&'*\/=?^_`{|}~+-]([\.]?[a-zA-Z0-9!#$%&'*\/=?
 const patternEmailAlt = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})?/"
 const patternPassword = "/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/"
 
+onMounted(() => {
+  document.title = 'Sign Up | MuseoGRX';
+});
 
 const guardarEnFirestore = async (name, email, uid) => {
   try {
@@ -55,13 +58,13 @@ async function login(credentials) {
       // ..
     });
     
-    const submitHandler = async () => {
-      await new Promise((r) => setTimeout(r, 1500))
-      registrado.value = 0;
-      router.push({ name: 'home' });
-
-    }
     
+  }
+  const submitHandler = async () => {
+    await new Promise((r) => setTimeout(r, 1500))
+    registrado.value = 0;
+    router.push({ name: 'home' });
+
   }
   
   
@@ -87,7 +90,7 @@ async function login(credentials) {
         </div>
         <FormKit type="text" name="name" label="Tu nombre" help="¿Cómo te llamamos?" validation="required" :floating-label="true"/>
 
-        <FormKit type="text" name="email" label="Tu email" help="¿Qué email quieres usar? Ej: user3@email.com"
+        <FormKit type="email" name="email" label="Tu email" help="¿Qué email quieres usar? Ej: user3@email.com"
           :validation="[['required'], ['matches', patternEmailAlt], ['email']]" validation-visible="live" :floating-label="true"/>
 
         <FormKit type="password" name="Contraseña" label="Contraseña" validation-visible="live" :validation-messages="{
