@@ -5,7 +5,7 @@
 @import "./mixin";
 @import "./base";
 
-// @import './layout/menu.scss';
+@import './layout/home.scss';
 // @import './layout/genero.scss';
 // @import './layout/detalle.scss';
 @import './layout/admin.scss';
@@ -15,6 +15,7 @@
 @import './components/formulario.scss';
 @import './components/header.scss';
 @import './components/porcentaje.scss';
+@import './components/cargando.scss';
 // @import './components/carrusel.scss';
 // @import './components/footer.scss';
 @import './components/hero.scss';
@@ -25,5 +26,6 @@
 @import './components/boton.scss';
 @import "animate.css";
 @import './components/calendar.scss';
+@import './components/pasarArticulo.scss';
 
 

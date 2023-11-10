@@ -35,12 +35,11 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { faFile } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faCcVisa } from '@fortawesome/free-brands-svg-icons';
-import {faCcMastercard } from '@fortawesome/free-brands-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 /* add icons to the library */
 library.add(faUser,faMagnifyingGlass, faTicket, faGoogle, faGithub,
-     faEye, faEyeSlash, faCaretDown, faFile, faPlus, faMinus, faCcVisa, faCcMastercard)
+     faEye, faEyeSlash, faCaretDown, faFile, faPlus, faMinus, faAngleDown)
 
 
 

@@ -1,0 +1,62 @@
+///Layout de la sección del menu
+#home {
+    #volverInicio{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: size(mdd);
+        @include responsive(small){
+            font-size: size(md);
+        }
+        background-color: color(resaltado-aux);
+        color: color(texto-claro);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 50%;
+        cursor: pointer;
+        .invisible{
+            display: none;
+        }
+              
+    }
+    .cuerpo {
+        overflow: hidden!important;
+        .textoExpo{
+            h1{
+                color: color(resaltado-aux)!important;
+            }
+        }
+        .exposicion {
+            border-radius: 0%;
+            height: 100vh;
+            img {
+                height: 100%;
+                width: 105vw;
+                object-fit: cover;
+            }
+            .presentacion{
+                position: absolute;
+                top: 70%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: color(texto-claro);
+                text-align: center;
+                background-color: color(fondo-oscuro);
+                opacity: 0.8;
+                border-radius: calc(1rem + 1vw);
+                height: min-content;
+                width: 40%;
+                padding: 1rem;
+                @include responsive(small){
+                    width: 90%;
+                    border-radius: 20px;
+                }
+                h5{
+                    font-size: calc(1rem + 1vw);
+                    font-weight: weight(medium);
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}

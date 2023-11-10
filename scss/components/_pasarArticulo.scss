@@ -1,0 +1,20 @@
+/// Componente de boton para pasar al siguiente articulo
+
+.pasarArticulo{
+    color: color(texto-claro);
+    position: absolute;
+    bottom: 20px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    &:hover{
+       scale: 1;
+    }
+    &.centrar{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    &.primero{
+        transform: translate(-50%, -100%);
+         
+    }
+}

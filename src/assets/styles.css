@@ -36,6 +36,15 @@
   60% {
     transform: translate3d(4px, 0, 0); } }
 
+/* Animacion de palputacion */
+@keyframes pulse {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.1); }
+  100% {
+    transform: scale(1); } }
+
 /*diferenciar entre tamaños*/
 /*posicionar en flex*/
 /*posicionar en flex*/
@@ -90,6 +99,56 @@ main {
     font-size: lg;
     font-weight: 600;
     color: #c85c59; }
+
+#home #volverInicio {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  background-color: #AD4240;
+  color: #c5ccca;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  cursor: pointer; }
+  @media (max-width: 767px) {
+    #home #volverInicio {
+      font-size: 1rem; } }
+  #home #volverInicio .invisible {
+    display: none; }
+
+#home .cuerpo {
+  overflow: hidden !important; }
+  #home .cuerpo .textoExpo h1 {
+    color: #AD4240 !important; }
+  #home .cuerpo .exposicion {
+    border-radius: 0%;
+    height: 100vh; }
+    #home .cuerpo .exposicion img {
+      height: 100%;
+      width: 105vw;
+      object-fit: cover; }
+    #home .cuerpo .exposicion .presentacion {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #c5ccca;
+      text-align: center;
+      background-color: #2d2c2c;
+      opacity: 0.8;
+      border-radius: calc(1rem + 1vw);
+      height: min-content;
+      width: 40%;
+      padding: 1rem; }
+      @media (max-width: 767px) {
+        #home .cuerpo .exposicion .presentacion {
+          width: 90%;
+          border-radius: 20px; } }
+      #home .cuerpo .exposicion .presentacion h5 {
+        font-size: calc(1rem + 1vw);
+        font-weight: 400;
+        margin-top: 0; }
 
 #administration .accordion-body {
   display: flex;
@@ -456,11 +515,30 @@ header aside .icono-github:hover {
     height: inherit;
     background-image: linear-gradient(90deg, #2d2c2c, #AD4240); }
 
+.pantallaCarga {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #eb8484;
+  letter-spacing: 0.2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  color: #030303; }
+  .pantallaCarga img {
+    width: 100px;
+    height: 100px;
+    animation: pulse 1s infinite; }
+
 #hero {
   background-image: url("/mirador.webp");
   background-size: cover;
   background-position: center center;
-  height: 300px; }
+  height: 92vh; }
   #hero .mask {
     background-color: rgba(0, 0, 0, 0);
     transition: background-color 0.3s ease; }
@@ -534,6 +612,20 @@ header aside .icono-github:hover {
     width: 100%; }
     .customBtn-entradas:hover {
       color: #c85c59; }
+  .customBtn-home {
+    border: none;
+    font-size: 1.5rem;
+    color: #c5ccca;
+    border-radius: 10px;
+    width: min-content;
+    height: min-content;
+    background-color: #AD4240; }
+    .customBtn-home:hover {
+      background-color: #f9f9f8;
+      color: #c85c59; }
+    .customBtn-home:active {
+      background-color: white !important;
+      color: #c85c59 !important; }
 
 .vc-blue {
   --vc-accent-500: #c85c59;
@@ -547,3 +639,17 @@ header aside .icono-github:hover {
   @media (max-width: 767px) {
     .vc-light {
       --vc-hover-bg: transparent; } }
+
+.pasarArticulo {
+  color: #c5ccca;
+  position: absolute;
+  bottom: 20px;
+  font-size: 2.5rem;
+  cursor: pointer; }
+  .pasarArticulo:hover {
+    scale: 1; }
+  .pasarArticulo.centrar {
+    left: 50%;
+    transform: translateX(-50%); }
+  .pasarArticulo.primero {
+    transform: translate(-50%, -100%); }

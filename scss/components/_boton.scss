@@ -82,4 +82,21 @@
       color: color(resaltado);
     }
   }
+  &-home{
+    border: none;
+    font-size: size(mdd);
+    color: color(texto-claro);
+    border-radius: 10px;
+    width: min-content;
+    height: min-content;
+    background-color:color(resaltado-aux);
+    &:hover {
+      background-color: color(fondo-claro);
+      color: color(resaltado);
+    }
+    &:active {
+      background-color: white!important;
+      color: color(resaltado)!important;
+    }
+  }
 }

@@ -6,6 +6,10 @@ import TarjetaCredito from '../components/TarjetaCredito.vue';
 
 onMounted(() => {
   document.title = 'Tickets | MuseoGRX';
+  window.scrollTo({
+    top: 0,
+    behavior: 'instant'
+  });
 });
 
 var date = ref(null);
@@ -45,7 +49,7 @@ function pasarAEntradas(){
 </script>
 <template>
   <main id="tickets">
-    <h2 class="resaltado">Comprar <span>Entradas</span></h2>
+    <h2 class="resaltado mb-4">Comprar <span>Entradas</span></h2>
     <section id="calendario">
       <h4>Elija un d&iacute;a</h4>
       <VDatePicker v-model="date" mode="date" @click="pasarAEntradas"
