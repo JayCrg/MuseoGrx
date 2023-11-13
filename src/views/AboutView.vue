@@ -47,7 +47,7 @@ ripple.remove();
   <img v-prlx="{
   preserveInitialPosition: false,
   limit: { min: -30, max: 30 }
-}" src="../../public/mirador.webp">
+}" src="../../public/miradorHD.jpg">
 
 
 

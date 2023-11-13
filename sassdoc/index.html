@@ -1,0 +1,1168 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Museogrx - v0.0.0</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="Museogrx - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="Release the docs!"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title">Museogrx - 0.0.0</h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="colores"><a href="#colores">colores</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="colores-variable"><a href="#colores-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="colores" data-name="color" data-type="variable"><a href="#colores-variable-color">color</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="colores-function"><a href="#colores-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="colores" data-name="color" data-type="function"><a href="#colores-function-color">color</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="pesos"><a href="#pesos">pesos</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="pesos-variable"><a href="#pesos-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="pesos" data-name="font-weights" data-type="variable"><a href="#pesos-variable-font-weights">font-weights</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="pesos-function"><a href="#pesos-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="pesos" data-name="weight" data-type="function"><a href="#pesos-function-weight">weight</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="tamaños"><a href="#tamaños">tamaños</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="tamaños-variable"><a href="#tamaños-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="tamaños" data-name="font-sizes" data-type="variable"><a href="#tamaños-variable-font-sizes">font-sizes</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="tamaños-function"><a href="#tamaños-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="tamaños" data-name="size" data-type="function"><a href="#tamaños-function-size">size</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="undefined"><a href="#undefined">General</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-css"><a href="#undefined-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name=":root" data-type="css"><a href="#undefined-css-:root">:root</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="body" data-type="css"><a href="#undefined-css-body">body</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name=".customBtn" data-type="css"><a href="#undefined-css-.customBtn">.customBtn</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name=".vc-blue" data-type="css"><a href="#undefined-css-.vc-blue">.vc-blue</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name=".pantallaCarga" data-type="css"><a href="#undefined-css-.pantallaCarga">.pantallaCarga</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name=".filtros" data-type="css"><a href="#undefined-css-.filtros">.filtros</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="header" data-type="css"><a href="#undefined-css-header">header</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="#hero" data-type="css"><a href="#undefined-css-#hero">#hero</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name=".pasarArticulo" data-type="css"><a href="#undefined-css-.pasarArticulo">.pasarArticulo</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name=".row" data-type="css"><a href="#undefined-css-.row">.row</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name=".detalle" data-type="css"><a href="#undefined-css-.detalle">.detalle</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="&amp;-titulo" data-type="css"><a href="#undefined-css-&amp;-titulo">&amp;-titulo</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="&amp;-score" data-type="css"><a href="#undefined-css-&amp;-score">&amp;-score</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="&amp;-img" data-type="css"><a href="#undefined-css-&amp;-img">&amp;-img</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="&amp;-info" data-type="css"><a href="#undefined-css-&amp;-info">&amp;-info</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="&amp;-episodios" data-type="css"><a href="#undefined-css-&amp;-episodios">&amp;-episodios</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="&amp;-comments" data-type="css"><a href="#undefined-css-&amp;-comments">&amp;-comments</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="#home" data-type="css"><a href="#undefined-css-#home">#home</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="#signup" data-type="css"><a href="#undefined-css-#signup">#signup</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="#tickets" data-type="css"><a href="#undefined-css-#tickets">#tickets</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-mixin"><a href="#undefined-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="responsive" data-type="mixin"><a href="#undefined-mixin-responsive">responsive</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="flexposition" data-type="mixin"><a href="#undefined-mixin-flexposition">flexposition</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="gridposition" data-type="mixin"><a href="#undefined-mixin-gridposition">gridposition</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="displayImg" data-type="mixin"><a href="#undefined-mixin-displayImg">displayImg</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="logo" data-type="mixin"><a href="#undefined-mixin-logo">logo</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-placeholder"><a href="#undefined-placeholder">placeholders</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="sombra" data-type="placeholder"><a href="#undefined-placeholder-sombra">sombra</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="shake" data-type="placeholder"><a href="#undefined-placeholder-shake">shake</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-function"><a href="#undefined-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="color-texto" data-type="function"><a href="#undefined-function-color-texto">color-texto</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-variable"><a href="#undefined-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="font-title" data-type="variable"><a href="#undefined-variable-font-title">font-title</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="defaul-margin" data-type="variable"><a href="#undefined-variable-defaul-margin">defaul-margin</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="separador-margin" data-type="variable"><a href="#undefined-variable-separador-margin">separador-margin</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="default-foreground" data-type="variable"><a href="#undefined-variable-default-foreground">default-foreground</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="colores"><div class="container">colores</div></h1><section class="main__sub-section" id="colores-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="colores-variable-color"><h3 class="item__heading"><a class="item__name" href="#variable-color">color</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$color: (
+    resaltado: #c85c59,
+    resaltado-aux: #AD4240,
+    resaltado-claro: #eb8484,
+    fondo-oscuro: #2d2c2c,
+    fondo-claro: #f9f9f8,
+    fondo-claro-aux: #f3f2f2,
+    texto-claro: #c5ccca,
+    texto-claro-aux: #5d5c5d,
+    texto-oscuro: #030303,
+
+);</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mapa de colores</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#colores-function-color"><code>color</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-color-texto"><code>color-texto</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#undefined-mixin-logo"><code>logo</code></a></li></ul><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section></section><section class="main__sub-section" id="colores-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="colores-function-color"><h3 class="item__heading"><a class="item__name" href="#function-color">color</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function color($colorName) { 
+    @return map-get($color, $colorName);
+ }" data-collapsed="@function color($colorName) { ... }"><code>@function color($colorName) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Funcion para obtener el color</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$colorName</code></th><td data-label="desc"><p>nombre del color</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Color</code> &mdash;<p>color</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#colores-variable-color"><code>color</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-color-texto"><code>color-texto</code></a></li></ul><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="pesos"><div class="container">pesos</div></h1><section class="main__sub-section" id="pesos-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="pesos-variable-font-weights"><h3 class="item__heading"><a class="item__name" href="#variable-font-weights">font-weights</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$font-weights: (
+    light: 200,
+    regular: 300,
+    medium: 400,
+    bold: 600,
+    black: 900
+);</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mapa de pesos</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#pesos-function-weight"><code>weight</code></a></li></ul><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section></section><section class="main__sub-section" id="pesos-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="pesos-function-weight"><h3 class="item__heading"><a class="item__name" href="#function-weight">weight</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function weight($font-weights) { 
+    @return map-get($font-weights, $fontWeightName);
+ }" data-collapsed="@function weight($font-weights) { ... }"><code>@function weight($font-weights) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$font-weights</code></th><td data-label="desc"><p>mapa de tamaños tamaños disponibles light, regular, medium, bold, black</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Weight</code> &mdash;<p>peso</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#pesos-variable-font-weights"><code>font-weights</code></a></li></ul><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="tamaños"><div class="container">tamaños</div></h1><section class="main__sub-section" id="tamaños-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="tamaños-variable-font-sizes"><h3 class="item__heading"><a class="item__name" href="#variable-font-sizes">font-sizes</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$font-sizes: (
+    xxl:7rem,
+    xl: 5rem,
+    lg: 3rem,
+    mdd: 1.5rem,
+    md: 1rem,
+    sm: 0.8rem,
+    xs: 0.6rem,
+    );</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mapa de tamaños</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#tamaños-function-size"><code>size</code></a></li></ul><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section></section><section class="main__sub-section" id="tamaños-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="tamaños-function-size"><h3 class="item__heading"><a class="item__name" href="#function-size">size</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function size($font-sizes) { 
+    @return map-get($font-sizes, $fontSizeName);
+ }" data-collapsed="@function size($font-sizes) { ... }"><code>@function size($font-sizes) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$font-sizes</code></th><td data-label="desc"><p>mapa de tamaños tamaños disponibles xxl, xl, lg, md, sm, xs</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Size</code> &mdash;<p>tamaño</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#tamaños-variable-font-sizes"><code>font-sizes</code></a></li></ul><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="undefined"><div class="container">General</div></h1><section class="main__sub-section" id="undefined-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="undefined-css-:root"><h3 class="item__heading"><a class="item__name" href="#css-:root">:root</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>:root {
+  --fk-color-border-focus: #c85c59!important; //si se usa el mixim color() no funciona
+    --fk-bg-button: #c5ccca!important;
+    --fk-color-button: #030303!important;
+    --mdb-accordion-active-color: #c85c59!important;      
+    --vc-gray-500: #5d5c5d!important;
+}</code>" data-collapsed=":root { ... }"><code>:root { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Inicialización de todo el documento</p></div></section><section class="main__item container item" id="undefined-css-body"><h3 class="item__heading"><a class="item__name" href="#css-body">body</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>body {
+  background-color: #ffffff;
+    font-size: size(md) !important;
+    h1, h2, h3, h4{
+        font-family: font-title;
+    }
+}</code>" data-collapsed="body { ... }"><code>body { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Inicialización de HTML</p></div></section><section class="main__item container item" id="undefined-css-.customBtn"><h3 class="item__heading"><a class="item__name" href="#css-.customBtn">.customBtn</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.customBtn {
+  border: 2px solid color(resaltado) !important;
+  height: 3em !important;
+  align-self:center !important;
+  padding: 0 1em!important;
+  align-content: center !important;
+  justify-content: center !important;
+  font-weight: weight(bold) !important;
+  &amp;:hover {
+    color: color(resaltado) !important;
+  }
+  &amp;:active {
+    color: color(resaltado-aux) !important;
+  }
+  
+  &amp;-destacado{
+    background-color: color(resaltado) !important;
+    color: #fff !important;
+    &amp;:hover {
+      box-shadow: 0 0 0 color(fondo-claro) !important;
+      background-color: darken(color(resaltado), 5%) !important;
+    }
+    &amp;:active {
+      box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, .2) !important;
+    }
+  }
+  &amp;-slide {
+    border-color: color(resaltado) !important;
+    color: color(texto-claro-aux) !important;
+    
+    &amp;:hover {
+      box-shadow: inset 10em 0 0 0 color(resaltado) !important;
+      color: #fff !important;
+      transition: .6s !important;
+    }
+
+    &amp;:active {
+      box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, .2) !important;
+      color: color(texto-oscuro) !important;
+    }
+  }
+  
+  &amp;-signup{
+    width: 100% !important;
+    background-color: white !important;
+    border: 2px solid color(resaltado) !important;
+    color: color(texto-oscuro) !important;
+    font-weight: weight(bold) !important;
+    &amp;:hover {
+      color: color(resaltado) !important;
+    }
+    &amp;:active {
+      color: color(resaltado-aux) !important;
+    }
+  }	
+  &amp;-collapse{
+    @include responsive(small) {
+      display: block;
+    }
+    border: none;
+    display:none;
+    background-color: transparent !important;
+  }
+  
+  &amp;-acordeon{
+    width: 100% !important;
+    &amp;:hover {
+      color: color(resaltado-aux) !important;
+    }
+    &amp;:not(.collapsed){
+      color:color(resaltado-aux) !important;
+
+    } 
+  }
+  &amp;-entradas{
+    border: none;
+    font-size: size(mdd);
+    height: 100%;
+    width: 100%;
+    &amp;:hover {
+      color: color(resaltado);
+    }
+  }
+  &amp;-home{
+    border: none;
+    font-size: size(mdd)!important;
+    color: color(texto-claro)!important;
+    border-radius: 10px;
+    width: min-content;
+    height: min-content;
+    background-color:color(resaltado-aux)!important;
+    &amp;:hover {
+      background-color: color(fondo-claro)!important;
+      color: color(resaltado)!important;
+    }
+    &amp;:focus{
+      background-color: color(fondo-claro)!important;
+      color: color(resaltado)!important;
+    }
+    &amp;:active {
+      background-color: white!important;
+      color: color(resaltado)!important;
+    }
+  }
+}</code>" data-collapsed=".customBtn { ... }"><code>.customBtn { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Componente Boton</p></div></section><section class="main__item container item" id="undefined-css-.vc-blue"><h3 class="item__heading"><a class="item__name" href="#css-.vc-blue">.vc-blue</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.vc-blue {
+  --vc-accent-500: #c85c59;
+    --vc-accent-600: #AD4240;
+}</code>" data-collapsed=".vc-blue { ... }"><code>.vc-blue { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Personalización de los colores de la librería VCalendar</p></div></section><section class="main__item container item" id="undefined-css-.pantallaCarga"><h3 class="item__heading"><a class="item__name" href="#css-.pantallaCarga">.pantallaCarga</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.pantallaCarga {
+  @include flexposition(row, center, center);
+    height: 100vh;
+    width: 100vw;
+    background-color: color(resaltado-claro);
+    letter-spacing: 0.2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    color: color(texto-oscuro);
+    img{
+        width: 100px;
+        height: 100px;
+        animation: pulse 1s infinite;
+    }
+}</code>" data-collapsed=".pantallaCarga { ... }"><code>.pantallaCarga { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Componente de cargando</p></div></section><section class="main__item container item" id="undefined-css-.filtros"><h3 class="item__heading"><a class="item__name" href="#css-.filtros">.filtros</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.filtros {
+  @include flexposition(row, flex-start, center);
+    flex-wrap: wrap;
+    margin: 2rem auto;
+    gap: 1rem;
+    select{
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        border: 1px solid color(terciary);
+        background-color: lighten(color(quaternary), 10%);
+        color: color(terciary);
+        font-size: size(xxs);
+        font-weight: border;
+        cursor: pointer;
+        &amp;:hover{
+            background-color: lighten(color(quater-lighter), 20%);
+        }
+    }
+    button{
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        border: 1px solid color(terciary);
+        background-color: lighten(color(quaternary), 10%);
+        color: color(terciary);
+        font-size: size(xxs);
+        font-weight: border;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        &amp;:hover{
+            background-color: lighten(color(quater-lighter), 20%);
+        }
+        &amp;:active{
+            scale: 0.9;
+        }
+    }
+}</code>" data-collapsed=".filtros { ... }"><code>.filtros { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Componente de filtro</p></div></section><section class="main__item container item" id="undefined-css-header"><h3 class="item__heading"><a class="item__name" href="#css-header">header</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>header {
+  .cabecera {
+    background-color: color(fondo-claro);
+    
+    &amp;-logo {
+      @include logo()
+
+    }
+    .centrar{
+    @include responsive(small){
+        .customBtn{
+          width: 100%;
+          margin : 0.5em 0;
+        }
+      }
+      @include responsive(tablet){
+          margin-top:.5em;
+      }
+    }
+    .customList{
+      &amp;&gt;a{
+        @include responsive(large){
+          max-width: 20vw;
+        }
+        @include responsive(tablet){
+          max-width: 100vw;
+        }
+      }
+    }
+    .desplazado{
+      @include responsive(large){
+        align-self: center;
+      }
+      @include responsive(desktop){
+        align-self: center;
+      }
+      @include responsive(small){
+        align-self: flex-end;
+        width: 100%;
+      }
+    }
+  }
+  aside{
+    .crearCuenta{
+      color: color(resaltado-aux);
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .icono{
+      &amp;-google{
+        &amp;:hover{
+          animation: colorChange 2s infinite!important;
+          *{scale: 1.07;}
+        }
+      }
+      &amp;-github{
+        &amp;:hover{
+          color: color(resaltado-aux);
+          *{scale: 1.07;}
+        }
+      }
+    }
+  }
+  .shake{
+    @extend %shake;
+  }
+}</code>" data-collapsed="header { ... }"><code>header { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Componente Header</p></div></section><section class="main__item container item" id="undefined-css-#hero"><h3 class="item__heading"><a class="item__name" href="#css-#hero">#hero</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>#hero {
+  background-image: url(&#39;/miradorHD.jpg&#39;);
+    background-size: cover;
+    background-position: center center;
+    height: 92vh;
+
+    .mask {
+        background-color: rgba(0, 0, 0, 0);
+        transition: background-color 0.3s ease;
+        
+        .texto-hero{
+            color: rgba(0, 0, 0, 0);
+            transition: color 0.3s ease, display 0.3s ease; /* Agrega transiciones para color y display */
+
+        }
+
+        &amp;:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+
+            .texto-hero{
+                display: block;
+                color: white;
+            }
+        }
+
+    }
+}</code>" data-collapsed="#hero { ... }"><code>#hero { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Hero de inicio</p></div></section><section class="main__item container item" id="undefined-css-.pasarArticulo"><h3 class="item__heading"><a class="item__name" href="#css-.pasarArticulo">.pasarArticulo</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.pasarArticulo {
+  color: color(texto-claro);
+    position: absolute;
+    bottom: 20px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    &amp;:hover{
+       scale: 1;
+    }
+    &amp;.centrar{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    &amp;.primero{
+        transform: translate(-50%, -100%);
+         
+    }
+}</code>" data-collapsed=".pasarArticulo { ... }"><code>.pasarArticulo { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Componente de boton para pasar al siguiente articulo</p></div></section><section class="main__item container item" id="undefined-css-.row"><h3 class="item__heading"><a class="item__name" href="#css-.row">.row</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.row {
+  &amp;-scrollspy{
+            height: 98vh;
+            overflow: auto;
+            background-color: color(quinquary);
+        }
+        &amp;-frame{
+            @extend %sombra;
+            background-color: color(quinquary);
+            @include responsive($breakpoint: desktop){
+                grid-column: 2/4;
+                grid-row: 1/2;
+            }
+            @include responsive($breakpoint: tablet){
+                grid-column: 1/-1;
+                grid-row: 2/3;
+            }
+    
+        }
+        &amp;-navHeader{
+            @include responsive($breakpoint: tablet){
+                height: 50vh;
+                grid-column: 1/-1;
+                grid-row: 1/2;
+
+            }
+            @include responsive($breakpoint: desktop){
+                height: 100vh;
+                grid-column: 1/2;
+                grid-row: 1/2;
+
+            }
+            overflow: auto;
+            nav{
+                .nav{
+                    &amp;-link{
+                        font-size: size(xs);
+                        color: color(quaternary);
+                        &amp;:active{
+                            color: color(primary);
+                        }
+                        &amp;:hover{
+                            color: color(quater-darker);
+                            background-color: color(primary);
+                        }
+    
+                    }
+                    &amp;-titulo{
+                        @include responsive($breakpoint: mobile){
+                            font-size: size(sm)
+                        }
+                        @include responsive($breakpoint: tablet){
+                            font-size: size(sm);
+                        }
+                        @include responsive($breakpoint: desktop){
+                            font-size: size(md);
+                        }
+                        &amp;:active{
+                            color: color(primary);
+                        }
+                    }
+                }
+            }
+        }
+}</code>" data-collapsed=".row { ... }"><code>.row { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Alteracion de Component: Scrollspy</p></div></section><section class="main__item container item" id="undefined-css-.detalle"><h3 class="item__heading"><a class="item__name" href="#css-.detalle">.detalle</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.detalle {
+  grid-column: 1/-1;
+    grid-row: 2/3;
+    @include gridposition(repeat(4, min-content), repeat(5, minmax(min-content, 1fr)), 0);
+
+    &amp;-cabecera {
+        max-height: 35vh;
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        background-color: color(tertiary);
+        padding: 1rem;
+        color: color(secondary);
+        @include gridposition(repeat(3, 1fr), repeat(5, minmax(min-content, 30rem)));
+    }
+    ///Codigo para posicionamiento de elementos
+    &amp;-titulo {
+        text-align: center;
+        margin-bottom: 1rem;
+        @include flexposition();
+
+        h3 {
+            font-size: size(lg);
+            font-weight: weight(bold);
+            color: color(secondary);
+        }
+
+        @include responsive(mobile) {
+            grid-column: 1 / -1;
+            grid-row: 1 /2;
+        }
+
+        @include responsive(tablet) {
+            grid-column: 3 / 4;
+            grid-row: 3 /4;
+        }
+
+        @include responsive(desktop) {
+            grid-column: 3 / 4;
+            grid-row: 3 /4;
+        }
+    }
+    ///Codigo para posicionamiento de la nota
+    &amp;-score {
+        font-size: size(xs);
+        font-weight: weight(bold);
+        color: color(secondary);
+        text-align: center;
+        @include flexposition();
+
+        @include responsive(mobile) {
+            grid-column: 2 / 3;
+            grid-row: 1 /2;
+        }
+
+        @include responsive(tablet) {
+            grid-column: 3 / 4;
+            grid-row: 2 /3;
+        }
+
+        @include responsive(desktop) {
+            grid-column: 5 / 6;
+            grid-row: 1 /2;
+        }
+    }
+    ///Codigo para posicionamiento de la imagen
+    &amp;-img {
+        @include responsive(tablet) {
+            grid-column: 1 / 2;
+            grid-row: 2 /3;
+        }
+        @include responsive(desktop) {
+            grid-column: 1 / 2;
+            grid-row: 1/3;
+        }
+
+        @include responsive(mobile) {
+            @include flexposition();
+            grid-column: 1/-1;
+            grid-row: 2 /3;
+        }
+        img {
+            max-width: 20rem;
+            @extend %sombra;
+            @include displayImg();
+        }
+    }
+    ///Codigo para la informacion de la pelicula
+    &amp;-info {
+        margin: 1rem;
+        @include responsive(tablet) {
+            grid-column: 2 /-1;
+            grid-row: 2 /3;
+        } 
+        @include responsive(desktop) {
+            grid-column: 2 /-1;
+            grid-row: 2 /3;
+        }
+        @include responsive(large) {
+            grid-column: 2 /-2;
+            grid-row: 2 /3;
+        }
+        @include responsive(mobile) {
+            grid-column: 1/-1;
+            grid-row: 3/4;
+            @include flexposition(column);
+        }
+    }
+    ///Codigo para los capitulos  de la pelicula
+    &amp;-episodios{
+        @include responsive(tablet) {
+            grid-column: 2/-1;
+            grid-row: 3/4;
+        }
+        @include responsive(desktop) {
+            grid-column: 2/-2;
+            grid-row: 3/4;
+        }
+        @include responsive(mobile) {
+            grid-column: 1/-1;
+            grid-row: 4/5;
+        }
+        .list-group{
+            &amp;-item{
+                @include flexposition();
+                justify-content: space-between;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                @extend %sombra;
+                &amp;:hover{
+                    background-color: color(primary);
+                    color: color(tertiary);
+                }
+            }
+        }
+    }
+    ///Codigo para los comentarios de la pelicula
+    &amp;-comments{
+        @include responsive(tablet) {
+            grid-column: 2/-1;
+            grid-row: 4/5;
+        }
+        @include responsive(desktop) {
+            grid-column: 2/-2;
+            grid-row: 4/5;
+        }
+        @include responsive(mobile) {
+            grid-column: 1/-1;
+            grid-row: 5/6;
+        }
+        ul{
+            list-style: none;
+        }
+        .comment{
+            @include flexposition();
+            margin-bottom: 1rem;
+            @extend %sombra;
+            background-color: white;
+            &amp;-content{
+                @include flexposition(column);
+                .comment-content-header{
+                    @include flexposition();
+                    justify-content: space-between;
+                }
+            }
+            &amp;-cabecera{
+                @include flexposition();
+                gap:1rem;
+                margin-bottom: 1rem;
+                img{
+                    @include displayImg();
+                    max-width: 5rem;
+                }
+                h4{
+                    font-size: size(sm);
+                    font-weight: weight(bold);
+                margin-top: 1rem;
+                }
+            }
+            &amp;-date{
+                font-size: size(xs);
+                font-weight: weight(bold);
+                color: color(tertiary);
+            }
+        }
+    }
+}</code>" data-collapsed=".detalle { ... }"><code>.detalle { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Layout detalle</p></div></section><section class="main__item container item" id="undefined-css-&amp;-titulo"><h3 class="item__heading"><a class="item__name" href="#css-&amp;-titulo">&amp;-titulo</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;-titulo {
+  text-align: center;
+        margin-bottom: 1rem;
+        @include flexposition();
+
+        h3 {
+            font-size: size(lg);
+            font-weight: weight(bold);
+            color: color(secondary);
+        }
+
+        @include responsive(mobile) {
+            grid-column: 1 / -1;
+            grid-row: 1 /2;
+        }
+
+        @include responsive(tablet) {
+            grid-column: 3 / 4;
+            grid-row: 3 /4;
+        }
+
+        @include responsive(desktop) {
+            grid-column: 3 / 4;
+            grid-row: 3 /4;
+        }
+}</code>" data-collapsed="&amp;-titulo { ... }"><code>&amp;-titulo { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Codigo para posicionamiento de elementos</p></div></section><section class="main__item container item" id="undefined-css-&amp;-score"><h3 class="item__heading"><a class="item__name" href="#css-&amp;-score">&amp;-score</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;-score {
+  font-size: size(xs);
+        font-weight: weight(bold);
+        color: color(secondary);
+        text-align: center;
+        @include flexposition();
+
+        @include responsive(mobile) {
+            grid-column: 2 / 3;
+            grid-row: 1 /2;
+        }
+
+        @include responsive(tablet) {
+            grid-column: 3 / 4;
+            grid-row: 2 /3;
+        }
+
+        @include responsive(desktop) {
+            grid-column: 5 / 6;
+            grid-row: 1 /2;
+        }
+}</code>" data-collapsed="&amp;-score { ... }"><code>&amp;-score { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Codigo para posicionamiento de la nota</p></div></section><section class="main__item container item" id="undefined-css-&amp;-img"><h3 class="item__heading"><a class="item__name" href="#css-&amp;-img">&amp;-img</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;-img {
+  @include responsive(tablet) {
+            grid-column: 1 / 2;
+            grid-row: 2 /3;
+        }
+        @include responsive(desktop) {
+            grid-column: 1 / 2;
+            grid-row: 1/3;
+        }
+
+        @include responsive(mobile) {
+            @include flexposition();
+            grid-column: 1/-1;
+            grid-row: 2 /3;
+        }
+        img {
+            max-width: 20rem;
+            @extend %sombra;
+            @include displayImg();
+        }
+}</code>" data-collapsed="&amp;-img { ... }"><code>&amp;-img { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Codigo para posicionamiento de la imagen</p></div></section><section class="main__item container item" id="undefined-css-&amp;-info"><h3 class="item__heading"><a class="item__name" href="#css-&amp;-info">&amp;-info</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;-info {
+  margin: 1rem;
+        @include responsive(tablet) {
+            grid-column: 2 /-1;
+            grid-row: 2 /3;
+        } 
+        @include responsive(desktop) {
+            grid-column: 2 /-1;
+            grid-row: 2 /3;
+        }
+        @include responsive(large) {
+            grid-column: 2 /-2;
+            grid-row: 2 /3;
+        }
+        @include responsive(mobile) {
+            grid-column: 1/-1;
+            grid-row: 3/4;
+            @include flexposition(column);
+        }
+}</code>" data-collapsed="&amp;-info { ... }"><code>&amp;-info { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Codigo para la informacion de la pelicula</p></div></section><section class="main__item container item" id="undefined-css-&amp;-episodios"><h3 class="item__heading"><a class="item__name" href="#css-&amp;-episodios">&amp;-episodios</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;-episodios {
+  @include responsive(tablet) {
+            grid-column: 2/-1;
+            grid-row: 3/4;
+        }
+        @include responsive(desktop) {
+            grid-column: 2/-2;
+            grid-row: 3/4;
+        }
+        @include responsive(mobile) {
+            grid-column: 1/-1;
+            grid-row: 4/5;
+        }
+        .list-group{
+            &amp;-item{
+                @include flexposition();
+                justify-content: space-between;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                @extend %sombra;
+                &amp;:hover{
+                    background-color: color(primary);
+                    color: color(tertiary);
+                }
+            }
+        }
+}</code>" data-collapsed="&amp;-episodios { ... }"><code>&amp;-episodios { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Codigo para los capitulos de la pelicula</p></div></section><section class="main__item container item" id="undefined-css-&amp;-comments"><h3 class="item__heading"><a class="item__name" href="#css-&amp;-comments">&amp;-comments</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>&amp;-comments {
+  @include responsive(tablet) {
+            grid-column: 2/-1;
+            grid-row: 4/5;
+        }
+        @include responsive(desktop) {
+            grid-column: 2/-2;
+            grid-row: 4/5;
+        }
+        @include responsive(mobile) {
+            grid-column: 1/-1;
+            grid-row: 5/6;
+        }
+        ul{
+            list-style: none;
+        }
+        .comment{
+            @include flexposition();
+            margin-bottom: 1rem;
+            @extend %sombra;
+            background-color: white;
+            &amp;-content{
+                @include flexposition(column);
+                .comment-content-header{
+                    @include flexposition();
+                    justify-content: space-between;
+                }
+            }
+            &amp;-cabecera{
+                @include flexposition();
+                gap:1rem;
+                margin-bottom: 1rem;
+                img{
+                    @include displayImg();
+                    max-width: 5rem;
+                }
+                h4{
+                    font-size: size(sm);
+                    font-weight: weight(bold);
+                margin-top: 1rem;
+                }
+            }
+            &amp;-date{
+                font-size: size(xs);
+                font-weight: weight(bold);
+                color: color(tertiary);
+            }
+        }
+}</code>" data-collapsed="&amp;-comments { ... }"><code>&amp;-comments { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Codigo para los comentarios de la pelicula</p></div></section><section class="main__item container item" id="undefined-css-#home"><h3 class="item__heading"><a class="item__name" href="#css-#home">#home</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>#home {
+  #volverInicio{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: size(mdd);
+        @include responsive(small){
+            font-size: size(md);
+        }
+        background-color: color(resaltado-aux);
+        color: color(texto-claro);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 50%;
+        cursor: pointer;
+        .invisible{
+            display: none;
+        }
+              
+    }
+    .cuerpo {
+        overflow: hidden!important;
+        .textoExpo{
+            h1{
+                color: color(resaltado-aux)!important;
+            }
+        }
+        .exposicion {
+            border-radius: 0%;
+            height: 100vh;
+            img {
+                height: 100%;
+                width: 105vw;
+                object-fit: cover;
+            }
+            .presentacion{
+                position: absolute;
+                top: 70%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: color(texto-claro);
+                text-align: center;
+                background-color: color(fondo-oscuro);
+                opacity: 0.8;
+                border-radius: calc(1rem + 1vw);
+                height: min-content;
+                width: 40%;
+                padding: 1rem;
+                @include responsive(small){
+                    width: 90%;
+                    border-radius: 20px;
+                }
+                h5{
+                    font-size: calc(1rem + 1vw);
+                    font-weight: weight(medium);
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}</code>" data-collapsed="#home { ... }"><code>#home { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Layout de la sección del menu</p></div></section><section class="main__item container item" id="undefined-css-#signup"><h3 class="item__heading"><a class="item__name" href="#css-#signup">#signup</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>#signup {
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    gap: 2rem;
+    width: 100%;
+    .volverMenu{
+        color: color(resaltado-aux);
+        cursor: pointer;
+        font-weight: bold;
+    }
+    
+    #formSignUp{
+        @include flexposition(column, center, left);
+            
+        @include responsive(large){  
+            max-width: 45em;
+            width: 40vw;
+        }  
+        @include responsive(desktop){  
+            max-width: 45em;
+            width: 40vw; 
+        }
+        @include responsive(tablet){  
+            max-width: 45em;
+            width: 40vw;
+        }
+        @include responsive(small){
+            width: 70vw;
+        }
+        @include responsive(mobile){   
+            max-width: 45em;
+            width: 90vw;
+        }
+        .formkit-wrapper{
+            max-width: 100%;
+        }
+        [data-complete] .formkit-inner::after {
+            content: &#39;✅&#39;;
+            display: block;
+            padding: 0.5em;
+        }
+    }
+    #imgSingUp{
+        @include flexposition(column, center, center);
+
+        @include responsive(large){  
+            display: block;
+            max-width: 35rem;
+            width: 30vw;
+        }  
+        @include responsive(desktop){   
+            display: block;
+            max-width: 30rem;
+            width: 50vw;
+        }
+        @include responsive(tablet){  
+            display: block;
+            max-width: 35rem;
+            width: 50vw;
+        }
+        @include responsive(mobile){   
+        }
+        @include responsive(small){
+            display: none;
+        }
+        p{
+            font-size: size(sm);
+            color: color(texto-claro-aux);
+            text-align: center;
+            margin-top: 1rem;
+        }
+    }
+
+    .shake{
+        @extend %shake;
+    }
+}</code>" data-collapsed="#signup { ... }"><code>#signup { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Layout para la pagina de sign up</p></div></section><section class="main__item container item" id="undefined-css-#tickets"><h3 class="item__heading"><a class="item__name" href="#css-#tickets">#tickets</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>#tickets {
+  h4 {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-weight: weight(black);
+    }
+
+    width: 95vw;
+    margin: 0 auto;
+
+    #calendario {
+        width: 40vw;
+        max-width: 40rem;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+
+        p {
+            font-size: size(sm);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        @include responsive(small) {
+            width: 100%;
+        }
+    }
+
+    .horario {
+        @include flexposition(column, center, center);
+        margin-top: 1rem;
+
+        div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: baseline;
+
+            @include responsive(small) {
+                justify-content: start;
+                max-width: 20rem;
+                margin-left: 5rem;
+            }
+
+            @include responsive(small) {
+                margin-left: 1.5rem;
+            }
+
+            article {
+                p {
+                    font-size: size(sm);
+
+                    &amp;:first-child {
+                        font-weight: weight(bold);
+                    }
+                }
+            }
+        }
+
+    }
+
+    #entradas {
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+
+        .entrada {
+            @include flexposition();
+            width: 50vw;
+            max-width: 50rem;
+
+            @include responsive(small) {
+                width: 100%;
+            }
+
+            height: 5rem;
+            margin: 0 auto;
+            margin-bottom: 1rem;
+            justify-content: center;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+            rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+            div {
+                width: 50%;
+                height: inherit;
+                margin: 0 auto;
+
+                &amp;:first-child {
+                    @include flexposition(column);
+                    height: 100%;
+                    align-items: start;
+                    margin: .5rem .5rem;
+
+                    .seleccionado {
+                        background-color: color(primario);
+                        color: color(resaltado-aux);
+                    }
+                }
+
+                &amp;:last-child {
+                    @include flexposition();
+                    gap: calc(.5rem + .5vw);
+                    justify-content: end;
+
+                    p {
+                        font-size: size(mdd);
+                        margin-bottom: 0;
+                    }
+
+                }
+
+                h5 {
+                    color: color(texto-claro-aux);
+                    font-size: size(mmd);
+                    font-weight: weight(bold);
+                }
+
+                p {
+                    color: color(texto-claro-aux);
+                    font-size: size(md);
+                    margin-bottom: 0rem;
+                }
+            }
+
+        }
+
+        .confirmar {
+            @include flexposition(column, center, center);
+            width: 100%;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+
+            button {
+                width: 50%;
+                margin: 0 auto;
+                margin-bottom: 1rem;
+                height: 4rem;
+
+                @include responsive(small) {
+                    width: 100%;
+                }
+
+                max-width: 50rem;
+            }
+        }
+    }
+
+    .tarjetaCredito {
+        @include responsive(small) {
+            width: 100%;
+        }
+
+        margin : 0 auto;
+        width: 50vw;
+        max-width: 30rem;
+        margin-bottom: 1rem;
+
+        .cuerpoTarjeta {
+            display: grid;
+            gap: .5rem;
+            width: inherit;
+            max-width: inherit;
+            height: 12rem;
+            margin: 0 auto;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            label {
+                color: color(texto-oscuro);
+                font-size: size(mmd);
+            }
+
+            &amp;.delantera{
+                margin-top: 1rem;
+                background-color: color(resaltado-claro);
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: start;
+    
+    
+                    &amp;:first-child {
+                        grid-column: 1/2;
+                        grid-row: 1/2;
+                    }
+    
+                    &amp;:nth-child(2) {
+                        grid-column: 2/3;
+                        grid-row: 2/3;
+                    }
+    
+                    &amp;:last-child {
+                        grid-column: 1/2;
+                        grid-row: 2/3;
+                    }
+                }
+            }
+            
+            &amp;.trasera {
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: 2fr 1fr;
+                background: rgb(235, 132, 132);
+                background: linear-gradient(0deg, color(resaltado-claro) 67%, rgba(0, 0, 0, 1) 69%, rgba(0, 0, 0, 1) 83%, color(resaltado-claro) 85%);
+                div{
+                    grid-row: 2/3;
+                    grid-column: 2/3;
+                }
+            }
+            
+        }
+
+
+    }
+}</code>" data-collapsed="#tickets { ... }"><code>#tickets { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Layout de la sección de tickets</p></div></section></section><section class="main__sub-section" id="undefined-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="undefined-mixin-responsive"><h3 class="item__heading"><a class="item__name" href="#mixin-responsive">responsive</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin responsive($breakpoint) { 
+    @if $breakpoint == mobile {
+        @media (max-width: 426px) {
+            @content;
+        }
+    }
+    @else if $breakpoint == small {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==tablet {
+        @media (max-width: 992px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==desktop {
+        @media (max-width: 1200px) {
+            @content;
+        }
+    }
+    @else if $breakpoint ==large {
+        @media (min-width: 1201px) {
+            @content;
+        }
+    }
+ }" data-collapsed="@mixin responsive($breakpoint) { ... }"><code>@mixin responsive($breakpoint) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mixin responsive para diferentes tamaños</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$breakpoint</code></th><td data-label="desc"><p>tamaño de la pantalla</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.footer{
+    @include resposive(small){
+       font-size: 1rem;
+    }
+   @include resposive(tablet){
+      font-size: 1.5rem;
+    }
+}</code></pre></div></section><section class="main__item container item" id="undefined-mixin-flexposition"><h3 class="item__heading"><a class="item__name" href="#mixin-flexposition">flexposition</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin flexposition($direction: row, $justifycontenet: cneter, $alignitem: center) { 
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justifycontenet;
+    align-items: $alignitem;
+ }" data-collapsed="@mixin flexposition($direction: row, $justifycontenet: cneter, $alignitem: center) { ... }"><code>@mixin flexposition($direction: row, $justifycontenet: cneter, $alignitem: center) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mixin de posicionamiento en flex</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$direction</code></th><td data-label="desc"><p>direccion de los elementos</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>row</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$justifycontenet</code></th><td data-label="desc"><p>justificacion de los elementos</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>cneter</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$alignitem</code></th><td data-label="desc"><p>alineacion de los elementos</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>center</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.footer{
+    @include flexposition();
+}</code></pre></div></section><section class="main__item container item" id="undefined-mixin-gridposition"><h3 class="item__heading"><a class="item__name" href="#mixin-gridposition">gridposition</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin gridposition($direction: row, $justifycontenet: cneter, $alignitem: center) { 
+    display: grid;
+    grid-template-rows: $rows;
+    grid-template-columns: $columns;
+    grid-gap: $gap;
+ }" data-collapsed="@mixin gridposition($direction: row, $justifycontenet: cneter, $alignitem: center) { ... }"><code>@mixin gridposition($direction: row, $justifycontenet: cneter, $alignitem: center) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mixin de posicionamiento en flex</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$direction</code></th><td data-label="desc"><p>direccion de los elementos</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>row</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$justifycontenet</code></th><td data-label="desc"><p>justificacion de los elementos</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>cneter</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$alignitem</code></th><td data-label="desc"><p>alineacion de los elementos</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>center</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.footer{
+    @include gridposition();
+}</code></pre></div></section><section class="main__item container item" id="undefined-mixin-displayImg"><h3 class="item__heading"><a class="item__name" href="#mixin-displayImg">displayImg</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin displayImg($width: inherit, $height: inherit, $object-fit: fill, $display: flex) { 
+    width: inherit;
+    height: inherit;
+    object-fit: fill;
+    display: flex;
+ }" data-collapsed="@mixin displayImg($width: inherit, $height: inherit, $object-fit: fill, $display: flex) { ... }"><code>@mixin displayImg($width: inherit, $height: inherit, $object-fit: fill, $display: flex) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mixin de posicionamiento una imagen en un contenedor</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$width</code></th><td data-label="desc"><p>ancho de la imagen</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>inherit</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$height</code></th><td data-label="desc"><p>alto de la imagen</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>inherit</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$object-fit</code></th><td data-label="desc"><p>object-fit de la imagen</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>fill</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$display</code></th><td data-label="desc"><p>display de la imagen</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>flex</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.footer{
+    @include displayImg();
+}</code></pre></div></section><section class="main__item container item" id="undefined-mixin-logo"><h3 class="item__heading"><a class="item__name" href="#mixin-logo">logo</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin logo($font-size: size(mmd), $font-weight: weight(bold), $color: color(resaltado)) { 
+    span {
+        text-transform: uppercase;
+        font-size: $font-size;
+        font-weight: $font-weight;
+        color: $color;
+    }
+ }" data-collapsed="@mixin logo($font-size: size(mmd), $font-weight: weight(bold), $color: color(resaltado)) { ... }"><code>@mixin logo($font-size: size(mmd), $font-weight: weight(bold), $color: color(resaltado)) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mixin de estilo al logo de la pagina</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$font-size</code></th><td data-label="desc"><p>tamaño de la letra</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>size(mmd)</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$font-weight</code></th><td data-label="desc"><p>peso de la letra</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>weight(bold)</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$color</code></th><td data-label="desc"><p>color de la letra</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>color(resaltado)</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>&amp;-logo {
+    span {
+      font-size: size(mmd);
+      font-weight: weight(bold);
+      color: color(resaltado);
+   }
+}</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#colores-variable-color"><code>color</code></a></li></ul></section></section><section class="main__sub-section" id="undefined-placeholder"><h2 class="main__heading--secondary"><div class="container">placeholders</div></h2><section class="main__item container item" id="undefined-placeholder-sombra"><h3 class="item__heading"><a class="item__name" href="#placeholder-sombra">sombra</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="%sombra { 
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
+ }" data-collapsed="%sombra { ... }"><code>%sombra { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mixin para poner sombra y ampliar al hacer hover</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.card{
+   @extend %sombra;
+}</code></pre></div></section><section class="main__item container item" id="undefined-placeholder-shake"><h3 class="item__heading"><a class="item__name" href="#placeholder-shake">shake</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="%shake { 
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+   }" data-collapsed="%shake { ... }"><code>%shake { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mixin añadir animacion de shake</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.alert{
+   @extend %shake;
+}</code></pre></div></section></section><section class="main__sub-section" id="undefined-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="undefined-function-color-texto"><h3 class="item__heading"><a class="item__name" href="#function-color-texto">color-texto</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function color-texto($color) { 
+    @if (lightness($color) &gt;50) {
+        @return color(texto-oscuro);
+    } @else {
+        @return white;
+    }
+   }" data-collapsed="@function color-texto($color) { ... }"><code>@function color-texto($color) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>funcion que cambia el color de la letra en funcion del color del texto</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$color</code></th><td data-label="desc"><p>color del background</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Color</code> &mdash;<p>color del texto</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.card{
+  color: color-texto($background-color);
+}</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#colores-function-color"><code>color</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#colores-variable-color"><code>color</code></a></li></ul></section></section><section class="main__sub-section" id="undefined-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="undefined-variable-font-title"><h3 class="item__heading"><a class="item__name" href="#variable-font-title">font-title</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$font-title: &#39;Karla&#39;, sans-serif;</code></pre></div><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section><section class="main__item container item" id="undefined-variable-defaul-margin"><h3 class="item__heading"><a class="item__name" href="#variable-defaul-margin">defaul-margin</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$defaul-margin: 0;</code></pre></div><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section><section class="main__item container item" id="undefined-variable-separador-margin"><h3 class="item__heading"><a class="item__name" href="#variable-separador-margin">separador-margin</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$separador-margin: 0.5rem 0 0 0;</code></pre></div><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section><section class="main__item container item" id="undefined-variable-default-foreground"><h3 class="item__heading"><a class="item__name" href="#variable-default-foreground">default-foreground</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$default-foreground: rgb(30,30,30);</code></pre></div><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>: Juan Carlos Ramírez</p></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <span class="project-info__name">Museogrx</span><!-- Version --> <span class="project-info__version">- v0.0.0</span><!-- License --></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>

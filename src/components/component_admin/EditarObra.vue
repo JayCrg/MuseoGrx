@@ -27,6 +27,9 @@ const props = defineProps(['autores', 'obras'])
 
 const emit = defineEmits(['actualizarLista'])
 
+var refImagenObra = ref()
+var refTextoObra = ref()
+
 const archivarObra = async (credential, urlTexto, urlImagen) => {
   try {
     const docRef = await setDoc(doc(db, "obras", credential["fichaTécnica"]["idDocumento"]), {
@@ -36,6 +39,7 @@ const archivarObra = async (credential, urlTexto, urlImagen) => {
       fecha: credential["fichaTécnica"]["fechaObra"],
       tecnica: credential["fichaTécnica"]["tecnicaObra"],
       dimensiones: credential["fichaTécnica"]["dimensionesObra"],
+      titulo_minusculas: credential["fichaTécnica"]["tituloObra"].toLowerCase().split(' '),
       textoObra: urlTexto,
       imagenObra: urlImagen,
     });
@@ -63,8 +67,11 @@ function subirTexto(credential) {
     subirImagen(credential, credential["Texto"]["urlTextoObra"])
   }
   else {
-    const storageRef = ref2(storage, credential["Texto"]["textoObra"][0].name);
-    uploadBytes(storageRef, credential["Texto"]["textoObra"][0]).then((snapshot) => {
+    let metadata = {
+      contentType: 'text/plain'
+    };
+    const storageRef = ref2(storage, refTextoObra.value[0].name, metadata);
+    uploadBytes(storageRef, refTextoObra.value[0].file).then((snapshot) => {
       getDownloadURL(storageRef).then((urlTexto) => {
         subirImagen(credential, urlTexto)
 
@@ -78,8 +85,11 @@ function subirImagen(credential, urlTexto) {
     archivarObra(credential, urlTexto, credential["ImagenObra"]["urlImagenObra"])
   }
   else{
-  const storageRef2 = ref2(storage, credential["ImagenObra"]["imagenObra"][0].name);
-  uploadBytes(storageRef2, credential["ImagenObra"]["imagenObra"][0]).then((snapshot) => {
+  let metadata = {
+    contentType: 'image/jpeg'
+  };
+  const storageRef2 = ref2(storage, refImagenObra.value[0].name, metadata);
+  uploadBytes(storageRef2, refImagenObra.value[0].file).then((snapshot) => {
     getDownloadURL(storageRef2).then((urlImagen) => {
       archivarObra(credential, urlTexto, urlImagen)
     })
@@ -182,7 +192,7 @@ const cargarObra = async (credentials) => {
 
       <FormKit type="step" title="Obra" name="ImagenObra">
         <FormKit type="file" label="Imagen de la obra" name="imagenObra" accept=".jpg, .jpeg, .webp"
-          help="Inserte una imagen de la obra" multiple="false" />
+          help="Inserte una imagen de la obra" multiple="false" v-model="refImagenObra" />
 
         <FormKit name="urlImagenObra" v-model="imagenObra" type="hidden" validation="required" />
 
@@ -190,7 +200,7 @@ const cargarObra = async (credentials) => {
 
       <FormKit type="step" title="Texto" name="Texto">
         <FormKit type="file" label="Texto de la obra" name="textoObra" accept=".txt"
-          help="Inserte un texto de la obra en formato .txt" multiple="false" />
+          help="Inserte un texto de la obra en formato .txt" multiple="false" v-model="refTextoObra" />
 
         <FormKit name="urlTextoObra" v-model="textoObra" type="hidden" validation="required" />
 

@@ -4,7 +4,7 @@ import { db, storage } from '../../firebase.js'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '../../router/index.js';
 
-import { ref as ref2, getStorage, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { ref as ref2, getStorage, uploadBytes, getDownloadURL, updateMetadata } from 'firebase/storage'
 import { addDoc, collection, getFirestore, doc, getDoc, getDocs, query, where, orderBy, deleteDoc, updateDoc, setDoc } from 'firebase/firestore'
 import { useCollection, useFirestore } from 'vuefire'
 
@@ -15,17 +15,22 @@ var completadoExito = ref(0)
 
 const emit = defineEmits(['actualizarLista'])
 
-
+var refImagenAutor = ref()
+var refTextoAutor = ref()
 const archivarObra = async (credential, urlTexto, urlImagen) => {
   try {
     const docRef = await addDoc(collection(db, "autores"), {
       nombre: credential["fichaTécnica"]["nombreAutor"],
       muerte: credential["fichaTécnica"]["muerte"],
       vida: credential["fichaTécnica"]["vida"],
+      nombre_minusculas: credential["fichaTécnica"]["nombreAutor"].toLowerCase().split(' '),
       textoAutor: urlTexto,
       imagenAutor: urlImagen,
     });
     completadoExito.value = 1
+    refImagenAutor.value = ''
+    refTextoAutor.value = ''
+
     emit('actualizarLista') // Emitir evento para actualizar la lista del componente padre
     timeOut()
 
@@ -45,19 +50,26 @@ const archivarObra = async (credential, urlTexto, urlImagen) => {
 
 
 function subirTexto(credential) {
-  const storageRef = ref2(storage, credential["Texto"]["textoAutor"][0].name);
-  uploadBytes(storageRef, credential["Texto"]["textoAutor"][0]).then((snapshot) => {
+  let metadata = {
+    contentType: 'text/plain'
+  };
+  const storageRef = ref2(storage, refTextoAutor.value[0].name, metadata);
+  uploadBytes(storageRef, refTextoAutor.value[0].file).then((snapshot) => {
     getDownloadURL(storageRef).then((urlTexto) => {
+      console.log('texto: '+urlTexto)
       subirImagen(credential, urlTexto)
-
     })
   });
 }
 
 function subirImagen(credential, urlTexto) {
-  const storageRef2 = ref2(storage, credential["ImagenAutor"]["imagenAutor"][0].name);
-  uploadBytes(storageRef2, credential["ImagenAutor"]["imagenAutor"][0]).then((snapshot) => {
+  let metadata = {
+    contentType: 'image/jpeg'
+  };
+  const storageRef2 = ref2(storage, refImagenAutor.value[0].name, metadata);
+  uploadBytes(storageRef2, refImagenAutor.value[0].file).then((snapshot) => {
     getDownloadURL(storageRef2).then((urlImagen) => {
+      console.log('imagen: '+urlImagen)
       archivarObra(credential, urlTexto, urlImagen)
     })
   });
@@ -74,12 +86,7 @@ function guardarAutor(credentials) {
 }
 
 function test(credentials) {
-  for (const key in credentials) {
-    console.log(key)
-    if (key.startsWith("multi")) {
-      console.log(credentials[key])
-    }
-  }
+  console.log(refImagenAutor.value[0].file)
 }
 
 const timeOut = async () => {
@@ -118,18 +125,17 @@ const timeOut = async () => {
           
           <FormKit   type="text" name="muerte" label="Defunción" validation="required|number" placeholder="Ej:1924" />
  
- 
 
         </FormKit>
 
         <FormKit type="step" title="Retrato" name="ImagenAutor">
           <FormKit type="file" label="Imagen del Autor" name="imagenAutor" accept=".jpg, .jpeg, .webp"
-            help="Inserte una imagen del autor" multiple="false" validation="required"  />
+            help="Inserte una imagen del autor" multiple="false" validation="required" v-model="refImagenAutor" />
         </FormKit>
 
         <FormKit type="step" title="Texto" name="Texto">
           <FormKit type="file" label="Texto del Autor" name="textoAutor" accept=".txt"
-            help="Inserte un texto del autor en formato .txt" multiple="false" validation="required"  />
+            help="Inserte un texto del autor en formato .txt" multiple="false" validation="required" v-model="refTextoAutor" />
 
           <template #stepNext>
             <div class="formkit-outer" data-family="button" data-type="submit" data-empty="true">
@@ -142,6 +148,7 @@ const timeOut = async () => {
         </FormKit>
       </FormKit>
     </FormKit>
+  
 
 </template>
 

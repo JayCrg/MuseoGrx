@@ -1,15 +1,15 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import FooterComp from './components/FooterComp.vue';
 import CarruselFamiliares from './components/CarruselFamiliares.vue';
-import pruebamdb from './components/pruebamdb.vue';
+import Footer from './components/Footer.vue';
 import { onMounted } from 'vue';
+import { addDoc, collection, getFirestore, doc, getDoc, getDocs, query, where, orderBy, deleteDoc, updateDoc, setDoc } from 'firebase/firestore'
+import { db, storage } from './firebase.js'
+
 
 
 import Porcentaje from './components/Porcentaje.vue';
 import router from './router/index.js';
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from './firebase.js'
 
 import {
   MDBNavbar,
@@ -179,8 +179,58 @@ function formatearNombre(nombre) {
   return nombreFormateado[0]
 }
 
+var busqueda = ref('')
+var loading = ref(false)
+var posiblesCoincidencias = ref([])
+var palabraBuscada = ref('')
+function buscar(e) {
+  e.preventDefault();
+  if(busqueda.value != ""){
+    palabraBuscada.value = busqueda.value
+    posiblesCoincidencias.value = []
+    loading.value = true
+    buscarCoincidenciasObras()
+    buscarCoincidenciasAutores() 
 
+    router.push({ name: 'encontradas'})
+    busqueda.value = ''
+    
+    console.log(posiblesCoincidencias.value)    
+  }
+  
+}
 
+const buscarCoincidenciasObras = async () => {
+    console.log(busqueda.value)
+    const qObras = query(collection(db, "obras"), where('titulo_minusculas', 'array-contains-any', busqueda.value.toLowerCase().split(' ')), orderBy("titulo_minusculas"));
+    const querySnapshot2 = await getDocs(qObras);
+    querySnapshot2.forEach((doc) => {
+      posiblesCoincidencias.value.push({
+        titulo: doc.data().titulo,
+        id: doc.id,
+        imagen: doc.data().imagenObra,
+        tipo: 'obra'
+      });
+    });
+    loading.value = false
+    document.getElementsByTagName("body")[0].style.overflow = "auto"
+  }
+  
+  const buscarCoincidenciasAutores = async () => {
+    const qAutores = query(collection(db, "autores"), where('nombre_minusculas', 'array-contains-any', busqueda.value.toLowerCase().split(' ')), orderBy("nombre_minusculas"));
+  const querySnapshot = await getDocs(qAutores);
+  querySnapshot.forEach((doc) => {
+      posiblesCoincidencias.value.push({
+        titulo: doc.data().nombre,
+        id: doc.id,
+        imagen: doc.data().imagenAutor,
+        tipo: 'autor'
+      });
+  });
+  document.getElementsByTagName("body")[0].style.overflow = "auto"
+    loading.value = false
+
+}
 
 </script>
 
@@ -228,11 +278,12 @@ function formatearNombre(nombre) {
 
         </MDBNavbarNav>
         <!-- Search -->
-        <form class="d-flex input-group w-auto">
-          <input type="search" class="form-control" id="SearchBar" placeholder="Ej: Las Meninas" aria-label="Search" />
+        <form class="d-flex input-group w-auto" @submit="buscar">
+          <input type="search" class="form-control" id="SearchBar" v-model="busqueda" placeholder="Ej: Las Meninas" aria-label="Search" />
           <button class="btn btn-outline-primary customBtn-slide"> <font-awesome-icon :icon="['fas', 'magnifying-glass']"
               size="lg" /></button>
         </form>
+       
       </MDBCollapse>
     </MDBNavbar>
 
@@ -280,8 +331,8 @@ function formatearNombre(nombre) {
     </aside>
   </header>
 
-  <RouterView :adminConfirmado="isAdmin" :registrado="estaAutentificado" />
+  <RouterView :adminConfirmado="isAdmin" :registrado="estaAutentificado" :busqueda="posiblesCoincidencias" :palabra="palabraBuscada" :loading="loading"  />
 
-  <pruebamdb/>
+  <Footer/>
 </template>
 <style></style>

@@ -101,7 +101,7 @@ function resetarTarjeta(){
 <template>
   <div class="alert alert-success d-flex align-items-center" role="alert" v-if="validado == 1">
     <div>
-      Realizado con éxito, puede salir de esta p&aacute;gina y comprobar su correo
+      Realizado con éxito, puede salir de esta p&aacute;gina y comprobar su correo (si no encuentra el correo, revise spam)
     </div>
   </div>
   <div :class="{ 'alert alert-danger d-flex align-items-center': true }" role="alert" v-if="validado == 2">

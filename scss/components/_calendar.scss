@@ -1,18 +1,18 @@
 /// Personalización de los colores de la librería VCalendar
 
 .vc-blue {
-    --vc-accent-500: #c85c59;
-    --vc-accent-600: #AD4240;
+    --vc-accent-500: #c85c59!important;
+    --vc-accent-600: #AD4240!important;
 }
 
 .vc-light {
-    --vc-focus-ring: 0 0 0 2px #f7cece;
-    --vc-hover-bg: hsl(0, 72%, 89%);
-    --vc-nav-hover-bg: hsl(0, 72%, 89%);
-    --vc-header-arrow-hover-bg: hsl(0, 72%, 89%);
+    --vc-focus-ring: 0 0 0 2px #f7cece!important;
+    --vc-hover-bg: hsl(0, 72%, 89%)!important;
+    --vc-nav-hover-bg: hsl(0, 72%, 89%)!important;
+    --vc-header-arrow-hover-bg: hsl(0, 72%, 89%)!important;
 
     @include responsive(small) {
-        --vc-hover-bg: transparent;
+        --vc-hover-bg: transparent!important;
     }
 
 }

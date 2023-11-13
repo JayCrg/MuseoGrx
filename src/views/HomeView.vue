@@ -72,7 +72,7 @@ function siguiente(index) {
 <template>
   <Loading v-if="loading" />
   <main id="home">
-    <section :class="{ 'p-5 text-center bg-image': true, rellax: rellaxValue }" data-rellax-zindex="-1"
+    <section :class="{ 'p-5 text-center bg-image': true, 'rellax': rellaxValue }" data-rellax-zindex="-1"
       data-rellax-speed="-3" data-rellax-mobile-speed="-2" id="hero">
       <div class="mask">
         <div class="d-flex justify-content-center align-items-center h-100">
@@ -121,8 +121,8 @@ function siguiente(index) {
         </div>
       </template>
     </section>
-    <aside id="volverInicio" :class="{'invisible': invisible}">
-      <font-awesome-icon icon="angle-down" rotation="180" class="volver" @click="inicio" title="Volver al inicio" />
+    <aside id="volverInicio" :class="{'invisible': invisible}" @click="inicio">
+      <font-awesome-icon icon="angle-down" rotation="180" class="volver" title="Volver al inicio" />
     </aside>
   </main>
 </template>

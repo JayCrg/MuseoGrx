@@ -84,15 +84,19 @@
   }
   &-home{
     border: none;
-    font-size: size(mdd);
-    color: color(texto-claro);
+    font-size: size(mdd)!important;
+    color: color(texto-claro)!important;
     border-radius: 10px;
     width: min-content;
     height: min-content;
-    background-color:color(resaltado-aux);
+    background-color:color(resaltado-aux)!important;
     &:hover {
-      background-color: color(fondo-claro);
-      color: color(resaltado);
+      background-color: color(fondo-claro)!important;
+      color: color(resaltado)!important;
+    }
+    &:focus{
+      background-color: color(fondo-claro)!important;
+      color: color(resaltado)!important;
     }
     &:active {
       background-color: white!important;

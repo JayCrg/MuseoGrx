@@ -111,7 +111,7 @@
 ///@param {string} $width [inherit] -ancho de la imagen
 ///@param {string} $height [inherit] -alto de la imagen
 ///@param {string} $object-fit [fill] -object-fit de la imagen
-/// @param {string} $display [flex] -display de la imagen
+///@param {string} $display [flex] -display de la imagen
 @mixin displayImg($width: inherit, $height: inherit, $object-fit: fill, $display: flex) {
     width: inherit;
     height: inherit;
@@ -121,7 +121,7 @@
 
 /*darle estilo al logo de la pagina*/
 ///mixin de estilo al logo de la pagina
-/// @example
+///@example
 /// &-logo {
 ///     span {
 ///       font-size: size(mmd);
@@ -129,9 +129,9 @@
 ///       color: color(resaltado);
 ///    }
 /// }
-/// @param {string} $font-size [size(mmd)] -tamaño de la letra
-/// @param {string} $font-weight [weight(bold)] -peso de la letra
-/// @param {string} $color [color(resaltado)] -color de la letra
+///@param {string} $font-size [size(mmd)] -tamaño de la letra
+///@param {string} $font-weight [weight(bold)] -peso de la letra
+///@param {string} $color [color(resaltado)] -color de la letra
 @mixin logo($font-size: size(mdd), $font-weight: weight(bold), $color: color(resaltado)) {
     span {
         text-transform: uppercase;

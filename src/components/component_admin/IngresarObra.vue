@@ -16,6 +16,8 @@ const props = defineProps(['autores'])
 
 const emit = defineEmits(['actualizarLista'])
 
+var refImagenObra = ref()
+var refTextoObra = ref()
 
 const archivarObra = async (credential, urlTexto, urlImagen) => {
   try {
@@ -26,10 +28,13 @@ const archivarObra = async (credential, urlTexto, urlImagen) => {
       fecha: credential["fichaTécnica"]["fechaObra"],
       tecnica: credential["fichaTécnica"]["tecnicaObra"],
       dimensiones: credential["fichaTécnica"]["dimensionesObra"],
+      titulo_minusculas: credential["fichaTécnica"]["tituloObra"].toLowerCase().split(' '),
       textoObra: urlTexto,
       imagenObra: urlImagen,
     });
     completadoExito.value = 1
+    refImagenObra.value = ''
+    refTextoObra.value = ''
     emit('actualizarLista') // Emitir evento para actualizar la lista del componente padre
     timeOut()
 
@@ -49,8 +54,11 @@ const archivarObra = async (credential, urlTexto, urlImagen) => {
 
 
 function subirTexto(credential) {
-  const storageRef = ref2(storage, credential["Texto"]["textoObra"][0].name);
-  uploadBytes(storageRef, credential["Texto"]["textoObra"][0]).then((snapshot) => {
+  let metadata = {
+    contentType: 'text/plain'
+  };
+  const storageRef = ref2(storage, refTextoObra.value[0].name, metadata);
+  uploadBytes(storageRef, refTextoObra.value[0].file).then((snapshot) => {
     getDownloadURL(storageRef).then((urlTexto) => {
       subirImagen(credential, urlTexto)
 
@@ -59,8 +67,11 @@ function subirTexto(credential) {
 }
 
 function subirImagen(credential, urlTexto) {
-  const storageRef2 = ref2(storage, credential["ImagenObra"]["imagenObra"][0].name);
-  uploadBytes(storageRef2, credential["ImagenObra"]["imagenObra"][0]).then((snapshot) => {
+  let metadata = {
+    contentType: 'image/jpeg'
+  };
+  const storageRef2 = ref2(storage, refImagenObra.value[0].name, metadata);
+  uploadBytes(storageRef2, refImagenObra.value[0].file).then((snapshot) => {
     getDownloadURL(storageRef2).then((urlImagen) => {
       archivarObra(credential, urlTexto, urlImagen)
     })
@@ -119,7 +130,7 @@ const timeOut = async () => {
 
           <FormKit type="text" name="numeroId" label="Número de Id" validation="required|alphanumeric|length:6,6" placeholder="Ej:000000"/>
  
-          <FormKit  type="text" name="tituloObra" label="Título" validation="required|alpha_spaces:latin" placeholder="Ej:Las meninas" />
+          <FormKit  type="text" name="tituloObra" label="Título" validation="required|alpha_spaces" placeholder="Ej:Las meninas" />
  
           <FormKit type="select" name="autorObra" label="Autor" validation="required" :options="autores" placeholder="Selecciona autor"/>
  
@@ -134,12 +145,12 @@ const timeOut = async () => {
 
         <FormKit type="step" title="Obra" name="ImagenObra">
           <FormKit type="file" label="Imagen de la obra" name="imagenObra" accept=".jpg, .jpeg, .webp"
-            help="Inserte una imagen de la obra" multiple="false" validation="required"  />
+            help="Inserte una imagen de la obra" multiple="false" validation="required" v-model="refImagenObra" />
         </FormKit>
 
         <FormKit type="step" title="Texto" name="Texto">
           <FormKit type="file" label="Texto de la obra" name="textoObra" accept=".txt"
-            help="Inserte un texto de la obra en formato .txt" multiple="false" validation="required" />
+            help="Inserte un texto de la obra en formato .txt" multiple="false" validation="required" v-model="refTextoObra" />
 
           <template #stepNext>
             <div class="formkit-outer" data-family="button" data-type="submit" data-empty="true">

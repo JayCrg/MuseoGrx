@@ -17,10 +17,16 @@ const emit = defineEmits(['actualizarLista'])
 
 
 const editarAdmin = async (credential) => {
+    console.log(props.usuarios)
+    console.log(credential["user"])
     let admin = false
     if (props.usuarios["admin"].some(item => item.value === credential["user"])) {
         admin = true
     }
+    if(admin && props.usuarios["admin"].length == 1){
+        completadoExito.value = 2
+        timeOut()
+    }else{
     try {
         const docRef = await updateDoc(doc(db, "usuarios", credential["user"]), {
             admin: !admin,
@@ -32,6 +38,7 @@ const editarAdmin = async (credential) => {
         console.error("Error adding document: ", e);
         completadoExito.value = 2
         timeOut()
+    }
     }
 }
 
@@ -54,7 +61,7 @@ const timeOut = async () => {
     <div :class="{ shake: true, 'alert alert-danger d-flex align-items-center': true }" role="alert"
         v-if="completadoExito == 2">
         <div>
-            Error al actualizar los usuarios
+            Error al actualizar los usuarios, puede que no haya suficientes usuarios administradores
         </div>
     </div>
     <div>
