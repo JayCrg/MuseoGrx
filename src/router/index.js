@@ -46,6 +46,7 @@ const router = createRouter({
     {
       path: '/detalle/:tipo/:id',
       name: 'detalle',
+      props: true,
       component: DetailsView
     },
     // {

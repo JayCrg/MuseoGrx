@@ -64,25 +64,37 @@ const archivarObra = async (credential, urlTexto, urlImagen) => {
 
 function subirTexto(credential) {
   if (credential["Texto"]["textoObra"][0] == undefined || credential["Texto"]["textoObra"][0] == "") {
-    subirImagen(credential, credential["Texto"]["urlTextoObra"])
+    subirImagen(credential, credential["Texto"]["textoPrecedente"])
   }
   else {
-    let metadata = {
-      contentType: 'text/plain'
-    };
-    const storageRef = ref2(storage, refTextoObra.value[0].name, metadata);
-    uploadBytes(storageRef, refTextoObra.value[0].file).then((snapshot) => {
-      getDownloadURL(storageRef).then((urlTexto) => {
-        subirImagen(credential, urlTexto)
+    // let metadata = {
+    //   contentType: 'text/plain'
+    // };
+    // const storageRef = ref2(storage, refTextoObra.value[0].name, metadata);
+    // uploadBytes(storageRef, refTextoObra.value[0].file).then((snapshot) => {
+    //   getDownloadURL(storageRef).then((urlTexto) => {
+    //     subirImagen(credential, urlTexto)
 
-      })
-    });
+    //   })
+    // });
+    let lector = new FileReader();
+  lector.onload = function (evento) {
+    let textoObra = evento.target.result.split('\n');
+    for (let i = 0; i < textoObra.length; i++) {
+      if (textoObra[i] === "" || textoObra[i] === '\r') {
+        textoObra.splice(i, 1); 
+        i--; 
+      }
+    }
+    subirImagen(credential, textoObra)
+  };
+  lector.readAsText(refTextoObra.value[0].file);
   }
 }
 
 function subirImagen(credential, urlTexto) {
   if(credential["ImagenObra"]["imagenObra"][0]==undefined || credential["ImagenObra"]["imagenObra"][0]==""){
-    archivarObra(credential, urlTexto, credential["ImagenObra"]["urlImagenObra"])
+    archivarObra(credential, urlTexto, credential["ImagenObra"]["imagenPrecedente"])
   }
   else{
   let metadata = {
@@ -99,9 +111,7 @@ function subirImagen(credential, urlTexto) {
 
 function editarObra(credentials) {
   for (const key in credentials) {
-    console.log(key)
     if (key.startsWith("multi")) {
-      console.log(credentials[key])
       subirTexto(credentials[key])
     }
   }
@@ -177,7 +187,7 @@ const cargarObra = async (credentials) => {
         <FormKit v-model="autorObra" type="select" name="autorObra" label="Autor" validation="required" :options="autores"
           placeholder="Selecciona autor" />
 
-        <FormKit v-model="fechaObra" type="text" name="fechaObra" label="Fecha" validation="required|number"
+        <FormKit v-model="fechaObra" type="text" name="fechaObra" label="Fecha" validation="required"
           placeholder="Ej:1843" />
 
         <FormKit v-model="tecnicaObra" type="text" name="tecnicaObra" label="Técnica" validation="required"
@@ -194,7 +204,7 @@ const cargarObra = async (credentials) => {
         <FormKit type="file" label="Imagen de la obra" name="imagenObra" accept=".jpg, .jpeg, .webp"
           help="Inserte una imagen de la obra" multiple="false" v-model="refImagenObra" />
 
-        <FormKit name="urlImagenObra" v-model="imagenObra" type="hidden" validation="required" />
+        <FormKit name="imagenPrecedente" v-model="imagenObra" type="hidden" validation="required" />
 
       </FormKit>
 
@@ -202,7 +212,7 @@ const cargarObra = async (credentials) => {
         <FormKit type="file" label="Texto de la obra" name="textoObra" accept=".txt"
           help="Inserte un texto de la obra en formato .txt" multiple="false" v-model="refTextoObra" />
 
-        <FormKit name="urlTextoObra" v-model="textoObra" type="hidden" validation="required" />
+        <FormKit name="textoPrecedente" v-model="textoObra" type="hidden" validation="required" />
 
 
         <template #stepNext>

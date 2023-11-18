@@ -45,6 +45,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "cors": "^2.8.5",
     "node-sass": "^8.0.0",
     "sass": "^1.62.1",
     "sassdoc": "^2.7.4",

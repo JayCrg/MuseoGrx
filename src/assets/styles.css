@@ -499,6 +499,38 @@ main {
           height: inherit;
           border-radius: 50%; }
 
+#detalle .imagenPresentacion {
+  width: 100%;
+  height: 30vh;
+  position: relative;
+  top: -1rem; }
+  #detalle .imagenPresentacion img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    object-position: center; }
+  #detalle .imagenPresentacion div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end; }
+    #detalle .imagenPresentacion div h5 {
+      display: none;
+      color: #e0e4e3;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 1rem; }
+    #detalle .imagenPresentacion div:hover {
+      transition: background-color 0.3s ease;
+      background-color: rgba(0, 0, 0, 0.5); }
+      #detalle .imagenPresentacion div:hover h5 {
+        display: block; }
+
 form .form-control {
   border-radius: 0.5rem !important; }
   form .form-control-formkit {
@@ -597,21 +629,21 @@ header aside .icono-github:hover {
     height: 100px;
     animation: pulse 1s infinite; }
 
-#hero {
+.hero {
   background-image: url("/miradorHD.jpg");
   background-size: cover;
   background-position: center center;
   height: 92vh; }
-  #hero .mask {
+  .hero .mask {
     background-color: rgba(0, 0, 0, 0);
     transition: background-color 0.3s ease; }
-    #hero .mask .texto-hero {
+    .hero .mask .texto-hero {
       color: rgba(0, 0, 0, 0);
       transition: color 0.3s ease, display 0.3s ease;
       /* Agrega transiciones para color y display */ }
-    #hero .mask:hover {
+    .hero .mask:hover {
       background-color: rgba(0, 0, 0, 0.5); }
-      #hero .mask:hover .texto-hero {
+      .hero .mask:hover .texto-hero {
         display: block;
         color: white; }
 

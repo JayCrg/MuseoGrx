@@ -72,8 +72,8 @@ function siguiente(index) {
 <template>
   <Loading v-if="loading" />
   <main id="home">
-    <section :class="{ 'p-5 text-center bg-image': true, 'rellax': rellaxValue }" data-rellax-zindex="-1"
-      data-rellax-speed="-3" data-rellax-mobile-speed="-2" id="hero">
+    <section :class="{ 'p-5 text-center bg-image hero': true, 'rellax': rellaxValue }" data-rellax-zindex="-1"
+      data-rellax-speed="-3" data-rellax-mobile-speed="-2">
       <div class="mask">
         <div class="d-flex justify-content-center align-items-center h-100">
           <div class="text">

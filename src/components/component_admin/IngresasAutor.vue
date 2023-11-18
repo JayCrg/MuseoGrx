@@ -11,22 +11,23 @@ import { useCollection, useFirestore } from 'vuefire'
 
 
 var completadoExito = ref(0)
-
+var textoAutor = ref()
 
 const emit = defineEmits(['actualizarLista'])
 
 var refImagenAutor = ref()
 var refTextoAutor = ref()
-const archivarObra = async (credential, urlTexto, urlImagen) => {
+const archivarObra = async (credential, textoAutor, urlImagen) => {
   try {
     const docRef = await addDoc(collection(db, "autores"), {
       nombre: credential["fichaTécnica"]["nombreAutor"],
       muerte: credential["fichaTécnica"]["muerte"],
       vida: credential["fichaTécnica"]["vida"],
       nombre_minusculas: credential["fichaTécnica"]["nombreAutor"].toLowerCase().split(' '),
-      textoAutor: urlTexto,
+      textoAutor: textoAutor,
       imagenAutor: urlImagen,
     });
+    textoAutor.value = ''
     completadoExito.value = 1
     refImagenAutor.value = ''
     refTextoAutor.value = ''
@@ -49,44 +50,52 @@ const archivarObra = async (credential, urlTexto, urlImagen) => {
 
 
 
-function subirTexto(credential) {
-  let metadata = {
-    contentType: 'text/plain'
-  };
-  const storageRef = ref2(storage, refTextoAutor.value[0].name, metadata);
-  uploadBytes(storageRef, refTextoAutor.value[0].file).then((snapshot) => {
-    getDownloadURL(storageRef).then((urlTexto) => {
-      console.log('texto: '+urlTexto)
-      subirImagen(credential, urlTexto)
-    })
-  });
-}
+// function subirTexto(credential) {
+//   let metadata = {
+//     contentType: 'text/plain'
+//   };
+//   const storageRef = ref2(storage, refTextoAutor.value[0].name, metadata);
+//   uploadBytes(storageRef, refTextoAutor.value[0].file).then((snapshot) => {
+//     getDownloadURL(storageRef).then((urlTexto) => {
+//       console.log('texto: '+urlTexto)
+//       subirImagen(credential, urlTexto)
+//     })
+//   });
+// }
 
-function subirImagen(credential, urlTexto) {
+function subirImagen(credential, textoAutor) {
   let metadata = {
     contentType: 'image/jpeg'
   };
   const storageRef2 = ref2(storage, refImagenAutor.value[0].name, metadata);
   uploadBytes(storageRef2, refImagenAutor.value[0].file).then((snapshot) => {
     getDownloadURL(storageRef2).then((urlImagen) => {
-      console.log('imagen: '+urlImagen)
-      archivarObra(credential, urlTexto, urlImagen)
+      archivarObra(credential, textoAutor, urlImagen)
     })
   });
 }
 
 function guardarAutor(credentials) {
   for (const key in credentials) {
-    console.log(key)
     if (key.startsWith("multi")) {
-      console.log(credentials[key])
       subirTexto(credentials[key])
     }
   }
 }
 
-function test(credentials) {
-  console.log(refImagenAutor.value[0].file)
+function subirTexto(credential) {
+  let lector = new FileReader();
+  lector.onload = function (evento) {
+    let textoAutor = evento.target.result.split('\n');
+    for (let i = 0; i < textoAutor.length; i++) {
+      if (textoAutor[i] === "" || textoAutor[i] === '\r') {
+        textoAutor.splice(i, 1); // Elimina el elemento
+        i--;  // Ajusta el índice para compensar la eliminación
+      }
+    }
+    subirImagen(credential, textoAutor)
+  };
+  lector.readAsText(refTextoAutor.value[0].file);
 }
 
 const timeOut = async () => {

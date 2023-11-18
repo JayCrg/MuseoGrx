@@ -37,9 +37,6 @@ const archivarObra = async (credential, urlTexto, urlImagen) => {
       textoAutor: urlTexto,
       imagenAutor: urlImagen,
     });
-    console.log(credential);
-    console.log('archivo texto' + urlTexto)
-    console.log('archivo imagen' + urlImagen)
     completadoExito.value = 1
     emit('actualizarLista') // Emitir evento para actualizar la lista del componente padre
     timeOut()
@@ -56,21 +53,34 @@ const archivarObra = async (credential, urlTexto, urlImagen) => {
 
 function subirTexto(credential) {
   if (credential["Texto"]["textoAutor"][0] == undefined || credential["Texto"]["textoAutor"][0] == "") {
-    subirImagen(credential, credential["Texto"]["urlTextoAutor"])
+    subirImagen(credential, credential["Texto"]["textoPrecedente"])
   }
   else {
-    const storageRef = ref2(storage, refTextoAutor.value[0].name, metadata);
-    uploadBytes(storageRef, refTextoAutor.value[0].file).then((snapshot) => {
-      getDownloadURL(storageRef).then((urlTexto) => {
-        subirImagen(credential, urlTexto)
-      })
-    });
+    // const storageRef = ref2(storage, refTextoAutor.value[0].name, metadata);
+    // uploadBytes(storageRef, refTextoAutor.value[0].file).then((snapshot) => {
+    //   getDownloadURL(storageRef).then((urlTexto) => {
+    //     subirImagen(credential, urlTexto)
+    //   })
+    // });
+    let lector = new FileReader();
+  lector.onload = function (evento) {
+    let textoAutor = evento.target.result.split('\n');
+    for (let i = 0; i < textoAutor.length; i++) {
+      if (textoAutor[i] === "" || textoAutor[i] ==='\r') {
+        textoAutor.splice(i, 1); 
+        i--; 
+      }
+    }
+    subirImagen(credential, textoAutor)
+  };
+  lector.readAsText(refTextoAutor.value[0].file);
+
   }
 }
 
 function subirImagen(credential, urlTexto) {
   if (credential["ImagenAutor"]["imagenAutor"][0] == undefined || credential["ImagenAutor"]["imagenAutor"][0] == "") {
-    archivarObra(credential, urlTexto, credential["ImagenAutor"]["urlImagenAutor"])
+    archivarObra(credential, urlTexto, credential["ImagenAutor"]["imagenPrecedente"])
   }
   else {
     const storageRef2 = ref2(storage, refImagenAutor.value[0].name, metadata);
@@ -84,9 +94,7 @@ function subirImagen(credential, urlTexto) {
 
 function editarObra(credentials) {
   for (const key in credentials) {
-    console.log(key)
     if (key.startsWith("multi")) {
-      console.log(credentials[key])
       subirTexto(credentials[key])
     }
   }
@@ -107,12 +115,10 @@ const cargarAutor = async (credentials) => {
     textoAutor.value = docSnap.data()["textoAutor"]
     imagenAutor.value = docSnap.data()["imagenAutor"]
     idDocument.value = docSnap.id
-    console.log("Document data:", textoAutor.value);
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
   }
-
 }
 
 
@@ -156,7 +162,7 @@ const cargarAutor = async (credentials) => {
         <FormKit type="file" label="Imagen de la obra" name="imagenAutor" accept=".jpg, .jpeg, .webp"
           help="Inserte una imagen de la obra" multiple="false" v-model="refImagenAutor" />
 
-        <FormKit name="urlImagenAutor" v-model="imagenAutor" type="hidden" validation="required" />
+        <FormKit name="imagenPrecedente" v-model="imagenAutor" type="hidden" validation="required" />
 
       </FormKit>
 
@@ -164,7 +170,7 @@ const cargarAutor = async (credentials) => {
         <FormKit type="file" label="Texto del autor" name="textoAutor" accept=".txt"
           help="Inserte un texto del autor en formato .txt" multiple="false" v-model="refTextoAutor" />
 
-        <FormKit name="urlTextoAutor" v-model="textoAutor" type="hidden" validation="required" />
+        <FormKit name="textoPrecedente" v-model="textoAutor" type="hidden" validation="required" />
 
 
         <template #stepNext>
