@@ -19,7 +19,15 @@ onMounted(() => {
 });
 
 function enviarADetalle(id, tipo) {
-    router.push({ name: 'detalle', params: { tipo: tipo, id: id } })
+    if(tipo == "autor"){
+        router.push({ name: 'detalleAutor', params: { id: id } })
+    }
+    else if(tipo == "obra"){
+        router.push({ name: 'detalle', params: { id: id } })
+    }
+    // else{
+    //     router.push({ name: 'not-found' })
+    // }
 }
 
 </script>

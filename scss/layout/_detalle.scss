@@ -186,19 +186,23 @@
 // }
 
 ///Layout detalle
-#detalle{
-    .imagenPresentacion{
+#detalle {
+    .imagenPresentacion {
         width: 100%;
         height: 30vh;
         position: relative;
         top: -1rem;
-        img{
+
+        img {
             width: inherit;
             height: inherit;
-            object-fit:cover;
+            object-fit: cover;
             object-position: center;
-        };
-        div{
+        }
+
+        ;
+
+        div {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -207,7 +211,8 @@
             display: flex;
             justify-content: flex-start;
             align-items: flex-end;
-            h5{
+
+            h5 {
                 display: none;
                 color: lighten(color(texto-claro), 10%);
                 font-size: size(mdd);
@@ -215,14 +220,196 @@
                 text-align: center;
                 padding: 1rem;
             }
-            &:hover{
-                h5{
+
+            &:hover {
+                h5 {
                     display: block;
                 }
+
                 transition: background-color 0.3s ease;
-                background-color: rgba(0,0,0,.5);
+                background-color: rgba(0, 0, 0, .5);
+            }
+        }
+    }
+
+    #detalleObra {
+        @include responsive(small) {
+            @include gridposition(repeat(3, min-content), repeat(8, minmax(1fr, 10rem))); //rows, columns
+        }
+
+        @include gridposition(repeat(2, min-content), repeat(8, 1fr));
+
+
+        .cuerpoInformacion {
+            @include responsive(small) {
+                grid-column: 2/-2;
+                grid-row: 1/2;
+            }
+
+            grid-column: 3/7;
+            grid-row: 1/2;
+            align-self:flex-start;
+
+            .cabeceraInformacion {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            padding: 1rem;
+
+            h3 {
+                font-size: size(lg);
+            }
+
+            p {
+                font-size: size(md);
+
+                .subtitulo {
+                    font-size: size(sm);
+
+                    @include responsive(large) {
+                        font-size: size(md);
+                    }
+                }
+            }
+        }
+
+        .asideAutor {
+            padding: 1rem;
+            grid-column: 2/3;
+            grid-row: 1/2;
+            align-self: flex-start;
+            @include flexposition(column, flex-start, flex-start);
+
+            h3 {
+                font-size: size(mdd);
+            }
+
+            p.subtitulo {
+                font-size: size(sm);
+
+                @include responsive(large) {
+                    font-size: size(md);
+                }
+
+                margin-bottom: 0.5rem;
+            }
+
+            .imgAux {
+                width: 10rem;
+                height: 10rem;
+                align-self: center;
+
+                img {
+                    width: inherit;
+                    height: inherit;
+                    object-fit: cover;
+                }
+            }
+
+            .textoAux {
+                margin-top: .5rem;
+            }
+
+            @include responsive(small) {
+                grid-column: 2/-2;
+                grid-row: 2/3;
+
+                .imgAux {
+                    width: 100%;
+                    height: 30vh;
+
+                    img {
+                        width: inherit;
+                        height: inherit;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+            }
+
+            @include responsive(mobile) {
+                .imgAux {
+                    height: 30vh;
+                }
+            }
+        }
+
+        .fichaTecnica {
+            @include responsive(small) {
+                grid-column: 2/-2;
+                grid-row: 3/4;
+            }
+
+            grid-column: 2/-2;
+            grid-row: 3/4;
+            @include flexposition(column);
+
+            .titulo-con-lineas {
+                position: relative;
+                display: inline-block;
+                h3 {
+                    font-size: size(lg);
+                    text-transform: capitalize;
+                }
+                &::before,&::after{
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    width: 20vw;
+                    height: 1px;
+                    background-color: color(texto-claro-aux); // Puedes ajustar el color
+                }
+                &::before {
+                    right: 100%;
+                    margin-right: 15px; // Espaciado entre el título y la línea
+                }
+                &::after {
+                    left: 100%;
+                    margin-left: 15px; // Espaciado entre el título y la línea
+                }
+                @include responsive(small) {
+                    &::before,&::after{
+                        display: none;
+                    }
+                }
+              }
+                
+                .cartilla {  
+                    margin-top: 1rem;
+                    @include flexposition(row, center );
+                    gap:1rem;
+                    @include responsive(small) {
+                        flex-direction: column;
+                    }
+                    .imgFT {
+                    width: 35vw;
+                    cursor: pointer;
+                    @include responsive(small) {
+                        width: 100%
+                        ;
+                    }
+
+                    img {
+                        width: inherit;
+                        object-fit: cover;
+                        // object-position: center;
+                    }
+                }
+                .infoFT{
+                    @include responsive(small) {
+                        align-self: flex-start;
+                    }
+                    p{
+                        &[title='Ir a autor']{
+                            cursor: pointer;
+                            
+                        }
+
+                    }
+                }
             }
         }
     }
 }
-

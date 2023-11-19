@@ -6,6 +6,7 @@ import AdminView from '../views/AdminView.vue'
 import PrivacyView from '../views/PrivacyView.vue'
 import FoundOptionsView from '../views/FoundOptionsView.vue'
 import DetailsView from '../views/DetailsView.vue'
+import DetailsAuthorView from '../views/DetailsAuthorView.vue'
 import { ref } from 'vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -44,11 +45,22 @@ const router = createRouter({
       component: FoundOptionsView
     },
     {
-      path: '/detalle/:tipo/:id',
+      path: '/detalle/obra/:id',
       name: 'detalle',
       props: true,
       component: DetailsView
     },
+    {
+      path: '/detalle/autor/:id',
+      name: 'detalleAutor',
+      props: true,
+      component: DetailsAuthorView
+    },
+    // {
+    //   path: '*', // Add the "Not Found" route
+    //   name: 'not-found',
+    //   component: NotFoundView
+    // },  
     // {
     //   path: '/about',
     //   name: 'about',

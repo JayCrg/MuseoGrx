@@ -531,6 +531,139 @@ main {
       #detalle .imagenPresentacion div:hover h5 {
         display: block; }
 
+#detalle #detalleObra {
+  display: grid;
+  grid-template-rows: repeat(2, min-content);
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1rem; }
+  @media (max-width: 767px) {
+    #detalle #detalleObra {
+      display: grid;
+      grid-template-rows: repeat(3, min-content);
+      grid-template-columns: repeat(8, minmax(1fr, 10rem));
+      grid-gap: 1rem; } }
+  #detalle #detalleObra .cuerpoInformacion {
+    grid-column: 3/7;
+    grid-row: 1/2;
+    align-self: flex-start;
+    padding: 1rem; }
+    @media (max-width: 767px) {
+      #detalle #detalleObra .cuerpoInformacion {
+        grid-column: 2/-2;
+        grid-row: 1/2; } }
+    #detalle #detalleObra .cuerpoInformacion .cabeceraInformacion {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; }
+    #detalle #detalleObra .cuerpoInformacion h3 {
+      font-size: 3rem; }
+    #detalle #detalleObra .cuerpoInformacion p {
+      font-size: 1rem; }
+      #detalle #detalleObra .cuerpoInformacion p .subtitulo {
+        font-size: 0.8rem; }
+        @media (min-width: 1201px) {
+          #detalle #detalleObra .cuerpoInformacion p .subtitulo {
+            font-size: 1rem; } }
+  #detalle #detalleObra .asideAutor {
+    padding: 1rem;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; }
+    #detalle #detalleObra .asideAutor h3 {
+      font-size: 1.5rem; }
+    #detalle #detalleObra .asideAutor p.subtitulo {
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem; }
+      @media (min-width: 1201px) {
+        #detalle #detalleObra .asideAutor p.subtitulo {
+          font-size: 1rem; } }
+    #detalle #detalleObra .asideAutor .imgAux {
+      width: 10rem;
+      height: 10rem;
+      align-self: center; }
+      #detalle #detalleObra .asideAutor .imgAux img {
+        width: inherit;
+        height: inherit;
+        object-fit: cover; }
+    #detalle #detalleObra .asideAutor .textoAux {
+      margin-top: .5rem; }
+    @media (max-width: 767px) {
+      #detalle #detalleObra .asideAutor {
+        grid-column: 2/-2;
+        grid-row: 2/3; }
+        #detalle #detalleObra .asideAutor .imgAux {
+          width: 100%;
+          height: 30vh; }
+          #detalle #detalleObra .asideAutor .imgAux img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            object-position: center; } }
+    @media (max-width: 426px) {
+      #detalle #detalleObra .asideAutor .imgAux {
+        height: 30vh; } }
+  #detalle #detalleObra .fichaTecnica {
+    grid-column: 2/-2;
+    grid-row: 3/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    @media (max-width: 767px) {
+      #detalle #detalleObra .fichaTecnica {
+        grid-column: 2/-2;
+        grid-row: 3/4; } }
+    #detalle #detalleObra .fichaTecnica .titulo-con-lineas {
+      position: relative;
+      display: inline-block; }
+      #detalle #detalleObra .fichaTecnica .titulo-con-lineas h3 {
+        font-size: 3rem;
+        text-transform: capitalize; }
+      #detalle #detalleObra .fichaTecnica .titulo-con-lineas::before, #detalle #detalleObra .fichaTecnica .titulo-con-lineas::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 20vw;
+        height: 1px;
+        background-color: #5d5c5d; }
+      #detalle #detalleObra .fichaTecnica .titulo-con-lineas::before {
+        right: 100%;
+        margin-right: 15px; }
+      #detalle #detalleObra .fichaTecnica .titulo-con-lineas::after {
+        left: 100%;
+        margin-left: 15px; }
+      @media (max-width: 767px) {
+        #detalle #detalleObra .fichaTecnica .titulo-con-lineas::before, #detalle #detalleObra .fichaTecnica .titulo-con-lineas::after {
+          display: none; } }
+    #detalle #detalleObra .fichaTecnica .cartilla {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem; }
+      @media (max-width: 767px) {
+        #detalle #detalleObra .fichaTecnica .cartilla {
+          flex-direction: column; } }
+      #detalle #detalleObra .fichaTecnica .cartilla .imgFT {
+        width: 35vw;
+        cursor: pointer; }
+        @media (max-width: 767px) {
+          #detalle #detalleObra .fichaTecnica .cartilla .imgFT {
+            width: 100%; } }
+        #detalle #detalleObra .fichaTecnica .cartilla .imgFT img {
+          width: inherit;
+          object-fit: cover; }
+      @media (max-width: 767px) {
+        #detalle #detalleObra .fichaTecnica .cartilla .infoFT {
+          align-self: flex-start; } }
+      #detalle #detalleObra .fichaTecnica .cartilla .infoFT p[title='Ir a autor'] {
+        cursor: pointer; }
+
 form .form-control {
   border-radius: 0.5rem !important; }
   form .form-control-formkit {
