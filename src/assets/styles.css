@@ -457,7 +457,7 @@ main {
     width: 70%;
     max-width: 50rem;
     margin-left: 10%;
-    max-height: 60vh;
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
@@ -531,6 +531,60 @@ main {
       #detalle .imagenPresentacion div:hover h5 {
         display: block; }
 
+#detalle .cuerpoInformacion {
+  align-self: flex-start;
+  padding: 1rem; }
+  #detalle .cuerpoInformacion.infoobra {
+    grid-column: 3/7;
+    grid-row: 1/2; }
+    @media (max-width: 767px) {
+      #detalle .cuerpoInformacion.infoobra {
+        grid-column: 2/-2;
+        grid-row: 1/2; } }
+  #detalle .cuerpoInformacion.infoautor {
+    grid-column: 2/-3;
+    grid-row: 1/2; }
+    @media (max-width: 767px) {
+      #detalle .cuerpoInformacion.infoautor {
+        grid-column: 2/-2;
+        grid-row: 1/2; } }
+  #detalle .cuerpoInformacion .cabeceraInformacion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; }
+  #detalle .cuerpoInformacion h3 {
+    font-size: 3rem; }
+  #detalle .cuerpoInformacion p {
+    font-size: 1rem; }
+    #detalle .cuerpoInformacion p .subtitulo {
+      font-size: 0.8rem; }
+      @media (min-width: 1201px) {
+        #detalle .cuerpoInformacion p .subtitulo {
+          font-size: 1rem; } }
+
+#detalle .titulo-con-lineas {
+  position: relative;
+  display: inline-block; }
+  #detalle .titulo-con-lineas h3 {
+    font-size: 3rem;
+    text-transform: capitalize; }
+  #detalle .titulo-con-lineas::before, #detalle .titulo-con-lineas::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20vw;
+    height: 1px;
+    background-color: #5d5c5d; }
+  #detalle .titulo-con-lineas::before {
+    right: 100%;
+    margin-right: 15px; }
+  #detalle .titulo-con-lineas::after {
+    left: 100%;
+    margin-left: 15px; }
+  @media (max-width: 767px) {
+    #detalle .titulo-con-lineas::before, #detalle .titulo-con-lineas::after {
+      display: none; } }
+
 #detalle #detalleObra {
   display: grid;
   grid-template-rows: repeat(2, min-content);
@@ -542,28 +596,6 @@ main {
       grid-template-rows: repeat(3, min-content);
       grid-template-columns: repeat(8, minmax(1fr, 10rem));
       grid-gap: 1rem; } }
-  #detalle #detalleObra .cuerpoInformacion {
-    grid-column: 3/7;
-    grid-row: 1/2;
-    align-self: flex-start;
-    padding: 1rem; }
-    @media (max-width: 767px) {
-      #detalle #detalleObra .cuerpoInformacion {
-        grid-column: 2/-2;
-        grid-row: 1/2; } }
-    #detalle #detalleObra .cuerpoInformacion .cabeceraInformacion {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start; }
-    #detalle #detalleObra .cuerpoInformacion h3 {
-      font-size: 3rem; }
-    #detalle #detalleObra .cuerpoInformacion p {
-      font-size: 1rem; }
-      #detalle #detalleObra .cuerpoInformacion p .subtitulo {
-        font-size: 0.8rem; }
-        @media (min-width: 1201px) {
-          #detalle #detalleObra .cuerpoInformacion p .subtitulo {
-            font-size: 1rem; } }
   #detalle #detalleObra .asideAutor {
     padding: 1rem;
     grid-column: 2/3;
@@ -617,28 +649,6 @@ main {
       #detalle #detalleObra .fichaTecnica {
         grid-column: 2/-2;
         grid-row: 3/4; } }
-    #detalle #detalleObra .fichaTecnica .titulo-con-lineas {
-      position: relative;
-      display: inline-block; }
-      #detalle #detalleObra .fichaTecnica .titulo-con-lineas h3 {
-        font-size: 3rem;
-        text-transform: capitalize; }
-      #detalle #detalleObra .fichaTecnica .titulo-con-lineas::before, #detalle #detalleObra .fichaTecnica .titulo-con-lineas::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        width: 20vw;
-        height: 1px;
-        background-color: #5d5c5d; }
-      #detalle #detalleObra .fichaTecnica .titulo-con-lineas::before {
-        right: 100%;
-        margin-right: 15px; }
-      #detalle #detalleObra .fichaTecnica .titulo-con-lineas::after {
-        left: 100%;
-        margin-left: 15px; }
-      @media (max-width: 767px) {
-        #detalle #detalleObra .fichaTecnica .titulo-con-lineas::before, #detalle #detalleObra .fichaTecnica .titulo-con-lineas::after {
-          display: none; } }
     #detalle #detalleObra .fichaTecnica .cartilla {
       margin-top: 1rem;
       display: flex;
@@ -651,7 +661,7 @@ main {
           flex-direction: column; } }
       #detalle #detalleObra .fichaTecnica .cartilla .imgFT {
         width: 35vw;
-        cursor: pointer; }
+        cursor: zoom-in; }
         @media (max-width: 767px) {
           #detalle #detalleObra .fichaTecnica .cartilla .imgFT {
             width: 100%; } }
@@ -663,6 +673,77 @@ main {
           align-self: flex-start; } }
       #detalle #detalleObra .fichaTecnica .cartilla .infoFT p[title='Ir a autor'] {
         cursor: pointer; }
+
+#detalle #detalleAutor {
+  display: grid;
+  grid-template-rows: repeat(2, min-content);
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1rem; }
+  @media (max-width: 767px) {
+    #detalle #detalleAutor {
+      display: grid;
+      grid-template-rows: repeat(3, min-content);
+      grid-template-columns: repeat(8, minmax(1fr, 10rem));
+      grid-gap: 1rem; } }
+  #detalle #detalleAutor .coleccionObras {
+    grid-column: 2/-2;
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    #detalle #detalleAutor .coleccionObras .galeria {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 1rem; }
+      @media (max-width: 767px) {
+        #detalle #detalleAutor .coleccionObras .galeria {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; } }
+      #detalle #detalleAutor .coleccionObras .galeria .obra {
+        width: min-content;
+        height: min-content;
+        position: relative;
+        cursor: pointer; }
+        #detalle #detalleAutor .coleccionObras .galeria .obra div:first-of-type {
+          width: 15rem;
+          height: 15rem;
+          background-color: #2d2c2c;
+          margin-bottom: .5rem; }
+          #detalle #detalleAutor .coleccionObras .galeria .obra div:first-of-type img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            object-position: center; }
+          #detalle #detalleAutor .coleccionObras .galeria .obra div:first-of-type :hover {
+            opacity: .7;
+            transition: all .1s ease; }
+        #detalle #detalleAutor .coleccionObras .galeria .obra .titulo {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          font-size: 0.8rem; }
+
+.cargarMas {
+  background-color: #eb8484;
+  border-radius: 5px;
+  padding: .75rem 1rem;
+  margin: 1rem 0;
+  color: #030303;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: all .1s ease-in-out; }
+  .cargarMas:hover {
+    background-color: #f9f9f8;
+    color: #AD4240;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; }
+  .cargarMas:active {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; }
 
 form .form-control {
   border-radius: 0.5rem !important; }

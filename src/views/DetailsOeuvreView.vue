@@ -124,7 +124,7 @@ function irAutor() {
                 </div>
             </section>
             <section id="detalleObra">
-                <article class="cuerpoInformacion">
+                <article class="cuerpoInformacion infoobra">
                     <div class="cabeceraInformacion">
                         <h3>{{ nombreObra }}</h3>
                         <p class="subtitulo">{{ fechaObra }}. {{ tecnicaObra }}, {{ dimensionesObra }}</p>
@@ -160,12 +160,19 @@ function irAutor() {
                             <img :src=imagenObra :alt="'Imagen de ' + nombreObra">
                         </div>
                         <div class="infoFT">
+                            <hr>
                             <p class="resaltado"><span>N&uacute;mero de cat&aacute;logo:</span> {{ numeroId }}</p>
+                            <hr>
                             <p class="resaltado"><span>Nombre:</span>{{ nombreObra }} </p>
+                            <hr>
                             <p class="resaltado" @click="irAutor" title="Ir a autor"><span>Autor:</span> {{ nombre }}</p>
+                            <hr>
                             <p class="resaltado"><span>Fecha:</span> {{ fechaObra }}</p>
+                            <hr>
                             <p class="resaltado"><span>T&eacute;cnica:</span> {{ tecnicaObra }}</p>
+                            <hr>
                             <p class="resaltado"><span>Dimensiones:</span> {{ dimensionesObra }}</p>
+                            <hr>
                         </div>
                     </div>
 

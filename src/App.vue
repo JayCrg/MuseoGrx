@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import CarruselFamiliares from './components/CarruselFamiliares.vue';
 import Footer from './components/Footer.vue';
 import { onMounted } from 'vue';
-import { addDoc, collection, getFirestore, doc, getDoc, getDocs, query, where, orderBy, deleteDoc, updateDoc, setDoc } from 'firebase/firestore'
+import { addDoc, collection, getFirestore, doc, getDoc, getDocs, query, where, orderBy, deleteDoc, updateDoc, setDoc, limit } from 'firebase/firestore'
 import { db, storage } from './firebase.js'
 
 
@@ -183,6 +183,9 @@ var busqueda = ref('')
 var loading = ref(false)
 var posiblesCoincidencias = ref([])
 var palabraBuscada = ref('')
+var firstQueryLimit = 2;
+var ultimaObra = ref('')
+var ultimaAutor = ref('')
 function buscar(e) {
   e.preventDefault();
   if(busqueda.value != ""){
@@ -195,15 +198,14 @@ function buscar(e) {
     router.push({ name: 'encontradas'})
     busqueda.value = ''
     
-    console.log(posiblesCoincidencias.value)    
   }
   
 }
 
 const buscarCoincidenciasObras = async () => {
-    console.log(busqueda.value)
-    const qObras = query(collection(db, "obras"), where('titulo_minusculas', 'array-contains-any', busqueda.value.toLowerCase().split(' ')), orderBy("titulo_minusculas"));
+    const qObras = query(collection(db, "obras"), where('titulo_minusculas', 'array-contains-any', busqueda.value.toLowerCase().split(' ')), orderBy("titulo_minusculas"), limit(firstQueryLimit));
     const querySnapshot2 = await getDocs(qObras);
+    ultimaObra.value = querySnapshot2.docs[querySnapshot2.docs.length - 1]
     querySnapshot2.forEach((doc) => {
       posiblesCoincidencias.value.push({
         titulo: doc.data().titulo,
@@ -217,8 +219,9 @@ const buscarCoincidenciasObras = async () => {
   }
   
   const buscarCoincidenciasAutores = async () => {
-    const qAutores = query(collection(db, "autores"), where('nombre_minusculas', 'array-contains-any', busqueda.value.toLowerCase().split(' ')), orderBy("nombre_minusculas"));
+    const qAutores = query(collection(db, "autores"), where('nombre_minusculas', 'array-contains-any', busqueda.value.toLowerCase().split(' ')), orderBy("nombre_minusculas"), limit(firstQueryLimit));
   const querySnapshot = await getDocs(qAutores);
+  ultimaAutor.value = querySnapshot.docs[querySnapshot.docs.length - 1]
   querySnapshot.forEach((doc) => {
       posiblesCoincidencias.value.push({
         titulo: doc.data().nombre,
@@ -331,7 +334,8 @@ const buscarCoincidenciasObras = async () => {
     </aside>
   </header>
 
-  <RouterView :adminConfirmado="isAdmin" :registrado="estaAutentificado" :busqueda="posiblesCoincidencias" :palabra="palabraBuscada" :loading="loading"  />
+  <RouterView :adminConfirmado="isAdmin" :registrado="estaAutentificado" :busqueda="posiblesCoincidencias"
+   :palabra="palabraBuscada" :loading="loading" :ultimasReferencias="{refAutor: ultimaAutor, refObra: ultimaObra}" :limite="firstQueryLimit" />
 
   <Footer/>
 </template>

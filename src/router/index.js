@@ -5,7 +5,7 @@ import SignUpView from '../views/SignUpView.vue'
 import AdminView from '../views/AdminView.vue'
 import PrivacyView from '../views/PrivacyView.vue'
 import FoundOptionsView from '../views/FoundOptionsView.vue'
-import DetailsView from '../views/DetailsView.vue'
+import DetailsOeuvreView from '../views/DetailsOeuvreView.vue'
 import DetailsAuthorView from '../views/DetailsAuthorView.vue'
 import { ref } from 'vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -48,7 +48,7 @@ const router = createRouter({
       path: '/detalle/obra/:id',
       name: 'detalle',
       props: true,
-      component: DetailsView
+      component: DetailsOeuvreView
     },
     {
       path: '/detalle/autor/:id',
