@@ -48,7 +48,6 @@ const obtenerExposiciones = async () => {
   querySnapshot.forEach((doc) => {
     dicExposiciones.value.push({ titulo: doc.data().titulo, cuerpo: doc.data().cuerpo, imagen: doc.data().obra });
   });
-  console.log(dicExposiciones.value)
   loading.value = false
   document.getElementsByTagName("body")[0].style.overflow = "auto"
 }
@@ -70,7 +69,7 @@ function siguiente(index) {
 </script>
 
 <template>
-  <Loading v-if="loading" />
+  <Loading v-if="loading" :buscando="false"/>
   <main id="home">
     <section :class="{ 'p-5 text-center bg-image hero': true, 'rellax': rellaxValue }" data-rellax-zindex="-1"
       data-rellax-speed="-3" data-rellax-mobile-speed="-2">

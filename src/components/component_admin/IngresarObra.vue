@@ -32,6 +32,9 @@ const archivarObra = async (credential, textoObra, urlImagen) => {
       textoObra: textoObra,
       imagenObra: urlImagen,
     });
+    await updateDoc(docRef, {
+      idAuxiliar: docRef.id
+    })
     completadoExito.value = 1
     refImagenObra.value = ''
     refTextoObra.value = ''

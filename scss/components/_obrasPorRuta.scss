@@ -1,0 +1,33 @@
+///Componente para la lista de obras
+.objetoListaObras{
+box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+&:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    color: color(resaltado-claro);
+    
+}
+
+width: 100%;
+@include flexposition();
+background-color: color(fondo-oscuro);
+padding: 1rem;
+margin-bottom: 1rem;
+border-radius: 0.5rem;
+color: color(texto-claro);
+justify-content: flex-start;
+&-imagen{
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1rem; 
+    img{
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+    }
+}
+&-texto{
+    overflow-x: hidden;
+}
+}

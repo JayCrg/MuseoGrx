@@ -7,7 +7,7 @@ const props = defineProps(['buscando'])
     <div class="pantallaCarga">
         <div class="text-center">
                 <img src="../../public/2.png" alt="Logo MGR">
-                <p v-if="buscando==false" class="text-center">Cargando...</p>
+                <p v-if="buscando==false" class="text-center">Bienvenido</p>
                 <p v-else class="text-center">Buscando...</p>
         </div>
     </div>

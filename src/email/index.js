@@ -1,15 +1,11 @@
-const host = "smtp.elasticemail.com";
-const username = "museogrx@gmail.com"
-const password = "3244E8BE26623607744C67F992F782EA38DF";
 const SecurityToken = '6f52ceaf-795e-40d7-9369-caa4dfff259d';
-import { addDays, format} from 'date-fns';
-import { es } from 'date-fns/locale';
 
 function sendEmail(to, entradas, fechaVisita) {
   Email.send({
-    Host : host,
-    Username : username,
-    Password : password,
+    // Host : host,
+    // Username : username,
+    // Password : password,
+    SecureToken: SecurityToken,
     To : to,
     From : username,
     Subject : "Confirmación de compra | MuseoGRX",

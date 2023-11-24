@@ -74,7 +74,8 @@
 
 body {
   background-color: #ffffff;
-  font-size: 1rem !important; }
+  font-size: 1rem !important;
+  margin: 0 auto; }
   body h1, body h2, body h3, body h4 {
     font-family: font-title; }
 
@@ -150,6 +151,10 @@ main {
         font-weight: 400;
         margin-top: 0; }
 
+#rutas {
+  width: 95vw;
+  margin: 0 auto; }
+
 #administration .accordion-body {
   display: flex;
   flex-wrap: wrap;
@@ -175,11 +180,12 @@ main {
         align-content: baseline !important; } }
 
 #administration .cuerpo .formulario {
-  margin-top: 1rem; }
+  margin-top: 1rem;
+  align-content: center !important; }
   @media (min-width: 1201px) {
     #administration .cuerpo .formulario {
-      max-width: 100%;
-      margin-left: 10vw;
+      max-width: 60%;
+      margin-left: 20vw;
       width: 80vw; } }
   @media (max-width: 1200px) {
     #administration .cuerpo .formulario {
@@ -473,31 +479,6 @@ main {
       #coincidencias .resultadoBusqueda {
         margin-left: 0;
         width: 100%; } }
-    #coincidencias .resultadoBusqueda .coincidencia {
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-      width: 95%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      background-color: #2d2c2c;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 0.5rem;
-      color: #c5ccca;
-      justify-content: flex-start; }
-      #coincidencias .resultadoBusqueda .coincidencia:hover {
-        cursor: pointer;
-        transform: scale(1.01);
-        color: #eb8484; }
-      #coincidencias .resultadoBusqueda .coincidencia-imagen {
-        width: 5rem;
-        height: 5rem;
-        margin-right: 1rem; }
-        #coincidencias .resultadoBusqueda .coincidencia-imagen img {
-          width: inherit;
-          height: inherit;
-          border-radius: 50%; }
 
 #detalle .imagenPresentacion {
   width: 100%;
@@ -530,6 +511,30 @@ main {
       background-color: rgba(0, 0, 0, 0.5); }
       #detalle .imagenPresentacion div:hover h5 {
         display: block; }
+  #detalle .imagenPresentacion .sumarARuta {
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all .3s ease;
+    z-index: 999; }
+    #detalle .imagenPresentacion .sumarARuta button {
+      background-color: rgba(0, 0, 0, 0);
+      border: none;
+      border-radius: 50%;
+      transition: all .1s ease;
+      color: #c85c59; }
+    #detalle .imagenPresentacion .sumarARuta svg {
+      width: 2rem;
+      height: 2rem;
+      fill: #c5ccca; }
 
 #detalle .cuerpoInformacion {
   align-self: flex-start;
@@ -727,7 +732,9 @@ main {
           flex-direction: column;
           justify-content: flex-start;
           align-items: flex-start;
-          font-size: 0.8rem; }
+          width: 15rem;
+          font-size: 0.8rem;
+          overflow: hidden; }
 
 .cargarMas {
   background-color: #eb8484;
@@ -736,12 +743,11 @@ main {
   margin: 1rem 0;
   color: #030303;
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   transition: all .1s ease-in-out; }
   .cargarMas:hover {
     background-color: #f9f9f8;
-    color: #AD4240;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; }
+    color: #AD4240; }
   .cargarMas:active {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; }
 
@@ -799,6 +805,16 @@ header aside .crearCuenta {
   color: #AD4240;
   cursor: pointer;
   font-weight: bold; }
+
+header aside .pwd {
+  display: inline; }
+  header aside .pwd .visionPwd {
+    cursor: pointer;
+    color: #AD4240;
+    font-weight: bold;
+    position: relative;
+    top: 38px;
+    left: calc(100% - 110px); }
 
 header aside .icono-google:hover {
   animation: colorChange 2s infinite !important; }
@@ -965,3 +981,146 @@ header aside .icono-github:hover {
     transform: translateX(-50%); }
   .pasarArticulo.primero {
     transform: translate(-50%, -100%); }
+
+.listadoRutasModal {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0 1rem; }
+  .listadoRutasModal .ruta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 0.1rem;
+    padding: .5rem;
+    overflow-x: hidden; }
+    .listadoRutasModal .ruta:hover {
+      cursor: pointer;
+      color: #AD4240;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; }
+    .listadoRutasModal .ruta:active {
+      box-shadow: #ccdbe8 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset; }
+
+.listaRutas {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  min-height: 30vh;
+  margin-top: 2rem;
+  margin-bottom: 1rem; }
+  @media (max-width: 767px) {
+    .listaRutas {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start; } }
+  .listaRutas .elementoRuta {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 1rem;
+    width: min-content;
+    height: min-content;
+    position: relative; }
+    .listaRutas .elementoRuta div:first-of-type {
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      width: 13rem;
+      height: 13rem;
+      background-color: #AD4240;
+      margin-bottom: .5rem;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      .listaRutas .elementoRuta div:first-of-type svg {
+        width: 5rem;
+        height: 5rem; }
+      .listaRutas .elementoRuta div:first-of-type img {
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+        object-position: center; }
+    .listaRutas .elementoRuta .titulo {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 13rem;
+      font-size: 0.8rem;
+      overflow: hidden; }
+      .listaRutas .elementoRuta .titulo h4 {
+        margin-bottom: 0rem; }
+      .listaRutas .elementoRuta .titulo span {
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all .3s; }
+        .listaRutas .elementoRuta .titulo span:hover {
+          color: #c85c59; }
+    .listaRutas .elementoRuta input {
+      width: 13rem;
+      overflow: hidden;
+      font-family: font-title;
+      background-color: transparent;
+      border: none; }
+
+.objetoListaObras {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #2d2c2c;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  color: #c5ccca;
+  justify-content: flex-start; }
+  .objetoListaObras:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    color: #eb8484; }
+  .objetoListaObras-imagen {
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1rem; }
+    .objetoListaObras-imagen img {
+      width: inherit;
+      height: inherit;
+      border-radius: 50%; }
+  .objetoListaObras-texto {
+    overflow-x: hidden; }
+
+.tablaEntradas {
+  align-self: center;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  background: #fff;
+  text-align: center; }
+  .tablaEntradas thead {
+    background: #f3f3f3; }
+    .tablaEntradas thead tr th {
+      padding: 10px;
+      border: 1px solid #ddd; }
+  .tablaEntradas tbody tr td {
+    padding: 10px;
+    border: 1px solid #ddd; }

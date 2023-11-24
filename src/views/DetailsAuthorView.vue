@@ -142,15 +142,15 @@ function irObra(idobra) {
                         <h3>Galer&iacute;a de obras</h3>
                     </div>
                     <div class="galeria" v-if="arrayObras.length > 0">
-                        <div class="obra" v-for="obra in arrayObras" :key="obra.id" @click="irObra(obra.id)">
+                        <figure class="obra" v-for="obra in arrayObras" :key="obra.id" @click="irObra(obra.id)">
                             <div>
                                 <img :src="obra.imagenObr" :alt="'Imagen de ' + obra.titulo">
                             </div>
-                            <div class="titulo">
+                            <figcaption class="titulo">
                                 <h4>{{ obra.titulo }}</h4>
                                 <p>{{ obra.fecha }}. {{ obra.tecnica }}</p>
-                            </div>
-                        </div>
+                            </figcaption>
+                        </figure>
                     </div>
                     <button @click="cargarObras(idAutor)" v-if="!noHayMasObras" class="cargarMas" title="Cargar más">
                         <font-awesome-icon :icon="['fas', 'plus']" />

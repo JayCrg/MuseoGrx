@@ -42,6 +42,8 @@ const archivarObra = async (credential, urlTexto, urlImagen) => {
       titulo_minusculas: credential["fichaTécnica"]["tituloObra"].toLowerCase().split(' '),
       textoObra: urlTexto,
       imagenObra: urlImagen,
+      idAuxiliar : credential["fichaTécnica"]["idDocumento"]
+
     });
     completadoExito.value = 1
     emit('actualizarLista') // Emitir evento para actualizar la lista del componente padre

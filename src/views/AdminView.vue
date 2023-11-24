@@ -6,7 +6,7 @@ import EditarObra from '../components/component_admin/EditarObra.vue'
 import IngresasAutor from '../components/component_admin/IngresasAutor.vue'
 import BorrarAutor from '../components/component_admin/BorrarAutor.vue'
 import EditarAutor from '../components/component_admin/EditarAutor.vue'
-// import ConsultarEntradas from '../components/component_admin/ConsultarEntradas.vue'
+import ConsultarEntradas from '../components/component_admin/ConsultarEntradas.vue'
 import CrearAdmin from '../components/component_admin/CrearAdmin.vue'
 import EditarAdmin from '../components/component_admin/EditarAdmin.vue'
 
@@ -21,6 +21,10 @@ import { onBeforeMount } from 'vue'
 
 onMounted(() => {
   document.title = 'Admin | MuseoGRX';
+  obtenerAutores()
+  obtenerObras()
+  obtenerUsuarios()
+  obtenerEntradas1anio()
 });
 
 const props = defineProps(['adminConfirmado', 'registrado'])
@@ -79,11 +83,18 @@ const obtenerUsuarios = async () => {
     });
 }
 
-onMounted(() => {
-  obtenerAutores()
-  obtenerObras()
-  obtenerUsuarios()
-})
+var datosEntradas = ref([])
+const obtenerEntradas1anio = async () => {
+    const currentDate = new Date();
+const lastYearDate = new Date();
+lastYearDate.setFullYear(currentDate.getFullYear() - 1);
+    const q = query(collection(db, "ventaEntradas") , where("fechaCompra", ">", lastYearDate));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        datosEntradas.value.push({tipo1: doc.data().tipo1, tipo2: doc.data().tipo2, tipo3: doc.data().tipo3, fechaCompra: doc.data().fechaCompra});
+    });
+    console.log(datosEntradas.value.length)
+}
 
 </script>
 <template>
@@ -186,7 +197,7 @@ onMounted(() => {
 
 <article class="formulario" v-if="apartado=='infoEntradas'">
   <h2 id="editarAutor" class="resaltado">Consultar <span>Entradas</span></h2>
-  <!-- <ConsultarEntradas /> -->
+  <ConsultarEntradas :entradas="datosEntradas"/>
 </article>
 
 </section>

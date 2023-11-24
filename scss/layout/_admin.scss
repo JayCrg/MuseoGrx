@@ -31,9 +31,10 @@
         }
         .formulario{   
             margin-top: 1rem;
+            align-content: center!important;
             @include responsive(large){  
-                max-width: 100%;
-                margin-left: 10vw;
+                max-width: 60%;
+                margin-left: 20vw;
                 width: 80vw;
             }  
             @include responsive(desktop){  

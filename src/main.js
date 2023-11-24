@@ -24,22 +24,25 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { faImage, faUser } from '@fortawesome/free-regular-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faTicket } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEye } from '@fortawesome/free-regular-svg-icons'
-import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { faEyeSlash } from '@fortawesome/free-regular-svg-icons'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { faFile } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import {faHeart} from "@fortawesome/free-solid-svg-icons/faHeart";
+import {faHeart as faHeartRegular} from "@fortawesome/free-regular-svg-icons/faHeart";
+import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 
 /* add icons to the library */
-library.add(faUser,faMagnifyingGlass, faTicket, faGoogle, faGithub,
-     faEye, faEyeSlash, faCaretDown, faFile, faPlus, faMinus, faAngleDown)
+library.add(faUser,faMagnifyingGlass, faTicket, faGoogle, faGithub, faTrash,
+     faEye, faEyeSlash, faCaretDown, faFile, faPlus, faMinus, faAngleDown, faHeart,  faHeartRegular ,faImage)
 
 
 

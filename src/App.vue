@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import CarruselFamiliares from './components/CarruselFamiliares.vue';
 import Footer from './components/Footer.vue';
 import { onMounted } from 'vue';
 import { addDoc, collection, getFirestore, doc, getDoc, getDocs, query, where, orderBy, deleteDoc, updateDoc, setDoc, limit } from 'firebase/firestore'
@@ -20,6 +19,7 @@ import {
 import { ref } from 'vue';
 import { auth } from './firebase.js'
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, onAuthStateChanged, getAuth, signOut } from "firebase/auth";
+import { vi } from 'date-fns/locale';
 
 function goToSignUp() {
   router.push({ name: 'nueva-cuenta' });
@@ -45,6 +45,7 @@ onMounted(() => {
 
 
 function login() {
+  event.preventDefault();
   signInWithEmailAndPassword(auth, userEmail.value, password.value)
     .then((userCredential) => {
       // Signed in
@@ -183,7 +184,7 @@ var busqueda = ref('')
 var loading = ref(false)
 var posiblesCoincidencias = ref([])
 var palabraBuscada = ref('')
-var firstQueryLimit = 2;
+const firstQueryLimit = 2;
 var ultimaObra = ref('')
 var ultimaAutor = ref('')
 function buscar(e) {
@@ -235,6 +236,16 @@ const buscarCoincidenciasObras = async () => {
 
 }
 
+var visionPwd = ref(false)
+function mostrarContrasena(){
+  var tipo = document.getElementById("currentPassword");
+  if(tipo.type == "password")
+    tipo.type = "text";
+  else
+    tipo.type = "password";
+  visionPwd.value = !visionPwd.value
+}
+
 </script>
 
 <template>
@@ -262,7 +273,7 @@ const buscarCoincidenciasObras = async () => {
             <ul class="dropdown-menu">
               <RouterLink :to="{ name: 'admin' }" v-if="isAdmin"><a class="dropdown-item"
                   href="#">Administraci&oacute;n</a></RouterLink>
-              <li><a class="dropdown-item" href="#">Mis rutas</a></li>
+              <RouterLink :to="{name: 'rutas'}"><a class="dropdown-item" href="#">Mis rutas</a></RouterLink>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -306,27 +317,30 @@ const buscarCoincidenciasObras = async () => {
               ¡El email o la contraseña son incorrectos!
             </div>
           </div>
-          <form class="needs-validation">
+          <form class="needs-validation" @submit="login">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Direcci&oacute;n Email</label>
               <input v-model="userEmail" type="email" class="form-control" id="exampleInputEmail1"
-                @keyup.enter=focusNextInput aria-describedby="emailHelp" title="Inserta tu email" required
-                pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})?/">
+                @keyup.enter=focusNextInput aria-describedby="emailHelp" title="Inserta tu email" required>
               <div id="emailHelp" class="form-text">¡Hola de nuevo!</div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 ">
               <label for="currentPassword" class="form-label">Contrase&ntilde;a</label>
-              <input v-model="password" type="password" class="form-control" id="currentPassword" @keyup.enter="login"
-                title="Inserta tu contraseña" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})"
+              <div class="pwd">
+                <font-awesome-icon icon="fa-regular fa-eye" class="visionPwd" @click="mostrarContrasena" v-if="!visionPwd"/>
+                <font-awesome-icon icon="fa-regular fa-eye-slash" class="visionPwd" @click="mostrarContrasena" v-else/>
+                <input v-model="password" type="password" class="form-control" id="currentPassword"
+                title="Inserta tu contraseña"
                 required>
-              <!-- The password must have at least 6 characters, an uppercase, a lowercase, a number and a special character (! @ # $ % ^ & *)' -->
+              </div>
+
             </div>
+            <button title="Iniciar sesión" type="submit" class="btn customBtn">Entrar</button>
+            <button @click="google" title="Iniciar sesión con Google" 
+              class="btn customBtn icono-google"><font-awesome-icon :icon="['fab', 'google']" size="xl" /></button>
+            <button @click="github" title="Iniciar sesión con Github"
+              class="btn customBtn icono-github"><font-awesome-icon :icon="['fab', 'github']" size="xl" /></button>
           </form>
-          <button @click="login" title="Iniciar sesión" type="submit" class="btn customBtn">Entrar</button>
-          <button @click="google" title="Iniciar sesión con Google" type="submit"
-            class="btn customBtn icono-google"><font-awesome-icon :icon="['fab', 'google']" size="xl" /></button>
-          <button @click="github" title="Iniciar sesión con Github" type="submit"
-            class="btn customBtn icono-github"><font-awesome-icon :icon="['fab', 'github']" size="xl" /></button>
           <p class="mt-3">¿No tienes todavía una cuenta? <a @click="goToSignUp" data-bs-dismiss="offcanvas"
               aria-label="Close" class="crearCuenta">Crea una nueva</a></p>
         </div>
@@ -335,7 +349,9 @@ const buscarCoincidenciasObras = async () => {
   </header>
 
   <RouterView :adminConfirmado="isAdmin" :registrado="estaAutentificado" :busqueda="posiblesCoincidencias"
-   :palabra="palabraBuscada" :loading="loading" :ultimasReferencias="{refAutor: ultimaAutor, refObra: ultimaObra}" :limite="firstQueryLimit" />
+   :palabra="palabraBuscada" :loading="loading"
+    :ultimasReferencias="{refAutor: ultimaAutor, noHayMasAutores:ultimaAutor==undefined?true:false , refObra: ultimaObra, noHayMasObras:ultimaObra==undefined?true:false}"
+     :limite="firstQueryLimit" />
 
   <Footer/>
 </template>

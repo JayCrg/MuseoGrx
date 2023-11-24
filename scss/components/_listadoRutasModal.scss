@@ -1,0 +1,25 @@
+/// Componente para el listado de rutas al añadir una obra a esta
+.listadoRutasModal{
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        padding: 0 1rem;
+        .ruta{
+            @include flexposition(row, space-between, center);
+            width: 100%;
+            margin: 1rem 0;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            border-radius: 0.1rem;
+            padding: .5rem;
+            overflow-x: hidden;
+            &:hover{
+                cursor: pointer;
+                color: color(resaltado-aux);
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            }
+            &:active{
+                box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+            }
+        }
+    
+}

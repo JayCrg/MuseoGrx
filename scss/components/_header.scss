@@ -47,6 +47,17 @@ header {
       cursor: pointer;
       font-weight: bold;
     }
+    .pwd{
+      display: inline;
+    .visionPwd{
+      cursor: pointer;
+      color: color(resaltado-aux);
+      font-weight: bold;
+      position: relative;
+      top: 38px;
+      left: calc(100% - 110px);    
+    }
+  }
     .icono{
       &-google{
         &:hover{

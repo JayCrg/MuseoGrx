@@ -8,9 +8,11 @@ import { ref as ref2, getStorage, uploadBytes, getDownloadURL, updateMetadata } 
 import { addDoc, collection, getFirestore, doc, getDoc, getDocs, query, where, orderBy, deleteDoc, updateDoc, setDoc } from 'firebase/firestore'
 import { useCollection, useFirestore } from 'vuefire'
 import { db, storage } from '../firebase.js'
-import * as cors from 'cors';
+import { auth } from '../firebase.js'
+import {onAuthStateChanged } from "firebase/auth";
 
-const props = defineProps(['id'])
+
+const props = defineProps(['id','registrado'])
 
 var mostrarVista = ref(0)
 
@@ -107,6 +109,67 @@ function irAutor() {
     router.push({ name: 'detalleAutor', params: { id: idAutor.value } })
 }
 
+
+var sinRutas = ref(true)
+var arrayRutas = ref([])
+const cargarElementosDeRutas = async (uidUser) => {
+    const q = query(collection(db, "rutas"), where("uidUser", "==", uidUser ));
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+        arrayRutas.value = []
+        sinRutas.value = false
+        querySnapshot.forEach((doc) => {
+            arrayRutas.value.push({
+                id: doc.id,
+                nombre: doc.data()["nombre"],
+            })
+        });
+        comprobarSiObraFavorita()
+    }
+}
+const anadirARuta = async (idRuta) => {
+    try {
+    const docRef = await addDoc(collection(db, "obrasPorRuta"), {
+        idObra: props.id,
+        idRuta: idRuta,
+        uidUser: auth.currentUser.uid,
+    });
+    ananida.value = true
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
+const borrarDeRuta = async () => {
+    const q = query(collection(db, "obrasPorRuta"), where("idObra", "==", props.id), where("uidUser", "==", auth.currentUser.uid));
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+        querySnapshot.forEach(async(doc2) => {
+                await deleteDoc(doc2.ref)
+            })
+
+        ananida.value = false
+    }
+}
+
+var ananida = ref(false)
+const comprobarSiObraFavorita = async () => {
+    const q = query(collection(db, "obrasPorRuta"), where("idObra", "==", props.id), where("uidUser", "==", auth.currentUser.uid));
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty)
+        ananida.value = true
+}
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        cargarElementosDeRutas(user.uid)
+    } else {
+        // User is signed out
+        // ...
+    }
+})
+
+
 </script>
 <template :key="componentKey">
     <Loading v-if="loading" buscando=true />
@@ -121,6 +184,12 @@ function irAutor() {
                 <img :src=imagenObra :alt="'Imagen de ' + nombreObra">
                 <div>
                     <h5>{{ nombreObra }}</h5>
+                    <article class="sumarARuta" v-if="registrado">
+                        <button title="Añadir a ruta" data-bs-toggle="modal"
+                            data-bs-target="#cargarRutas" v-if="!ananida" ><font-awesome-icon :icon="['far', 'heart']" /></button>
+
+                        <button @click="borrarDeRuta" title="Eliminar de ruta" v-else ><font-awesome-icon :icon="['fas', 'heart']" /></button>
+                    </article>
                 </div>
             </section>
             <section id="detalleObra">
@@ -156,7 +225,8 @@ function irAutor() {
                         <h3>Ficha técnica</h3>
                     </div>
                     <div class="cartilla">
-                        <div class="imgFT" data-bs-toggle="modal" data-bs-target="#imagenCompleta" title="Visualización ampliada">
+                        <div class="imgFT" data-bs-toggle="modal" data-bs-target="#imagenCompleta"
+                            title="Visualización ampliada">
                             <img :src=imagenObra :alt="'Imagen de ' + nombreObra">
                         </div>
                         <div class="infoFT">
@@ -194,7 +264,32 @@ function irAutor() {
                     </div>
                 </article>
             </section>
+            
 
         </template>
-    </main>
+        <div class="modal fade" id="cargarRutas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-3" id="exampleModalLabel">Seleccione ruta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body listadoRutasModal">
+        <template v-for="ruta in arrayRutas" v-if="!sinRutas">
+            <article data-bs-dismiss="modal" class="ruta" @click="anadirARuta(ruta.id)">
+                <h4>{{ ruta.nombre }}</h4>
+            </article>
+        </template>
+        <template v-if="sinRutas">
+            <h4 class="mt-2 mb-4">No tienes rutas creadas</h4>
+        </template>
+    </div>
+    <div class="modal-footer">
+          <button @click="router.push('/rutas')" data-bs-dismiss="modal" v-if='sinRutas' class="btn customBtn-signup">Crear ruta</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
 </template>
