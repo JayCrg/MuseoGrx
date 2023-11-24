@@ -17,8 +17,6 @@ const emit = defineEmits(['actualizarLista'])
 
 
 const editarAdmin = async (credential) => {
-    console.log(props.usuarios)
-    console.log(credential["user"])
     let admin = false
     if (props.usuarios["admin"].some(item => item.value === credential["user"])) {
         admin = true

@@ -17,7 +17,6 @@ const props = defineProps(['obras'])
 const emit = defineEmits(['actualizarLista'])
 
 const borrarObra = async(credential) => {
-    console.log(credential)
     try {
         const q = query(collection(db, "obrasPorRuta"), where("idObra", "==", credential["obra"]))
         const querySnapshot = await getDocs(q)
@@ -30,7 +29,6 @@ const borrarObra = async(credential) => {
         timeOut()
     }
     catch (e) {
-        console.log(e)
         completadoExito.value = 2
         timeOut()
     }

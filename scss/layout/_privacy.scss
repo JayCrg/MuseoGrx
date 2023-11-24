@@ -1,0 +1,16 @@
+#privacidad{
+    width: 95%;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 5px;
+    color: color(texto-claro-aux);
+    font-size: 14px;
+    text-align: justify;
+    p{
+        color: color(texto-oscuro);
+    };
+    a{
+        color: color(resaltado-aux);
+        text-decoration: underline;
+    }
+}

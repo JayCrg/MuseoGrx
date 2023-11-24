@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import { plugin, defaultConfig } from '@formkit/vue'
 import config from './formkit.config'
 import VCalendar from 'v-calendar';
@@ -48,7 +47,6 @@ library.add(faUser,faMagnifyingGlass, faTicket, faGoogle, faGithub, faTrash,
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)
-app.use(createPinia())
 app.use(plugin, config)
 app.use(router)
 app.use(VCalendar, {})

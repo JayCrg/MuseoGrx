@@ -93,7 +93,6 @@ lastYearDate.setFullYear(currentDate.getFullYear() - 1);
     querySnapshot.forEach((doc) => {
         datosEntradas.value.push({tipo1: doc.data().tipo1, tipo2: doc.data().tipo2, tipo3: doc.data().tipo3, fechaCompra: doc.data().fechaCompra});
     });
-    console.log(datosEntradas.value.length)
 }
 
 </script>

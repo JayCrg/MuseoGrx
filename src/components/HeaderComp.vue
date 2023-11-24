@@ -121,7 +121,6 @@ onAuthStateChanged(auth, (user) => {
     else {
       obtenerDatosUsuarioDeLogin()
     }
-    console.log(user)
     estaAutentificado.value = true
   } else {
     estaAutentificado.value = false

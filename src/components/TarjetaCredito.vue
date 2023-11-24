@@ -33,7 +33,6 @@ function checkTj() {
   else {
     isValid.value = true;
   }
-  console.log(isValid.value);
 }
 
 
@@ -47,7 +46,6 @@ function guardarDatos(e) {
   if (props.fechaVisita == null || (props.general.cantidad == 0 && props.reducida.cantidad == 0 && props.menor.cantidad == 0)) {
     validado.value = 2;
     submitHandler();
-    console.log(props.general.cantidad + ' ' + props.reducida.cantidad + ' ' + props.menor.cantidad);
   }
   else {
     if (isValid.value) {

@@ -736,6 +736,20 @@ main {
           font-size: 0.8rem;
           overflow: hidden; }
 
+#privacidad {
+  width: 95%;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 5px;
+  color: #5d5c5d;
+  font-size: 14px;
+  text-align: justify; }
+  #privacidad p {
+    color: #030303; }
+  #privacidad a {
+    color: #AD4240;
+    text-decoration: underline; }
+
 .cargarMas {
   background-color: #eb8484;
   border-radius: 5px;
