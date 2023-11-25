@@ -126,6 +126,17 @@ const cargarAutor = async (credentials) => {
 
 </script>
 <template>
+  <div class="alert alert-success d-flex align-items-center" role="alert" v-if="completadoExito == 1">
+    <div>
+      Obra actulizada con éxito
+    </div>
+  </div>
+  <div :class="{ shake: disabled, 'alert alert-danger d-flex align-items-center': true }" role="alert"
+    v-if="completadoExito == 2">
+    <div>
+      Error al actualizar la obra
+    </div>
+  </div>
   <FormKit type="form" :actions="false" @submit=cargarAutor id="cargarAutor" submit-label="cargar">
 
     <FormKit type="select" name="idAutor" label="Seleccine Autor" validation="required" :options="autores"
@@ -184,17 +195,6 @@ const cargarAutor = async (credentials) => {
       </FormKit>
     </FormKit>
   </FormKit>
-  <div class="alert alert-success d-flex align-items-center" role="alert" v-if="completadoExito == 1">
-    <div>
-      Obra actulizada con éxito
-    </div>
-  </div>
-  <div :class="{ shake: disabled, 'alert alert-danger d-flex align-items-center': true }" role="alert"
-    v-if="completadoExito == 2">
-    <div>
-      Error al actualizar la obra
-    </div>
-  </div>
 </template>
   
 <style></style>

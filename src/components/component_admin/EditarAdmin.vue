@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeMount, onMounted, ref } from 'vue'
-import { db, storage } from '../../firebase.js'
+import { db, storage, auth } from '../../firebase.js'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '../../router/index.js';
 
@@ -24,7 +24,13 @@ const editarAdmin = async (credential) => {
     if(admin && props.usuarios["admin"].length == 1){
         completadoExito.value = 2
         timeOut()
-    }else{
+    }
+    else if(credential["user"] == auth.currentUser.uid)
+    {
+        completadoExito.value = 2
+        timeOut()
+    }
+    else{
     try {
         const docRef = await updateDoc(doc(db, "usuarios", credential["user"]), {
             admin: !admin,
@@ -59,7 +65,8 @@ const timeOut = async () => {
     <div :class="{ shake: true, 'alert alert-danger d-flex align-items-center': true }" role="alert"
         v-if="completadoExito == 2">
         <div>
-            Error al actualizar los usuarios, puede que no haya suficientes usuarios administradores
+            Error al actualizar los usuarios, puede que el usuario seleccionado sea el &uacute;nico administrador o que
+            intentes quitarte los permisos de administrador a ti mismo.
         </div>
     </div>
     <div>

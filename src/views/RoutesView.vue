@@ -31,6 +31,13 @@ onBeforeMount(() => {
 
 const props = defineProps(['adminConfirmado', 'registrado'])
 
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+
+    } else {
+      router.push({ name: 'home' });
+  }
+})
 
 var arrayRutas = ref([])
 var mapObrasPorRuta = ref(new Map())
