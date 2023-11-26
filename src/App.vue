@@ -44,8 +44,8 @@ onMounted(() => {
 
 
 
-function login() {
-  event.preventDefault();
+function login(e) {
+  e.preventDefault();
   signInWithEmailAndPassword(auth, userEmail.value, password.value)
     .then((userCredential) => {
       // Signed in
