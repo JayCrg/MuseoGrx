@@ -112,8 +112,8 @@ function irAutor() {
 
 var sinRutas = ref(true)
 var arrayRutas = ref([])
-const cargarElementosDeRutas = async (uidUser) => {
-    const q = query(collection(db, "rutas"), where("uidUser", "==", uidUser ));
+const cargarElementosDeRutas = async () => {
+    const q = query(collection(db, "rutas"), where("uidUser", "==", auth.currentUser.uid ));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
         arrayRutas.value = []
@@ -162,7 +162,7 @@ const comprobarSiObraFavorita = async () => {
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        cargarElementosDeRutas(user.uid)
+        cargarElementosDeRutas()
     } else {
         // User is signed out
         // ...
