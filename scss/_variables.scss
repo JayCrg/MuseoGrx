@@ -1,7 +1,3 @@
-////Proyecto: MuseoGRX
-/// @author: Juan Carlos Ramírez
-
-@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Karla:wght@500&display=swap');
 
 /*paleta de colores*/
 ///mapa de colores
@@ -62,7 +58,6 @@ $font-weights:(
     @return map-get($font-weights, $fontWeightName);
 }
 ///
-$font-title: 'Karla', sans-serif;
 ///
 $defaul-margin: 0;
 $default-padding: 0;

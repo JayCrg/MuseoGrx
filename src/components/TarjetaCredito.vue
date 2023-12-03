@@ -116,8 +116,9 @@ function resetarTarjeta(){
     <div>
       <label for="emailTarjeta">Email</label>
       <input v-model="EmailUser" type="email" class="form-control" id="emailTarjeta" aria-describedby="emailHelp"
-        title="Inserta tu email" required pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})?/">
+        title="Inserta tu email" required pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})'>
       <div id="emailHelp" class="form-text">¿A qu&eacute; correo te avisamos?</div>
+      
     </div>
 
     <div class="cuerpoTarjeta delantera">
