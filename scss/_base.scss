@@ -1,8 +1,5 @@
 ///Inicialización de todo el documento
 /// 
- @import '../src/assets/Karla-font/Karla-VariableFont_wght.ttf';
- @import '../src/assets//baskerville-font/LibreBaskerville-Regular.ttf';
-
 :root{ 
     --fk-color-border-focus: #c85c59!important; //si se usa el mixim color() no funciona
     --fk-bg-button: #c5ccca!important;
@@ -25,7 +22,7 @@ body {
     font-size: size(md) !important;
     margin: 0 auto;
     h1, h2, h3, h4{
-        font-family: 'LibreBaskerville', serif;
+        font-family: $font-title;
     }
 
 }

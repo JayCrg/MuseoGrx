@@ -2,13 +2,13 @@
 import { collection, addDoc } from 'firebase/firestore';
 import { ref } from 'vue'
 import { db } from '../firebase.js'
-import { ActionCodeOperation, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase.js'
 import router from '../router/index.js'
 import sendEmail from '../email';
 
 const props = defineProps(['general', 'reducida', 'menor', 'fechaVisita'])
-const patternEmailAlt = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})?/";
+const patternEmailAlt = '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})';
 const EmailUser = ref('')
 
 
@@ -116,7 +116,7 @@ function resetarTarjeta(){
     <div>
       <label for="emailTarjeta">Email</label>
       <input v-model="EmailUser" type="email" class="form-control" id="emailTarjeta" aria-describedby="emailHelp"
-        title="Inserta tu email" required pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})'>
+        title="Inserta tu email" pattern=/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,3})/ required>
       <div id="emailHelp" class="form-text">¿A qu&eacute; correo te avisamos?</div>
       
     </div>

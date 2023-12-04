@@ -76,7 +76,7 @@ body {
   font-size: 1rem !important;
   margin: 0 auto; }
   body h1, body h2, body h3, body h4 {
-    font-family: 'LibreBaskerville', serif; }
+    font-family: "LibreBaskerville", serif; }
 
 main {
   display: grid;

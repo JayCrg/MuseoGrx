@@ -7,7 +7,7 @@ function sendEmail(to, entradas, fechaVisita) {
     // Password : password,
     SecureToken: SecurityToken,
     To : to,
-    From : username,
+    From : "museogrx@gmail.com",
     Subject : "Confirmación de compra | MuseoGRX",
     Body : `<h1>Buenas ${to}.</h1>
     <br>

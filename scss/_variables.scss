@@ -1,3 +1,4 @@
+@import '../src/assets//baskerville-font/LibreBaskerville-Regular.ttf';
 
 /*paleta de colores*/
 ///mapa de colores
@@ -58,6 +59,7 @@ $font-weights:(
     @return map-get($font-weights, $fontWeightName);
 }
 ///
+$font-title: 'LibreBaskerville', serif;
 ///
 $defaul-margin: 0;
 $default-padding: 0;
