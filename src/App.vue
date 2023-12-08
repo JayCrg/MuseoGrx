@@ -52,7 +52,6 @@ function login(e) {
       // Signed in
       const user = userCredential.user;
       router.push({ name: 'home' });
-      obtenerDatosUsuarioDeLogin()
       // ...
     })
     .catch((error) => {
@@ -74,7 +73,6 @@ function google() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      obtenerDatosUsuarioDeLogin()
       router.push({ name: 'home' });
 
       // ...
@@ -99,7 +97,6 @@ function github() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      obtenerDatosUsuarioDeLogin()
       router.push({ name: 'home' });
       // ...
     }).catch((error) => {
@@ -131,12 +128,10 @@ onAuthStateChanged(auth, (user) => {
     userEmail.value = ''
     password.value = ''
     uid.value = user.uid
-    if (user.displayName !== null) {
-      NombreUsuario.value = formatearNombre(user.displayName)
-    }
-    else {
-      obtenerDatosUsuarioDeLogin()
-    }
+    // if (user.displayName !== null) 
+    //   NombreUsuario.value = formatearNombre(user.displayName)
+    // else 
+      obtenerDatosUsuarioDeLogin(user.displayName)
     estaAutentificado.value = true
   } else {
     estaAutentificado.value = false
@@ -162,7 +157,7 @@ function focusNextInput() {
   secondInput.focus();
 
 }
-const obtenerDatosUsuarioDeLogin = async () => {
+const obtenerDatosUsuarioDeLogin = async (displayName) => {
   const q = query(collection(db, 'usuarios'), where('uid', '==', uid.value));
   const querySnapshot = await getDocs(q);
   // Comprueba si se encontraron documentos que coincidan con el 'uid'
@@ -173,6 +168,8 @@ const obtenerDatosUsuarioDeLogin = async () => {
       isAdmin.value = true
     }
   }
+  else
+    NombreUsuario.value = formatearNombre(displayName)
 }
 
 function formatearNombre(nombre) {

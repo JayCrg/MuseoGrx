@@ -181,7 +181,7 @@ const cargarAutor = async (credentials) => {
         <FormKit type="file" label="Texto del autor" name="textoAutor" accept=".txt"
           help="Inserte un texto del autor en formato .txt" multiple="false" v-model="refTextoAutor" />
 
-        <FormKit name="textoPrecedente" v-model="textoAutor" type="hidden" validation="required" />
+        <FormKit name="textoPrecedente" v-model="textoAutor" type="hidden" />
 
 
         <template #stepNext>
