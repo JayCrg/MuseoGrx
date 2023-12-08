@@ -1,7 +1,7 @@
 <script setup>
 import Loading from '../components/Loading.vue';
 
-import { ref, onMounted, defineProps } from 'vue';
+import { ref, onMounted } from 'vue';
 import { onAuthStateChanged, getAuth } from 'firebase/auth'
 import { auth } from '../firebase.js'
 import router from '../router/index.js';

@@ -43,6 +43,7 @@ onMounted(() => {
 })
 
 
+///////////////////////////////Apartado de login///////////////////////////////
 
 function login(e) {
   e.preventDefault();
@@ -73,6 +74,7 @@ function google() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      obtenerDatosUsuarioDeLogin()
       router.push({ name: 'home' });
 
       // ...
@@ -97,6 +99,7 @@ function github() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      obtenerDatosUsuarioDeLogin()
       router.push({ name: 'home' });
       // ...
     }).catch((error) => {
@@ -180,6 +183,8 @@ function formatearNombre(nombre) {
   return nombreFormateado[0]
 }
 
+////////////////////Apartado de búsqueda/////////////
+
 var busqueda = ref('')
 var loading = ref(false)
 var posiblesCoincidencias = ref([])
@@ -235,6 +240,8 @@ const buscarCoincidenciasObras = async () => {
     loading.value = false
 
 }
+
+//////////////////////////////
 
 var visionPwd = ref(false)
 function mostrarContrasena(){
