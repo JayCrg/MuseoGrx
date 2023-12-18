@@ -91,7 +91,7 @@ const obtenerObrasModal = async (arrayObras) => {
 
 const eliminarRuta = async (idRuta) => {
   try{
-    const q = query(collection(db, "obrasPorRuta"), where("idRuta", "==", idRuta))
+    const q = query(collection(db, "obrasPorRuta"), where("idRuta", "==", idRuta), where("uidUser", "==", auth.currentUser.uid))
         const querySnapshot = await getDocs(q)
         if(!querySnapshot.empty){
         querySnapshot.forEach((doc) => {
@@ -105,7 +105,6 @@ const eliminarRuta = async (idRuta) => {
     console.log(e)
   }
 }
-
 
 var creandoRuta = ref(false)
 var nombreNuevaRuta = ref('')
